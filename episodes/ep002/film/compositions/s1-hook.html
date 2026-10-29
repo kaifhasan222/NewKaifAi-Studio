@@ -1,0 +1,38 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas"; src: url("assets/fonts/BebasNeue-Regular.ttf") format("truetype"); }
+    #root { position: absolute; inset: 0; background: #070709; overflow: hidden; }
+    #s1-bg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    #s1-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.45) 0%, rgba(0,0,0,.72) 70%, rgba(0,0,0,.88) 100%); }
+    #s1-safe { position: absolute; left: 72px; right: 72px; top: 220px; height: 900px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+    #s1-kicker { font-family: Poppins, sans-serif; font-weight: 700; font-size: 34px; letter-spacing: 6px; color: #ff5a1f; background: #070709; padding: 8px 16px; }
+    #s1-num { font-family: Bebas, sans-serif; font-size: 248px; line-height: 0.9; color: #fff; font-variant-numeric: tabular-nums; margin-top: 12px; }
+    #s1-sub { font-family: Poppins, sans-serif; font-weight: 700; font-size: 42px; color: #fff; margin-top: 8px; }
+    #s1-src { position: absolute; left: 72px; right: 72px; top: 1080px; text-align: center; font-family: Poppins, sans-serif; font-weight: 700; font-size: 28px; color: #b5b5b5; }
+    #s1-bar { position: absolute; left: 72px; top: 188px; height: 8px; width: 220px; background: #ff5a1f; transform-origin: left center; }
+  </style>
+  <div data-hf-id="hf-qmpn" id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+    <video data-hf-id="hf-whhv" id="s1-bg" class="clip" src="assets/broll/city-night.mp4" muted playsinline data-start="0" data-duration="7.674" data-media-start="0.6" data-track-index="0" data-layout-allow-overflow></video>
+    <div data-hf-id="hf-sm7w" id="s1-scrim"></div>
+    <div data-hf-id="hf-b8lh" id="s1-bar"></div>
+    <div data-hf-id="hf-7xm9" id="s1-safe">
+      <div data-hf-id="hf-lupl" id="s1-kicker">VOLUNTARY EXIT</div>
+      <div data-hf-id="hf-angu" id="s1-num">0</div>
+      <div data-hf-id="hf-v22p" id="s1-sub">ELIGIBLE</div>
+    </div>
+    <div data-hf-id="hf-hiny" id="s1-src">CNBC, 26 Oct 2026</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const num = document.getElementById("s1-num");
+    const counter = { v: 0 };
+    tl.fromTo("#s1-bg", { scale: 1.05 }, { scale: 1.16, duration: 7.674, ease: "none" }, 0);
+    tl.fromTo("#s1-bar", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, 0.08);
+    tl.fromTo("#s1-kicker", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }, 0.12);
+    tl.fromTo("#s1-num", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.28, ease: "power4.out" }, 0.32);
+    tl.to(counter, { v: 60000, duration: 1.3, ease: "power2.out", onUpdate: () => { num.textContent = Math.round(counter.v).toLocaleString("en-US"); } }, 0.32);
+    tl.fromTo("#s1-sub", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 1.7);
+    tl.fromTo("#s1-src", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.1);
+    window.__timelines["s1"] = tl;
+  </script>
+</template>

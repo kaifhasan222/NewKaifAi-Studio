@@ -1,0 +1,38 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas"; src: url("assets/fonts/BebasNeue-Regular.ttf") format("truetype"); }
+    #root { position: absolute; inset: 0; background: #070709; overflow: hidden; }
+    #s4-bg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    #s4-scrim { position: absolute; inset: 0; background: rgba(0,0,0,.74); }
+    #s4-safe { position: absolute; left: 72px; right: 72px; top: 280px; height: 820px; }
+    #s4-kicker { font-family: Poppins, sans-serif; font-weight: 700; font-size: 32px; letter-spacing: 5px; color: #ff5a1f; text-align: center; }
+    #s4-track { position: absolute; left: 48px; right: 48px; top: 390px; height: 10px; background: #2a2a2e; }
+    #s4-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; background: #ff5a1f; transform-origin: left center; }
+    #s4-a, #s4-b { position: absolute; top: 200px; width: 360px; text-align: center; }
+    #s4-a { left: 0; } #s4-b { right: 0; }
+    .s4-date { font-family: Bebas, sans-serif; font-size: 120px; color: #fff; line-height: 0.9; }
+    .s4-lab { font-family: Poppins, sans-serif; font-weight: 700; font-size: 32px; color: #ff5a1f; margin-top: 8px; }
+    #s4-foot { position: absolute; left: 0; right: 0; top: 520px; text-align: center; font-family: Poppins, sans-serif; font-weight: 700; font-size: 36px; color: #fff; }
+  </style>
+  <div data-hf-id="hf-q5j8" id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+    <video data-hf-id="hf-ug6h" id="s4-bg" class="clip" src="assets/broll/city-night.mp4" muted playsinline data-start="0" data-duration="6.69" data-media-start="4" data-track-index="0" data-layout-allow-overflow></video>
+    <div data-hf-id="hf-5z89" id="s4-scrim"></div>
+    <div data-hf-id="hf-dv3a" id="s4-safe">
+      <div data-hf-id="hf-1f43" id="s4-kicker">INDIA DEADLINE</div>
+      <div data-hf-id="hf-my2m" id="s4-a"><div data-hf-id="hf-gqsl" class="s4-date">1 DEC</div><div data-hf-id="hf-q8tj" class="s4-lab">DECIDE</div></div>
+      <div data-hf-id="hf-izyl" id="s4-b"><div data-hf-id="hf-l9ta" class="s4-date">31 DEC</div><div data-hf-id="hf-ye27" class="s4-lab">EXIT</div></div>
+      <div data-hf-id="hf-usru" id="s4-track"><div data-hf-id="hf-e9fe" id="s4-fill"></div></div>
+      <div data-hf-id="hf-oads" id="s4-foot">SAY YES, THEN YOU LEAVE</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s4-bg", { scale: 1.12 }, { scale: 1.2, duration: 6.69, ease: "none" }, 0);
+    tl.fromTo("#s4-kicker", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0.1);
+    tl.fromTo("#s4-a", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.35);
+    tl.fromTo("#s4-fill", { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: "power2.inOut" }, 1.3);
+    tl.fromTo("#s4-b", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.3);
+    tl.fromTo("#s4-foot", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 3.1);
+    window.__timelines["s4"] = tl;
+  </script>
+</template>

@@ -4,6 +4,11 @@ output/*
 !output/.gitkeep
 .build_overlays.ass
 __pycache__/
+.venv/
+.DS_Store
+.hyperframes/
+.waveform-cache/
+.thumbnails/
 *.contact.jpg
 references/*
 !references/.gitkeep

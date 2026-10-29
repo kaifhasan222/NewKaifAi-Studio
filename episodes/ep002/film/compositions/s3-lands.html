@@ -1,0 +1,36 @@
+<template>
+  <style>
+    @font-face { font-family: "Bebas"; src: url("assets/fonts/BebasNeue-Regular.ttf") format("truetype"); }
+    #root { position: absolute; inset: 0; background: #070709; overflow: hidden; }
+    #s3-bg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    #s3-scrim { position: absolute; inset: 0; background: rgba(0,0,0,.7); }
+    #s3-safe { position: absolute; left: 72px; right: 72px; top: 210px; height: 920px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+    #s3-kicker { font-family: Poppins, sans-serif; font-weight: 700; font-size: 32px; letter-spacing: 5px; color: #ff5a1f; }
+    .s3-land { display: flex; align-items: center; gap: 22px; background: #141416; padding: 18px 28px; border-left: 8px solid #ff5a1f; }
+    .s3-land b { font-family: Bebas, sans-serif; font-size: 92px; color: #fff; font-weight: 400; line-height: 0.9; }
+    #s3-note { margin-top: 10px; font-family: Poppins, sans-serif; font-weight: 700; font-size: 34px; color: #ff5a1f; }
+  </style>
+  <div data-hf-id="hf-vizh" id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+    <video data-hf-id="hf-scum" id="s3-bg" class="clip" src="assets/broll/server-aisle.mp4" muted playsinline data-start="0" data-duration="10.336" data-media-start="0.4" data-track-index="0" data-layout-allow-overflow></video>
+    <div data-hf-id="hf-vyki" id="s3-scrim"></div>
+    <div data-hf-id="hf-07nz" id="s3-safe">
+      <div data-hf-id="hf-vjxj" id="s3-kicker">4 COUNTRIES</div>
+      <div data-hf-id="hf-950k" class="s3-land" id="s3-in"><b data-hf-id="hf-gvyk">INDIA</b></div>
+      <div data-hf-id="hf-tk19" class="s3-land" id="s3-us"><b data-hf-id="hf-6898">UNITED STATES</b></div>
+      <div data-hf-id="hf-24fp" class="s3-land" id="s3-uk"><b data-hf-id="hf-h5qb">UNITED KINGDOM</b></div>
+      <div data-hf-id="hf-erod" class="s3-land" id="s3-ca"><b data-hf-id="hf-cy63">CANADA</b></div>
+      <div data-hf-id="hf-3e2p" id="s3-note">LEVEL 70 AND BELOW</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s3-bg", { scale: 1.06 }, { scale: 1.14, duration: 10.336, ease: "none" }, 0);
+    tl.fromTo("#s3-kicker", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 0.12);
+    tl.fromTo("#s3-in", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 1.15);
+    tl.fromTo("#s3-us", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 2.35);
+    tl.fromTo("#s3-uk", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 3.35);
+    tl.fromTo("#s3-ca", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, 4.35);
+    tl.fromTo("#s3-note", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 6.1);
+    window.__timelines["s3"] = tl;
+  </script>
+</template>

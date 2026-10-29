@@ -42,20 +42,154 @@ def duration(path):
     return float(r.stdout.strip())
 
 
-def normalize(clip, idx, w, h, fps, tmp):
-    """Har clip ko 1080x1920, same fps, bina audio ke convert karta hai."""
-    out = tmp / f"clip{idx}.mp4"
-    cmd = ["ffmpeg", "-y", "-v", "error"]
-    if clip.get("start"):
-        cmd += ["-ss", clip["start"]]
-    cmd += ["-i", clip["file"]]
-    if clip.get("duration"):
-        cmd += ["-t", clip["duration"]]
-    vf = (f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},"
-          f"setsar=1,fps={fps},format=yuv420p")
-    cmd += ["-vf", vf, "-an", "-c:v", "libx264", "-preset", "fast", "-crf", "17", out]
+FONT_DISPLAY = "assets/fonts/BebasNeue-Regular.ttf"
+FONT_BODY = "assets/fonts/Poppins-Bold.ttf"
+ORANGE = "0xFF5A1F"
+CARD_BG = "0x141416"
+MUTED = "0xB5B5B5"
+
+
+def _textfile(tmp, name, text):
+    path = tmp / name
+    path.write_text(text, encoding="utf-8")
+    return path.as_posix()
+
+
+def _drawtext(font, textfile, size, color, x, y):
+    return (
+        f"drawtext=fontfile={font}:textfile={textfile}:fontsize={size}:"
+        f"fontcolor={color}:x={x}:y={y}:expansion=none"
+    )
+
+
+def _encode(cmd, out):
+    cmd += ["-an", "-c:v", "libx264", "-preset", "fast", "-crf", "17", "-pix_fmt", "yuv420p", out]
     run(cmd)
     return out
+
+
+def _trim_prefix(start, dur):
+    """Keyframe seek nahi: mouth voice ke usi second par rahe."""
+    return f"trim=start={float(start or 0):.3f}:duration={float(dur):.3f},setpts=PTS-STARTPTS,"
+
+
+def _src(clip):
+    return ["ffmpeg", "-y", "-v", "error", "-i", clip["file"]]
+
+
+def render_media_split(clip, idx, w, h, fps, tmp):
+    """Upar b-roll ya motion graphic, neeche wahi face jo us second bol raha hai."""
+    out = tmp / f"clip{idx}.mp4"
+    dur = float(clip["duration"])
+    card = clip["card"]
+    top_h = 1040
+    bot_h = h - top_h
+    bar_h = 230
+    media_h = top_h - bar_h
+    title = card["title"]
+    title_size = 118 if len(title) <= 8 else 84
+
+    def tf(key, text):
+        return _textfile(tmp, f"c{idx}_{key}.txt", text)
+
+    graph = (
+        f"[0:v]{_trim_prefix(clip.get('start'), dur)}"
+        f"scale={w}:{h}:force_original_aspect_ratio=increase,"
+        f"crop={w}:{bot_h}:(iw-{w})/2:36,fps={fps},setsar=1,format=yuv420p[face];"
+        f"[1:v]scale={w}:{media_h}:force_original_aspect_ratio=increase,"
+        f"crop={w}:{media_h},fps={fps},setsar=1,format=yuv420p[mv];"
+        "[2:v]format=yuv420p"
+        f",drawbox=x=0:y=0:w={w}:h=10:color={ORANGE}:t=fill"
+        + "," + _drawtext(FONT_DISPLAY, tf("kicker", card["kicker"]), 36, ORANGE, "(w-text_w)/2", 40)
+        + "," + _drawtext(FONT_DISPLAY, tf("title", title), title_size, "white", "(w-text_w)/2", 92)
+        + "[bar];[bar][mv]vstack=inputs=2[top];[top][face]vstack=inputs=2,format=yuv420p[v]"
+    )
+    cmd = _src(clip)
+    cmd += ["-stream_loop", "-1"]
+    if card.get("media_start"):
+        cmd += ["-ss", str(card["media_start"])]
+    cmd += ["-t", f"{dur:.3f}", "-i", card["media"]]
+    cmd += ["-f", "lavfi", "-t", f"{dur:.3f}", "-i", f"color=c=0x070709:s={w}x{bar_h}:r={fps}"]
+    cmd += ["-filter_complex", graph, "-map", "[v]"]
+    return _encode(cmd, out)
+
+
+def render_split(clip, idx, w, h, fps, tmp):
+    """Upar dark stat-card, neeche face. Reference jaisa split, apna content."""
+    if clip.get("card", {}).get("media"):
+        return render_media_split(clip, idx, w, h, fps, tmp)
+    out = tmp / f"clip{idx}.mp4"
+    dur = float(clip["duration"])
+    card = clip["card"]
+    top_h = 1040
+    bot_h = h - top_h
+    title = card["title"]
+    title_size = 148 if len(title) <= 7 else 108
+    sub_y = 128 + title_size + 6
+    cards_y = sub_y + 64
+    foot = card.get("foot")
+    foot_h = 118 if foot else 0
+    foot_gap = 28 if foot else 0
+    bottom_pad = 40
+    cards_h = top_h - cards_y - bottom_pad - foot_h - foot_gap
+    gap = 36
+    cw = (w - gap * 3) // 2
+
+    def tf(key, text):
+        return _textfile(tmp, f"c{idx}_{key}.txt", text)
+
+    graph = (
+        f"[0:v]{_trim_prefix(clip.get('start'), dur)}"
+        f"scale={w}:{h}:force_original_aspect_ratio=increase,"
+        f"crop={w}:{bot_h}:(iw-{w})/2:36,fps={fps},setsar=1,format=yuv420p[face];"
+        "[1:v]format=yuv420p"
+        f",drawbox=x=0:y=0:w={w}:h=10:color={ORANGE}:t=fill"
+        + "," + _drawtext(FONT_DISPLAY, tf("kicker", card["kicker"]), 38, ORANGE, "(w-text_w)/2", 48)
+        + "," + _drawtext(FONT_DISPLAY, tf("title", title), title_size, "white", "(w-text_w)/2", 112)
+        + "," + _drawtext(FONT_BODY, tf("sub", card["subtitle"]), 32, MUTED, "(w-text_w)/2", sub_y)
+    )
+    boxes = (
+        (gap, "left_value", "left_label"),
+        (gap * 2 + cw, "right_value", "right_label"),
+    )
+    for x, vk, lk in boxes:
+        val = card[vk]
+        vsize = 92 if len(val) <= 4 else 58 if len(val) <= 8 else 42
+        graph += (
+            f",drawbox=x={x}:y={cards_y}:w={cw}:h={cards_h}:color={CARD_BG}:t=fill"
+            f",drawbox=x={x}:y={cards_y}:w={cw}:h=8:color={ORANGE}:t=fill"
+            + "," + _drawtext(FONT_DISPLAY, tf(vk, val), vsize, ORANGE, f"{x}+({cw}-text_w)/2", f"{cards_y}+({cards_h}/2)-{vsize}")
+            + "," + _drawtext(FONT_BODY, tf(lk, card[lk]), 28, "white", f"{x}+({cw}-text_w)/2", f"{cards_y}+({cards_h}/2)+18")
+        )
+    if foot:
+        fy = cards_y + cards_h + foot_gap
+        graph += (
+            f",drawbox=x={gap}:y={fy}:w={w - gap * 2}:h={foot_h}:color={CARD_BG}:t=fill"
+            f",drawbox=x={gap}:y={fy}:w=8:h={foot_h}:color={ORANGE}:t=fill"
+            + "," + _drawtext(FONT_DISPLAY, tf("foot", foot), 52, "white", "(w-text_w)/2", fy + 32)
+        )
+    graph += "[top];[top][face]vstack=inputs=2,format=yuv420p[v]"
+    cmd = _src(clip)
+    cmd += ["-f", "lavfi", "-t", f"{dur:.3f}", "-i", f"color=c=0x070709:s={w}x{top_h}:r={fps}"]
+    cmd += ["-filter_complex", graph, "-map", "[v]"]
+    return _encode(cmd, out)
+
+
+def render_clip(clip, idx, w, h, fps, tmp):
+    """Har clip ko 1080x1920, same fps, bina audio ke convert karta hai."""
+    out = tmp / f"clip{idx}.mp4"
+    if clip.get("layout") == "split":
+        return render_split(clip, idx, w, h, fps, tmp)
+    dur = float(clip.get("duration") or 0)
+    trim = _trim_prefix(clip.get("start"), dur) if dur else ""
+    vf = (f"{trim}scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},"
+          f"setsar=1,fps={fps},format=yuv420p")
+    if clip.get("label"):
+        tf = _textfile(tmp, f"lab{idx}.txt", clip["label"])
+        vf += "," + _drawtext(FONT_DISPLAY, tf, 54, "white", "(w-text_w)/2", 188)
+        vf += ":box=1:boxcolor=0x111111@0.9:boxborderw=18"
+    cmd = _src(clip) + ["-vf", vf]
+    return _encode(cmd, out)
 
 
 def join_clips(files, trans, tmp):
@@ -127,7 +261,7 @@ def main():
     with tempfile.TemporaryDirectory() as t:
         tmp = Path(t)
         print("1/3 clips normalize kar raha hoon...")
-        files = [normalize(c, i, w, h, cfg["fps"], tmp) for i, c in enumerate(cfg["clips"])]
+        files = [render_clip(c, i, w, h, cfg["fps"], tmp) for i, c in enumerate(cfg["clips"])]
         print("2/3 clips jod raha hoon...")
         video = join_clips(files, cfg["transition"], tmp)
         vdur = duration(video)
