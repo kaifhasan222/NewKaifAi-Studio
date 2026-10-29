@@ -1,0 +1,9 @@
+raw-clips/*
+output/*
+!raw-clips/.gitkeep
+!output/.gitkeep
+.build_overlays.ass
+__pycache__/
+*.contact.jpg
+references/*
+!references/.gitkeep

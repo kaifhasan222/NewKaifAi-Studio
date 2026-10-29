@@ -1,0 +1,20 @@
+{
+  "output": "output/ep001.mp4",
+  "size": "1080x1920",
+  "transition": {"type": "fade", "duration": 0.25},
+  "clips": [
+    {"file": "raw-clips/ep001_01.mp4", "duration": 4},
+    {"file": "raw-clips/ep001_02.mp4", "start": 0.5, "duration": 5},
+    {"file": "raw-clips/ep001_03.mp4", "duration": 5}
+  ],
+  "voice": "episodes/ep001/voice.mp3",
+  "music": {"file": "assets/music/chill-tech-01.mp3", "volume": 0.12},
+  "sfx": [
+    {"file": "assets/sfx/whoosh-01.mp3", "at": 3.8, "volume": 0.8},
+    {"file": "assets/sfx/pop-01.mp3", "at": 8.7, "volume": 0.7}
+  ],
+  "captions": "episodes/ep001/captions.srt",
+  "overlays": [
+    {"text": "AI TIP #1", "start": 0.0, "end": 2.5, "position": "top"}
+  ]
+}
