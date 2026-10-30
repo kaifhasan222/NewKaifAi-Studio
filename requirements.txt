@@ -1,3 +1,5 @@
-faster-whisper>=1.0.0
-numpy>=1.26.0
-
+# Verified 30 Oct 2026 on this Mac (system Python 3.9).
+# Captions use these two. NumPy 2.5 needs Python 3.12, so this file stays on 2.0.2.
+# Earshot has its own venv. Versions for that, Node, and the sound skills are in package.json.
+faster-whisper==1.2.1
+numpy==2.0.2

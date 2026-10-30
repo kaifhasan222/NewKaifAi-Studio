@@ -5,6 +5,7 @@ output/*
 .build_overlays.ass
 __pycache__/
 .venv/
+node_modules/
 .DS_Store
 .hyperframes/
 .waveform-cache/
@@ -12,3 +13,16 @@ __pycache__/
 *.contact.jpg
 references/*
 !references/.gitkeep
+
+# Episode work stays on this machine. Only the blank template is in git.
+episodes/*
+!episodes/_template/
+!episodes/_template/**
+
+# Video never goes to git. Photos (jpg/png) and music/sfx (mp3) are allowed.
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.avi
+*.m4v

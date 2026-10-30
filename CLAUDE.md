@@ -22,6 +22,16 @@ Owner: Kaif. Uses his own photo and own recorded voice (`brand/`). Final approva
 - Flow ya kisi site par login/password khud mat bharo; Kaif khud login karta hai.
 - Bina Kaif ke approve kiye kuch publish/post mat karo.
 - Claims (tool ka naam, feature, price) bina verify kiye video mein mat daalo.
+- `episodes/epNNN/` aur koi bhi video file git mein mat daalo. Photo aur music/sfx chalenge. Push sirf personal GitHub `kaifhasan222` par. Office account `kaifhasan1234` par push mat karo.
 
 ## Output style
 Kaif se Hinglish mein, seedhi aur chhoti baat karo. Har episode ke baad: kya bana, kya assume kiya, kya check karna hai.
+
+## Git
+- Remote: `https://github.com/kaifhasan222/NewKaifAi-Studio.git` (personal). Office GitHub `kaifhasan1234` par commit ya push nahi.
+- Git mein nahi: episode folders, raw clips, final videos, koi bhi video file.
+- Git mein theek: code, prompts, `episodes/_template/`, photo, music, sfx.
+- Nayi dependency add ho to `requirements.txt`, `SETUP.md`, `README.md`, `AGENTS.md` aur yeh file update karo.
+
+## Sound tools (local, repo ke bahar)
+- Openverse API (no key), Real SFX `~/.claude/skills/real-sfx`, Earshot `~/tools/earshot`, FFmpeg skill `~/.claude/skills/ffmpeg-skill`. Detail `AGENTS.md` mein.

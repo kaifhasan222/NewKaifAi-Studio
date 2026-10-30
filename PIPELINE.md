@@ -28,6 +28,7 @@
 - Music voice ke neeche (volume ~0.12, auto-ducking). SFX sirf transitions/emphasis par.
 - Final loudness about -16 LUFS.
 - **Tum hamesha final video dekhte ho.** Claude frames se check karta hai, par insaani nazar zaroori hai.
+- Episode folder aur video files git mein nahi jaati. Sirf code, template, photo, music aur sfx. Remote personal GitHub `kaifhasan222`.
 
 ## Usage bachane ke tareeke (Claude Pro limit)
 - Edit templates aur scripts se hota hai, Claude har baar naya code nahi likhta.

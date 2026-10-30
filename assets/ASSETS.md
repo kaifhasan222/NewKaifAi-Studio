@@ -5,7 +5,8 @@
 ## Sources
 - **Music:** YouTube Audio Library (Studio mein), Pixabay Music, Mixkit
 - **SFX:** Freesound (sirf CC0 filter), Pixabay Sound Effects, Mixkit
-- **B-roll:** Pexels Videos, Pixabay Videos, Mixkit
+- **B-roll:** Pexels Videos, Pixabay Videos, Mixkit. Video files git mein nahi jaati. Machine par rakho.
+- **Extra SFX search:** Openverse audio API (no key). Real SFX skill `~/.claude/skills/real-sfx`. Earshot `~/tools/earshot` code se whoosh/hit banata hai. Detail `SETUP.md`.
 - **Fonts:** Google Fonts (open licence)
 
 ## Naming

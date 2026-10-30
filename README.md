@@ -16,10 +16,10 @@ Cost: sirf Claude Pro. Baaki sab free tools (ffmpeg, Whisper, free music/sfx lib
 |---|---|
 | `brand/` | Photo, voice, colors, font, channel identity |
 | `prompts/` | Script style guide, Flow prompt template, Claude Project instructions |
-| `episodes/` | Har video ka folder (script, captions, episode.json) |
-| `references/` | Reference videos aur unka style-card/analysis |
-| `raw-clips/` | Flow se download kiye clips |
-| `assets/` | Music, sound effects, b-roll, fonts |
+| `episodes/` | Local episode folders. Git mein sirf `episodes/_template/` hai |
+| `references/` | Reference videos. Git mein nahi |
+| `raw-clips/` | Flow clips. Git mein nahi |
+| `assets/` | Music, sfx, photos. Video files git mein nahi |
 | `templates/` | Episode JSON example, motion graphics notes |
 | `tools/` | `build_video.py`, `make_captions.py`, `check_video.py`, `analyze_reference.py`, `setup_check.py` |
 | `output/` | Final videos |
@@ -28,3 +28,22 @@ Cost: sirf Claude Pro. Baaki sab free tools (ffmpeg, Whisper, free music/sfx lib
 
 ## Abhi kya tested hai
 `build_video.py`, `check_video.py` aur `analyze_reference.py` dummy video par test hue hain (9:16 crop, crossfade, voice + ducked music + sfx, captions, title overlay, loudness). `make_captions.py` (Whisper) aur Flow browser automation tumhare computer par pehli baar chalenge: pehle episode mein dekhna.
+
+Sync: personal GitHub `kaifhasan222/NewKaifAi-Studio`. Episode folders aur videos is repo mein commit nahi hote.
+
+## Versions (checked 30 Oct 2026)
+
+Python captions: `requirements.txt`. Baaki tools: `package.json` ka `studio` block. Install steps: `SETUP.md`.
+
+| Tool | Version | File |
+|---|---|---|
+| faster-whisper | 1.2.1 | `requirements.txt` |
+| numpy (captions, Python 3.9) | 2.0.2 | `requirements.txt` |
+| ffmpeg | 9.0.2 | `package.json` |
+| Node | 22.17.0 | `package.json` |
+| yt-dlp | 2025.10.14 | `package.json` |
+| HyperFrames | 0.8.216 | `package.json` |
+| Earshot | 0.4.0 (Python 3.12, torch 2.15.0, numpy 2.5.4) | `package.json` |
+| Real SFX | commit `edbefcb` (21 Oct 2026) | `package.json` |
+| FFmpeg skill | 2.21.0 | `package.json` |
+| Openverse | public API, no package | `package.json` |

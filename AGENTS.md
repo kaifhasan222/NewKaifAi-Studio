@@ -22,6 +22,7 @@ Owner: Kaif. Uses his own photo and own recorded voice (`brand/`). Final approva
 - Flow ya kisi site par login/password khud mat bharo; Kaif khud login karta hai.
 - Bina Kaif ke approve kiye kuch publish/post mat karo.
 - Claims (tool ka naam, feature, price) bina verify kiye video mein mat daalo.
+- `episodes/epNNN/` aur koi bhi video file git mein mat daalo. Photo aur music/sfx chalenge. Push sirf personal GitHub `kaifhasan222` par. Office account `kaifhasan1234` par push mat karo.
 
 ## Output style
 Kaif se Hinglish mein (Roman script), seedhi aur chhoti baat karo. Har episode ke baad: kya bana, kya assume kiya, kya check karna hai.
@@ -31,3 +32,16 @@ Kaif se Hinglish mein (Roman script), seedhi aur chhoti baat karo. Har episode k
 - `brand/photo.jpg` aur `brand/voice.mp3` maujood hain. `assets/` mein original (synthesized) music + sfx hain.
 - Kaam shuru karne se pehle `py -3.12 tools\setup_check.py` chalao.
 - Koi bhi install ya delete se pehle Kaif se puchho.
+
+## Git
+- Remote: `https://github.com/kaifhasan222/NewKaifAi-Studio.git` (personal). Office GitHub `kaifhasan1234` par commit ya push nahi.
+- Git mein nahi: episode folders (`episodes/epNNN/`), raw clips, final videos, koi bhi `.mp4` / `.mov` / `.webm`.
+- Git mein theek: code, prompts, `episodes/_template/`, `brand/photo.jpg`, `brand/voice.mp3`, `assets/` ki music aur sfx (mp3), photos.
+- Nayi dependency add ho to `requirements.txt`, `SETUP.md`, `README.md` aur yeh file update karo.
+
+## Sound tools (local, repo ke bahar)
+Video fiki lage to yeh tools use karo. Yeh awaaz badalte nahi. Cuts par sound effects lagate hain.
+- Openverse: `https://api.openverse.org/v1/audio/` (key nahi). Downloads `~/sounds`.
+- Real SFX: `~/.claude/skills/real-sfx` (78 CC0 UI sounds). Library: `~/sounds`.
+- Earshot: `~/tools/earshot` (Python 3.12 venv). `earshot doctor` healthy. Sunne wale models (~1.1 GB) pehli listen par download hote hain.
+- FFmpeg skill: `~/.claude/skills/ffmpeg-skill` (audio balance, local).

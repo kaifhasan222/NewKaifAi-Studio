@@ -29,6 +29,18 @@ Install ke baad PowerShell band karke dobara kholo. Windows par `python3` ki jag
 
 `node` sirf tab chahiye jab motion graphics ke liye Remotion use karo (optional).
 
+### Sound tools (video fiki na lage)
+Yeh project ke `requirements.txt` mein nahi hain. Dono machines par alag se lagte hain. Awaaz clone nahi karte. Sound effects aur audio balance ke liye hain.
+
+| Tool | Kahan | Note |
+|---|---|---|
+| Openverse | `https://api.openverse.org/v1/audio/` | Free sounds, API key nahi. Files `~/sounds` |
+| Real SFX | `~/.claude/skills/real-sfx` | Skill. 78 CC0 UI sounds. `python3 scripts/setup.py check` |
+| Earshot | `~/tools/earshot` | Python 3.12 venv (`uv python install 3.12`). `earshot doctor` |
+| FFmpeg skill | `~/.claude/skills/ffmpeg-skill` | Local cuts, loudness, captions |
+
+Mac par Homebrew likhne layak na ho to Python 3.12 `uv` se lo: `uv python install 3.12`. Earshot ke sunne wale models (~1.1 GB) pehli baar `earshot doctor --fetch` se aate hain.
+
 ## 3. Check
 ```
 python tools/setup_check.py
@@ -41,4 +53,6 @@ Chrome Web Store se "Claude" extension install karo. Pro par side panel abhi rol
 `assets/ASSETS.md` dekho: music, sfx ke sources aur licence rules.
 
 ## Dono computers par kaam
-Folder ko Google Drive/OneDrive/GitHub (private repo) se sync rakho. `raw-clips/` aur `output/` bade hote hain, `.gitignore` unhe git se bahar rakhta hai.
+Dono computers GitHub se sync hote hain. Remote sirf personal account hai: `https://github.com/kaifhasan222/NewKaifAi-Studio.git`. Office account `kaifhasan1234` par push mat karo.
+
+Git mein nahi jaata: `episodes/epNNN/` (poora episode), `raw-clips/`, `output/`, `references/`, aur koi bhi video (`.mp4`, `.mov`, `.webm`). Photo aur music/sfx (mp3) ja sakte hain. Blank template `episodes/_template/` git mein rehta hai.
