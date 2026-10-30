@@ -1,5 +1,0 @@
-file 'raw-clips/ep001_01.mp4'
-file 'raw-clips/ep001_02.mp4'
-file 'raw-clips/ep001_03.mp4'
-file 'raw-clips/ep001_04.mp4'
-file 'raw-clips/ep001_05.mp4'

@@ -16,3 +16,4 @@ description: Run the New Kaif Ai daily workflow to produce one Hinglish tech sho
 8. Run `tools/check_video.py`, look at the contact sheet, fix obvious issues, rebuild once.
 9. Write `episodes/epNNN/publish.md` (titles, description, tags, hashtags, Instagram caption) per `prompts/publishing-guide.md`, keywords from web search.
 10. Report to Kaif: file path, what was assumed, what to check. Never post anything.
+11. Do not git-add `episodes/epNNN/` or any video file. Photos and music/sfx may be committed. Push only to GitHub `kaifhasan222`.

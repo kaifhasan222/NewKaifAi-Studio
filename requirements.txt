@@ -1,3 +1,4 @@
+# Project Python deps. Sound tools (Earshot, Real SFX) alag venv mein hain. SETUP.md dekho.
 faster-whisper>=1.0.0
 numpy>=1.26.0
 

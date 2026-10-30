@@ -16,10 +16,10 @@ Cost: sirf Claude Pro. Baaki sab free tools (ffmpeg, Whisper, free music/sfx lib
 |---|---|
 | `brand/` | Photo, voice, colors, font, channel identity |
 | `prompts/` | Script style guide, Flow prompt template, Claude Project instructions |
-| `episodes/` | Har video ka folder (script, captions, episode.json) |
-| `references/` | Reference videos aur unka style-card/analysis |
-| `raw-clips/` | Flow se download kiye clips |
-| `assets/` | Music, sound effects, b-roll, fonts |
+| `episodes/` | Local episode folders. Git mein sirf `episodes/_template/` hai |
+| `references/` | Reference videos. Git mein nahi |
+| `raw-clips/` | Flow clips. Git mein nahi |
+| `assets/` | Music, sfx, photos. Video files git mein nahi |
 | `templates/` | Episode JSON example, motion graphics notes |
 | `tools/` | `build_video.py`, `make_captions.py`, `check_video.py`, `analyze_reference.py`, `setup_check.py` |
 | `output/` | Final videos |
@@ -28,3 +28,5 @@ Cost: sirf Claude Pro. Baaki sab free tools (ffmpeg, Whisper, free music/sfx lib
 
 ## Abhi kya tested hai
 `build_video.py`, `check_video.py` aur `analyze_reference.py` dummy video par test hue hain (9:16 crop, crossfade, voice + ducked music + sfx, captions, title overlay, loudness). `make_captions.py` (Whisper) aur Flow browser automation tumhare computer par pehli baar chalenge: pehle episode mein dekhna.
+
+Sync: personal GitHub `kaifhasan222/NewKaifAi-Studio`. Episode folders aur videos is repo mein commit nahi hote. Sound tools (Openverse, Real SFX, Earshot, FFmpeg skill) `SETUP.md` mein hain. Yeh machine par local install ho chuke hain.
