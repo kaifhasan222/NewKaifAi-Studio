@@ -12,6 +12,24 @@
 - Ek line = ek saans. Zyada lamba ho to todo.
 - Jargon aaye to turant simple example.
 
+## Voice line (jo awaaz bolegi)
+`Voice:` wahi text hai jo screen par awaaz banegi. Seedha paragraph mat likho. Aise likho jaise Kaif dost ko samjha raha ho, beech mein reaction ke saath.
+
+- Har scene mein **ek** interjection. Har sentence mein nahi, warna natak lagega.
+- Interjection alag chhota tukda ho, phir baat. "..." ka matlab chhoti rukawat.
+- Kaunsa reaction kab:
+  - Hook / shock: `Aree!` ya `Suno!`
+  - Samajh aaya: `Achaa...`
+  - Screen dikhao: `Dekho,`
+  - Simple banao: `Matlab`
+  - Nichod: `Bas.`
+  - CTA seedha rahe. Optional: `Ek kaam karo,`
+- Vowel mat kheench (`Areeeeee`, `Achaaaaa`). Awaaz ka tool repeat par atak jaata hai ya line kaat deta hai. Josh tool ke emotion setting se aayega, spelling se nahi.
+- On-screen title aur card saaf rakho (`YOU SHOT FIRST`, `SIGNAL DELAY`). "Aree" sirf voice aur caption mein.
+
+Flat: `Ye koi hack nahi hai. Signal jaane mein time lagta hai.`
+Bolne layak: `Aree, ye koi hack nahi hai. Dekho, signal jaane mein thoda time lagta hai.`
+
 ## Hook formulas
 - "Ye AI tool aapka [kaam] 10 minute mein kar dega."
 - "99% log [cheez] galat use karte hain."
@@ -26,7 +44,7 @@
 ```
 # epNNN: <title>
 Hook: ...
-[Scene 1 | 0-4s] Voice: ... | Visual: ...
+[Scene 1 | 0-4s] Voice: Aree! ... | Visual: ...
 [Scene 2 | 4-9s] Voice: ... | Visual: ...
 CTA: ...
 Sources: ...

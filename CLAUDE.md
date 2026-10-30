@@ -7,7 +7,7 @@ Owner: Kaif. Uses his own photo and own recorded voice (`brand/`). Final approva
 - Pehle `PIPELINE.md` aur `prompts/script-style-guide.md` padho.
 - Naya episode: `episodes/_template/` copy karke `episodes/epNNN/` banao.
 - Script se pehle motion style poochho (`prompts/motion-styles.md`, source [nafay3d.com](https://nafay3d.com)). Kaif "Pop Info" jaise naam bole to wahi look. "Jo achha ho" bole to tum style chuno, naam likho, phir banao. Unka prompt, music, ya voice copy mat karo.
-- Scripts: `prompts/script-style-guide.md` follow karo. Facts ke liye search karo, andaza mat lagao.
+- Scripts: `prompts/script-style-guide.md` follow karo. Facts ke liye search karo, andaza mat lagao. `Voice:` line bolne layak likho, har scene mein ek reaction (`Aree`, `Achaa`, `Dekho`). Vowel mat kheench.
 - Flow prompts: `prompts/flow-prompt-template.md` ke format mein, har scene alag.
 - Edit: `python tools/build_video.py episodes/epNNN/episode.json` (Windows par `python`, Mac par `python3`). Naya edit code mat likho jab tak tool ki kami na ho.
 - Captions: `tools/make_captions.py`, phir text Roman Hinglish mein badlo, timings waise hi rakho.

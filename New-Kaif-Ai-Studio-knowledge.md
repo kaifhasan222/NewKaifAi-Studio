@@ -40,6 +40,18 @@ Yeh file bharo, Claude har video mein isse follow karega. (TODO = tum bharo)
 - Ek line = ek saans. Zyada lamba ho to todo.
 - Jargon aaye to turant simple example.
 
+## Voice line (jo awaaz bolegi)
+`Voice:` wahi text hai jo screen par awaaz banegi. Seedha paragraph mat likho. Aise likho jaise Kaif dost ko samjha raha ho, beech mein reaction ke saath.
+
+- Har scene mein **ek** interjection. Har sentence mein nahi, warna natak lagega.
+- Interjection alag chhota tukda ho, phir baat. "..." ka matlab chhoti rukawat.
+- Kaunsa reaction kab: hook `Aree!` / `Suno!`, samajh `Achaa...`, screen `Dekho,`, simple `Matlab`, nichod `Bas.`, CTA seedha (optional `Ek kaam karo,`).
+- Vowel mat kheench (`Areeeeee`). Josh awaaz ke emotion setting se aata hai.
+- On-screen title saaf rakho. "Aree" sirf voice aur caption mein.
+
+Flat: `Ye koi hack nahi hai.`
+Bolne layak: `Aree, ye koi hack nahi hai. Dekho, signal jaane mein thoda time lagta hai.`
+
 ## Hook formulas
 - "Ye AI tool aapka [kaam] 10 minute mein kar dega."
 - "99% log [cheez] galat use karte hain."
