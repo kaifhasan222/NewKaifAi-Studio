@@ -1,0 +1,37 @@
+{
+  "name": "new-kaif-ai-studio",
+  "private": true,
+  "description": "New Kaif Ai Studio. Python captions deps are in requirements.txt. This file records the other tools checked on 30 Oct 2026. No npm install is required for the daily pipeline.",
+  "engines": {
+    "node": ">=22.17.0"
+  },
+  "studio": {
+    "verified": "2026-10-30",
+    "ffmpeg": "9.0.2",
+    "node": "22.17.0",
+    "yt-dlp": "2025.10.14",
+    "hyperframes": "0.8.216",
+    "pythonCaptions": {
+      "python": "3.9",
+      "faster-whisper": "1.2.1",
+      "numpy": "2.0.2"
+    },
+    "earshot": {
+      "path": "~/tools/earshot",
+      "version": "0.4.0",
+      "python": "3.12.16",
+      "torch": "2.15.0",
+      "numpy": "2.5.4"
+    },
+    "realSfx": {
+      "path": "~/.claude/skills/real-sfx",
+      "commit": "edbefcb",
+      "date": "2026-10-21"
+    },
+    "ffmpegSkill": {
+      "path": "~/.claude/skills/ffmpeg-skill",
+      "version": "2.21.0"
+    },
+    "openverse": "https://api.openverse.org/v1/audio/"
+  }
+}

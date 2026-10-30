@@ -29,4 +29,21 @@ Cost: sirf Claude Pro. Baaki sab free tools (ffmpeg, Whisper, free music/sfx lib
 ## Abhi kya tested hai
 `build_video.py`, `check_video.py` aur `analyze_reference.py` dummy video par test hue hain (9:16 crop, crossfade, voice + ducked music + sfx, captions, title overlay, loudness). `make_captions.py` (Whisper) aur Flow browser automation tumhare computer par pehli baar chalenge: pehle episode mein dekhna.
 
-Sync: personal GitHub `kaifhasan222/NewKaifAi-Studio`. Episode folders aur videos is repo mein commit nahi hote. Sound tools (Openverse, Real SFX, Earshot, FFmpeg skill) `SETUP.md` mein hain. Yeh machine par local install ho chuke hain.
+Sync: personal GitHub `kaifhasan222/NewKaifAi-Studio`. Episode folders aur videos is repo mein commit nahi hote.
+
+## Versions (checked 30 Oct 2026)
+
+Python captions: `requirements.txt`. Baaki tools: `package.json` ka `studio` block. Install steps: `SETUP.md`.
+
+| Tool | Version | File |
+|---|---|---|
+| faster-whisper | 1.2.1 | `requirements.txt` |
+| numpy (captions, Python 3.9) | 2.0.2 | `requirements.txt` |
+| ffmpeg | 9.0.2 | `package.json` |
+| Node | 22.17.0 | `package.json` |
+| yt-dlp | 2025.10.14 | `package.json` |
+| HyperFrames | 0.8.216 | `package.json` |
+| Earshot | 0.4.0 (Python 3.12, torch 2.15.0, numpy 2.5.4) | `package.json` |
+| Real SFX | commit `edbefcb` (21 Oct 2026) | `package.json` |
+| FFmpeg skill | 2.21.0 | `package.json` |
+| Openverse | public API, no package | `package.json` |

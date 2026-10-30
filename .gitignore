@@ -5,6 +5,7 @@ output/*
 .build_overlays.ass
 __pycache__/
 .venv/
+node_modules/
 .DS_Store
 .hyperframes/
 .waveform-cache/
