@@ -21,7 +21,7 @@ Cost: sirf Claude Pro. Baaki sab free tools (ffmpeg, Whisper, free music/sfx lib
 | `raw-clips/` | Flow clips. Git mein nahi |
 | `assets/` | Music, sfx, photos. Video files git mein nahi |
 | `templates/` | Episode JSON example, motion graphics notes |
-| `tools/` | `build_video.py`, `make_captions.py`, `check_video.py`, `analyze_reference.py`, `setup_check.py` |
+| `tools/` | `build_video.py`, `make_captions.py`, `check_video.py`, `analyze_reference.py`, `download_meme_sfx.py`, `setup_check.py` |
 | `output/` | Final videos |
 | `CLAUDE.md` | Claude ke liye standing instructions (Cowork / Claude Code padhta hai) |
 | `.claude/skills/daily-short/` | Ek-command daily workflow skill |

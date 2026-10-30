@@ -7,6 +7,7 @@
 - **SFX:** Freesound (sirf CC0 filter), Pixabay Sound Effects, Mixkit
 - **B-roll:** Pexels Videos, Pixabay Videos, Mixkit. Video files git mein nahi jaati. Machine par rakho.
 - **Extra SFX search:** Openverse audio API (no key). Real SFX skill `~/.claude/skills/real-sfx`. Earshot `~/tools/earshot` code se whoosh/hit banata hai. Detail `SETUP.md`.
+- **Indian/viral meme SFX:** `python3 tools/download_meme_sfx.py` (Myinstants India trending ya naam se search karke `assets/sfx/` mein MP3 save karta hai).
 - **Fonts:** Google Fonts (open licence)
 
 ## Naming
