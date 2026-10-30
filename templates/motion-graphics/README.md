@@ -1,5 +1,7 @@
 # Motion graphics
 
+Style menu: `prompts/motion-styles.md` ([nafay3d.com](https://nafay3d.com)). Episode se pehle Kaif se style poochho.
+
 ## Abhi (kaam karta hai, tested)
 `build_video.py` ye deta hai: crossfade/slide transitions, animated (fade) title overlays, captions. `transition.type` mein ffmpeg xfade ke naam chalte hain (fade, wipeleft, slideleft, circleopen, ...).
 

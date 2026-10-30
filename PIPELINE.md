@@ -1,8 +1,15 @@
 # Daily pipeline: 1 short, kam se kam kaam
 
 ## Do tareeke se shuru kar sakte ho
-- **Sirf topic:** "daily-short chalao, topic: ..." -> neeche ka flow.
+- **Sirf topic:** "daily-short chalao, topic: ..." -> pehle motion style poochho (`prompts/motion-styles.md`), phir neeche ka flow.
 - **Topic + reference video:** "is reference ke style mein banao" -> pehle `prompts/reference-style-workflow.md` (style-card), phir neeche ka flow.
+
+## Motion style
+Script se pehle Kaif se poochho: kaunsa style. List [nafay3d.com](https://nafay3d.com) se hai, detail `prompts/motion-styles.md`.
+
+Creator Motion Graphics, Chalk Talk, Clean Tech, Software Walkthrough, Data Story, Warm Canvas, Pop Info.
+
+Kaif ek naam bole to wahi banao. "Jo achha ho" bole to tum topic ke hisaab se ek style chuno, naam batao, phir banao.
 
 ## Do modes
 - **Flow mode:** visuals Google Flow ke AI clips se.
