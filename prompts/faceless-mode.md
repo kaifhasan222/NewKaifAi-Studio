@@ -7,7 +7,7 @@ Flow ke bina bhi video banega: **animation + awaaz + sound design**, bina chehre
 - Topic aisa hai jisme AI video ki jagah animation/screen demo behtar dikhega (tools, code, charts, steps).
 
 ## Visuals ke sources (priority order)
-1. **Motion graphics scenes:** animated text (kinetic typography), step cards, charts, counters, UI mockups, typing code animation. Remotion (React, tum jaante ho) ya HyperFrames se clip render karo (`templates/motion-graphics/README.md`).
+1. **Motion graphics scenes:** style `prompts/motion-styles.md` se (source [nafay3d.com](https://nafay3d.com)). Animated text, step cards, charts, counters, UI mockups. HyperFrames se clip render karo (`templates/motion-graphics/README.md`).
 2. **Screen recordings:** tool ka asli demo (tech channel ke liye sabse trust wala). Tum record karo, Claude trim/zoom/caption karta hai.
 3. **Free stock b-roll:** Pexels/Pixabay/Mixkit (`assets/ASSETS.md`, licence check).
 4. **Still images + slow zoom (Ken Burns):** tumhare banaye ya free licence ke images.
