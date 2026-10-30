@@ -29,7 +29,7 @@ Cost: sirf Claude Pro. Baaki sab free tools (ffmpeg, Whisper, free music/sfx lib
 ## Abhi kya tested hai
 `build_video.py`, `check_video.py` aur `analyze_reference.py` dummy video par test hue hain (9:16 crop, crossfade, voice + ducked music + sfx, captions, title overlay, loudness). `make_captions.py` (Whisper) aur Flow browser automation tumhare computer par pehli baar chalenge: pehle episode mein dekhna.
 
-Sync: personal GitHub `kaifhasan222/NewKaifAi-Studio`. Episode folders aur videos is repo mein commit nahi hote.
+Sync: personal GitHub `kaifhasan222/NewKaifAi-Studio`, author `kaifhasan222 <kaifhasan222@gmail.com>`. Episode folders aur videos is repo mein commit nahi hote.
 
 ## Versions (checked 30 Oct 2026)
 

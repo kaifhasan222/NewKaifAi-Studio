@@ -36,6 +36,7 @@ Kaif se Hinglish mein (Roman script), seedhi aur chhoti baat karo. Har episode k
 
 ## Git
 - Remote: `https://github.com/kaifhasan222/NewKaifAi-Studio.git` (personal). Office GitHub `kaifhasan1234` par commit ya push nahi.
+- Commit author hamesha personal: `kaifhasan222 <kaifhasan222@gmail.com>`. Is repo ka local git author yahi hai. Mac ka global git (`kaif@roopya.com`) mat badlo, aur us email se is repo mein commit mat karo. Push se pehle `gh auth status` mein account `kaifhasan222` hona chahiye.
 - Git mein nahi: episode folders (`episodes/epNNN/`), raw clips, final videos, koi bhi `.mp4` / `.mov` / `.webm`.
 - Git mein theek: code, prompts, `episodes/_template/`, `brand/photo.jpg`, `brand/voice.mp3`, `assets/` ki music aur sfx (mp3), photos.
 - Nayi dependency add ho to `requirements.txt`, `SETUP.md`, `README.md` aur yeh file update karo.

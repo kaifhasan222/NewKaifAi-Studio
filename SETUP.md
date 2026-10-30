@@ -53,6 +53,6 @@ Chrome Web Store se "Claude" extension install karo. Pro par side panel abhi rol
 `assets/ASSETS.md` dekho: music, sfx ke sources aur licence rules.
 
 ## Dono computers par kaam
-Dono computers GitHub se sync hote hain. Remote sirf personal account hai: `https://github.com/kaifhasan222/NewKaifAi-Studio.git`. Office account `kaifhasan1234` par push mat karo.
+Dono computers GitHub se sync hote hain. Remote sirf personal account hai: `https://github.com/kaifhasan222/NewKaifAi-Studio.git`. Commit author: `kaifhasan222 <kaifhasan222@gmail.com>` (is repo ka local git). Office account `kaifhasan1234` aur office email `kaif@roopya.com` se commit ya push mat karo. Push se pehle `gh auth status` mein `kaifhasan222` dikhna chahiye.
 
 Git mein nahi jaata: `episodes/epNNN/` (poora episode), `raw-clips/`, `output/`, `references/`, aur koi bhi video (`.mp4`, `.mov`, `.webm`). Photo aur music/sfx (mp3) ja sakte hain. Blank template `episodes/_template/` git mein rehta hai.

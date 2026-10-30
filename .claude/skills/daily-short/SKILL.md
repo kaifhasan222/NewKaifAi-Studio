@@ -15,6 +15,6 @@ description: Run the New Kaif Ai daily workflow to produce one Hinglish tech sho
 6. Make captions with `tools/make_captions.py`, rewrite to Roman Hinglish keeping timings.
 7. Fill `episode.json` (clips, voice, music, sfx, captions, overlays) and run `tools/build_video.py`.
 8. Run `tools/check_video.py`, look at the contact sheet, fix obvious issues, rebuild once.
-9. Write `episodes/epNNN/publish.md` (titles, description, tags, hashtags, Instagram caption) per `prompts/publishing-guide.md`, keywords from web search.
+9. Write `episodes/epNNN/publish.md` (titles, description, tags, hashtags, pinned comment, Instagram caption, upload checklist) per `prompts/publishing-guide.md`, keywords from web search. Channel "NEW KAIF AI" / @kaifhasan222, emojis per the guide's emoji rules, description and caption in copy-paste code blocks.
 10. Report to Kaif: file path, what was assumed, what to check. Never post anything.
 11. Do not git-add `episodes/epNNN/` or any video file. Photos and music/sfx may be committed. Push only to GitHub `kaifhasan222`.
