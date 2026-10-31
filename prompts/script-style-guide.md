@@ -7,13 +7,18 @@
 4. **Payoff + CTA (last 5s):** ek line ka nichod, phir follow/comment.
 
 ## Bhasha
-- Roman Hinglish, bolchal wali. Chhote vaakya.
+- Overlay, title aur caption Roman Hinglish. `Voice:` line Devanagari Hindi. Detail neeche.
+- Bolchal wali. Chhote vaakya.
 - English tech words waise hi (API, prompt, model), baaki Hindi/Urdu bolchal.
 - Ek line = ek saans. Zyada lamba ho to todo.
 - Jargon aaye to turant simple example.
 
 ## Voice line (jo awaaz bolegi)
-`Voice:` wahi text hai jo screen par awaaz banegi. Seedha paragraph mat likho. Aise likho jaise Kaif dost ko samjha raha ho, beech mein reaction ke saath.
+`Voice:` wahi text hai jo awaaz banegi. Sirf yahi line Devanagari Hindi mein likho. Baaki script, overlay, title aur caption Roman Hinglish mein rahenge.
+
+- Likhne ka andaaz bolchal ka ho, lekin akshar Hindi ke hon. Roman Hinglish voice line mein mat chhodo.
+- Tech word Devanagari mein likho, taaki awaaz ka tool atke nahi: गिट, गिटहब, कमिट, पुश.
+- Seedha paragraph mat likho. Aise likho jaise Kaif dost ko samjha raha ho.
 
 - Har scene mein **ek** interjection. Har sentence mein nahi, warna natak lagega.
 - Interjection alag chhota tukda ho, phir baat. "..." ka matlab chhoti rukawat.

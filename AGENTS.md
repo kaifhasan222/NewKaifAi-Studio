@@ -28,7 +28,7 @@ Jab bhi Kaif yeh shortcuts likhe, agent ko turant yeh workflow execute karna hai
 - Captions: `tools\make_captions.py`, phir text Roman Hinglish mein badlo, timings waise hi rakho.
 - QA: `tools\check_video.py`, contact sheet dekho, dikkat likho (kata hua text, black frames, awaaz/music balance).
 - Har episode ke saath `publish.md` banao (title options, description, tags, hashtags, Instagram caption) `prompts/publishing-guide.md` ke hisaab se, keywords web search se.
-- Flow limit khatam ho ya topic animation ke layak ho to `prompts/faceless-mode.md` follow karo.
+- Flow clips sirf project **me** mein. Avatar/awaaz ke liye `@me`, photo ke liye `@me_photo`. Credit khatam ho to `newpub222@gmail.com` par switch karke wahi **me** project. Dono accounts khatam hon tab `prompts/faceless-mode.md`. Detail `.cursor/skills/google-flow/SKILL.md`. Login/password mat bharo.
 - Agar Kaif topic + reference video de: `prompts/reference-style-workflow.md` follow karo. Style-card banao, Kaif se confirm karo, phir original video banao. Reference ka script/footage/music/voice kabhi copy mat karo.
 - Music/sfx sirf `assets/` se, jinka licence `assets/ASSETS.md` ke hisaab se theek ho. Naya asset daalo to uska source aur licence `assets/LICENSES.md` mein likho.
 

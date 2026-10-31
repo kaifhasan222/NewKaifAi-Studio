@@ -23,7 +23,7 @@ Script se pehle Kaif se poochho: kaunsa style. List [nafay3d.com](https://nafay3
 
 ## Do Modes
 - **Flow mode:** visuals Google Flow ke AI clips se (`raw-clips/epNNN_*.mp4`).
-- **Faceless mode:** Flow ka limit khatam ho to animation + awaaz + sound design (`prompts/faceless-mode.md`). Step 3 mein clips ka source badalta hai, baaki sab same.
+- **Faceless mode:** Dono Flow accounts (`kaifhasan222` aur `newpub222@gmail.com`) ke credits khatam hon, ya topic animation/screen demo ke layak ho, tab `prompts/faceless-mode.md`. Ek account ke credits khatam hon to pehle doosre account ke project **me** mein jao. `@me` avatar/awaaz, `@me_photo` photo.
 
 ---
 

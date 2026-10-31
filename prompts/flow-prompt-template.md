@@ -15,9 +15,14 @@ Duration: <3-6 sec>
 Avoid: text/logos/watermarks in video, extra fingers, distorted faces
 ```
 
+## Kahan banao
+- Sirf Google Flow project **me** ke andar. Naya project nahi.
+- Avatar ya awaaz ke liye prompt mein `@me`. Photo ke liye `@me_photo`. Dono usi project mein add hon.
+- Credit khatam ho to `newpub222@gmail.com` par switch karke wahi **me** project. Detail `.cursor/skills/google-flow/SKILL.md`.
+
 ## Consistency ke liye
 - Ek `STYLE:` line har scene mein copy-paste karo (same look).
-- Character ho to same reference image / same description har scene mein.
+- Character ho to same reference image / same description har scene mein. Kaif ka chehra ho to `@me` aur `@me_photo`.
 - Screen par likha text Flow se mat banwao (aksar galat aata hai); text hum edit mein overlay karte hain.
 
 ## Output format (Claude `flow-prompts.md` mein aise likhega)
