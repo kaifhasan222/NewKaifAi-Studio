@@ -1,0 +1,81 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #245c3e; font-family: "Archivo Black", sans-serif; }
+    #bus-world { position: absolute; inset: 0; transform-origin: 72% 58%; }
+    .ceil { position: absolute; left: 0; top: 0; width: 1080px; height: 180px; background: #1c4a32; }
+    .bench { position: absolute; left: 0; top: 1280px; width: 1080px; height: 640px; background: #1a4630; }
+    .bench-edge { position: absolute; left: 0; top: 1248px; width: 1080px; height: 36px; background: #f0e2c4; }
+    .window { position: absolute; left: 470px; top: 430px; width: 560px; height: 860px; background: #6a3a22; overflow: hidden; }
+    #bus-fields { position: absolute; left: 0; top: 0; width: 1700px; height: 860px; }
+    .wsky { position: absolute; left: 0; top: 0; width: 1700px; height: 360px; background: #f3c58a; }
+    .whill { position: absolute; left: 80px; top: 250px; width: 420px; height: 180px; background: #e8894a; border-radius: 180px 180px 0 0; }
+    .whill.b { left: 620px; top: 280px; width: 360px; height: 140px; background: #d4784a; }
+    .wground { position: absolute; left: 0; top: 360px; width: 1700px; height: 500px; background: #c9956a; }
+    .wheat { position: absolute; bottom: 40px; width: 18px; height: 90px; background: #e4c56a; border-radius: 10px 10px 0 0; }
+    .frame { position: absolute; left: 448px; top: 408px; width: 604px; height: 904px; border: 28px solid #f0e2c4; pointer-events: none; }
+    #bus-bride { position: absolute; left: 20px; top: 500px; width: 620px; height: 1080px; transform-origin: 50% 30%; }
+    #bus-dupatta { transform-origin: 120px 190px; }
+    .plate { position: absolute; left: 0; top: 196px; width: 860px; height: 140px; background: #7a2433; z-index: 6; display: flex; align-items: center; padding-left: 56px; }
+    .plate span { font-size: 76px; color: #f8ebd2; letter-spacing: -0.02em; line-height: 1; }
+    .gold { position: absolute; left: 28px; top: 344px; width: 780px; height: 10px; background: #e4c56a; z-index: 6; }
+    .grain { position: absolute; inset: 0; width: 1080px; height: 1920px; opacity: 0.16; mix-blend-mode: multiply; pointer-events: none; z-index: 7; }
+  </style>
+  <div data-hf-id="hf-m5wb" id="root" data-composition-id="bus" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-khnt" id="bus-world" data-layout-allow-overflow="true">
+      <div data-hf-id="hf-vfkz" class="ceil"></div>
+      <div data-hf-id="hf-6r44" class="window">
+        <div data-hf-id="hf-gq9t" id="bus-fields">
+          <div data-hf-id="hf-0p1u" class="wsky"></div>
+          <div data-hf-id="hf-wlwe" class="whill"></div>
+          <div data-hf-id="hf-g250" class="whill b"></div>
+          <div data-hf-id="hf-zacq" class="wground"></div>
+          <div data-hf-id="hf-1922" class="wheat" style="left: 80px"></div>
+          <div data-hf-id="hf-vpqi" class="wheat" style="left: 160px; height: 70px"></div>
+          <div data-hf-id="hf-cek0" class="wheat" style="left: 240px"></div>
+          <div data-hf-id="hf-76kb" class="wheat" style="left: 520px; height: 110px"></div>
+          <div data-hf-id="hf-i5yc" class="wheat" style="left: 640px"></div>
+          <div data-hf-id="hf-4kod" class="wheat" style="left: 900px; height: 80px"></div>
+          <div data-hf-id="hf-tlrl" class="wheat" style="left: 1040px"></div>
+          <div data-hf-id="hf-ug66" class="wheat" style="left: 1280px; height: 100px"></div>
+          <div data-hf-id="hf-v67j" class="wheat" style="left: 1460px"></div>
+        </div>
+      </div>
+      <div data-hf-id="hf-ra2q" class="frame" data-layout-ignore="true"></div>
+      <div data-hf-id="hf-pp08" class="bench-edge"></div>
+      <div data-hf-id="hf-lql6" class="bench"></div>
+      <div data-hf-id="hf-vla2" id="bus-bride">
+        <svg data-hf-id="hf-nyxw" viewBox="0 0 240 560" width="620" height="1080">
+          <path data-hf-id="hf-2lw0" d="M46 280 C36 470 30 520 24 540 C90 575 170 575 220 540 C210 520 204 470 194 280 Z" fill="#7e1c34"/>
+          <path data-hf-id="hf-dh85" d="M50 390 C100 430 160 430 194 390 L206 530 C160 560 80 560 38 530 Z" fill="#c4323a"/>
+          <path data-hf-id="hf-cwkh" d="M86 230 C120 268 164 230 172 310 C140 338 96 338 74 308 Z" fill="#a32038"/>
+          <g data-hf-id="hf-vidx" id="bus-dupatta">
+            <path data-hf-id="hf-8ntb" d="M64 168 C28 250 22 390 78 470 C108 400 92 260 124 190 Z" fill="#c4323a"/>
+            <path data-hf-id="hf-l9mt" d="M74 180 C46 250 44 370 82 440" fill="none" stroke="#e4c56a" stroke-width="6"/>
+          </g>
+          <ellipse data-hf-id="hf-jtic" cx="120" cy="176" rx="48" ry="56" fill="#e8c4a8"/>
+          <path data-hf-id="hf-fj0c" d="M72 158 C78 96 164 96 170 158 C150 126 92 126 72 158 Z" fill="#2a140c"/>
+          <circle data-hf-id="hf-cbx3" cx="120" cy="156" r="5" fill="#c4323a"/>
+          <ellipse data-hf-id="hf-goz3" cx="102" cy="180" rx="6" ry="7" fill="#2a140c"/>
+          <ellipse data-hf-id="hf-kzl0" cx="142" cy="178" rx="6" ry="7" fill="#2a140c"/>
+          <path data-hf-id="hf-54h2" d="M106 204 Q122 214 138 202" fill="none" stroke="#8e4a3a" stroke-width="3" stroke-linecap="round"/>
+          <circle data-hf-id="hf-fsn5" cx="84" cy="194" r="3.5" fill="#e4c56a"/>
+        </svg>
+      </div>
+    </div>
+    <div data-hf-id="hf-lmdn" id="bus-title" class="clip" data-start="0" data-duration="5.1" data-track-index="2">
+      <div data-hf-id="hf-69d8" class="plate"><span data-hf-id="hf-q6we">Nayi dulhan</span></div>
+      <div data-hf-id="hf-yb4a" class="gold"></div>
+    </div>
+    <svg data-hf-id="hf-zldx" class="grain" data-layout-ignore="true" viewBox="0 0 1080 1920" preserveAspectRatio="none">
+      <filter data-hf-id="hf-82gw" id="bus-grain"><feTurbulence data-hf-id="hf-89ru" type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3"/></filter>
+      <rect data-hf-id="hf-62vy" width="1080" height="1920" filter="url(#bus-grain)"/>
+    </svg>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#bus-world", { scale: 1, x: 0, y: 0 }, { scale: 1.08, x: -46, y: -18, duration: 5.1, ease: "power1.inOut" }, 0);
+    tl.fromTo("#bus-fields", { x: 0 }, { x: -420, duration: 5.1, ease: "none" }, 0);
+    tl.fromTo("#bus-dupatta", { rotation: -2 }, { rotation: 5, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.3);
+    window.__timelines["bus"] = tl;
+  </script>
+</template>

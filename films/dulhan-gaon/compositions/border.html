@@ -1,0 +1,74 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #f3c58a; font-family: "Archivo Black", sans-serif; }
+    #border-world { position: absolute; inset: 0; transform-origin: 46% 58%; }
+    .horizon { position: absolute; left: 0; top: 680px; width: 1400px; height: 150px; background: #e8894a; }
+    .ground { position: absolute; left: 0; top: 810px; width: 1400px; height: 1110px; background: #c9956a; }
+    .road { position: absolute; left: 0; top: 1080px; width: 1400px; height: 840px; background: #a97848; }
+    #border-truck { position: absolute; left: 980px; top: 860px; width: 520px; height: 220px; }
+    .cab { position: absolute; left: 0; top: 40px; width: 160px; height: 140px; background: #5a6438; }
+    .bed { position: absolute; left: 150px; top: 20px; width: 340px; height: 160px; background: #4e5a32; }
+    .glass { position: absolute; left: 16px; top: 56px; width: 70px; height: 48px; background: #f3c58a; }
+    .wheel { position: absolute; top: 160px; width: 64px; height: 64px; background: #3a1a14; border-radius: 32px; }
+    .helmet { position: absolute; top: 28px; width: 36px; height: 28px; background: #3a1a14; border-radius: 18px 18px 4px 4px; }
+    #border-bride { position: absolute; left: 30px; top: 560px; width: 560px; height: 1040px; transform-origin: 40% 100%; z-index: 3; }
+    #border-dupatta { transform-origin: 150px 180px; }
+    .plate { position: absolute; left: 0; top: 196px; width: 860px; height: 140px; background: #7a2433; z-index: 6; display: flex; align-items: center; padding-left: 48px; }
+    .plate span { font-size: 64px; color: #f8ebd2; letter-spacing: -0.02em; line-height: 1; }
+    .gold { position: absolute; left: 28px; top: 344px; width: 780px; height: 10px; background: #e4c56a; z-index: 6; }
+    .grain { position: absolute; inset: 0; width: 1080px; height: 1920px; opacity: 0.16; mix-blend-mode: multiply; pointer-events: none; z-index: 7; }
+  </style>
+  <div data-hf-id="hf-wve1" id="root" data-composition-id="border" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-afsp" id="border-world" data-layout-allow-overflow="true">
+      <div data-hf-id="hf-t4i1" class="horizon"></div>
+      <div data-hf-id="hf-ygft" class="ground"></div>
+      <div data-hf-id="hf-7zfm" class="road"></div>
+      <div data-hf-id="hf-r0lh" id="border-truck">
+        <div data-hf-id="hf-08p1" class="bed"></div>
+        <div data-hf-id="hf-sf16" class="cab"></div>
+        <div data-hf-id="hf-mpg4" class="glass"></div>
+        <div data-hf-id="hf-b3zg" class="helmet" style="left: 220px"></div>
+        <div data-hf-id="hf-mnmb" class="helmet" style="left: 300px"></div>
+        <div data-hf-id="hf-qjqa" class="wheel" style="left: 40px"></div>
+        <div data-hf-id="hf-jf1j" class="wheel" style="left: 360px"></div>
+      </div>
+      <div data-hf-id="hf-24dk" id="border-bride">
+        <svg data-hf-id="hf-u2j7" viewBox="0 0 240 560" width="560" height="1040">
+          <ellipse data-hf-id="hf-do8j" cx="110" cy="540" rx="72" ry="14" fill="#3a1a14" opacity="0.22"/>
+          <ellipse data-hf-id="hf-4a5e" cx="88" cy="530" rx="24" ry="12" fill="#6b1d2a"/>
+          <ellipse data-hf-id="hf-nug7" cx="148" cy="530" rx="24" ry="12" fill="#6b1d2a"/>
+          <path data-hf-id="hf-scjq" d="M40 250 C28 430 24 490 18 524 C92 560 160 560 208 524 C198 490 192 430 182 250 Z" fill="#7e1c34"/>
+          <path data-hf-id="hf-q93e" d="M44 360 C96 400 154 400 188 360 L200 514 C154 546 74 546 32 514 Z" fill="#c4323a"/>
+          <path data-hf-id="hf-7xhg" d="M76 206 C114 246 158 206 166 290 C132 320 88 320 66 288 Z" fill="#a32038"/>
+          <g data-hf-id="hf-i32n" id="border-dupatta">
+            <path data-hf-id="hf-maq4" d="M150 140 C210 250 220 400 160 490 C120 400 130 230 112 168 Z" fill="#c4323a"/>
+            <path data-hf-id="hf-svrx" d="M146 160 C190 250 196 380 158 450" fill="none" stroke="#e4c56a" stroke-width="6"/>
+          </g>
+          <ellipse data-hf-id="hf-4vys" cx="112" cy="164" rx="48" ry="56" fill="#e8c4a8"/>
+          <path data-hf-id="hf-d247" d="M64 146 C70 86 156 86 164 146 C142 114 86 114 64 146 Z" fill="#2a140c"/>
+          <circle data-hf-id="hf-pusv" cx="114" cy="142" r="5" fill="#c4323a"/>
+          <ellipse data-hf-id="hf-uagd" cx="96" cy="166" rx="6" ry="7" fill="#2a140c"/>
+          <ellipse data-hf-id="hf-mxoc" cx="136" cy="164" rx="6" ry="7" fill="#2a140c"/>
+          <path data-hf-id="hf-y1k2" d="M98 190 Q114 200 130 190" fill="none" stroke="#8e4a3a" stroke-width="3" stroke-linecap="round"/>
+          <circle data-hf-id="hf-g2kg" cx="76" cy="178" r="3.5" fill="#e4c56a"/>
+        </svg>
+      </div>
+    </div>
+    <div data-hf-id="hf-tzxu" id="border-title" class="clip" data-start="0" data-duration="4.9" data-track-index="2">
+      <div data-hf-id="hf-69d8" class="plate"><span data-hf-id="hf-ilvn">Seema ka gaon</span></div>
+      <div data-hf-id="hf-yb4a" class="gold"></div>
+    </div>
+    <svg data-hf-id="hf-zldx" class="grain" data-layout-ignore="true" viewBox="0 0 1080 1920" preserveAspectRatio="none">
+      <filter data-hf-id="hf-ocpk" id="border-grain"><feTurbulence data-hf-id="hf-ka5h" type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="11"/></filter>
+      <rect data-hf-id="hf-6n2s" width="1080" height="1920" filter="url(#border-grain)"/>
+    </svg>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#border-world", { scale: 1, x: 0 }, { scale: 1.05, x: 16, duration: 4.9, ease: "power1.inOut" }, 0);
+    tl.fromTo("#border-truck", { x: 0 }, { x: -1280, duration: 3.4, ease: "power2.inOut" }, 0.4);
+    tl.fromTo("#border-bride", { x: 0 }, { x: -36, duration: 0.45, ease: "power2.out" }, 1.5);
+    tl.fromTo("#border-dupatta", { rotation: 0 }, { rotation: 10, duration: 0.6, ease: "power2.out" }, 1.55);
+    window.__timelines["border"] = tl;
+  </script>
+</template>

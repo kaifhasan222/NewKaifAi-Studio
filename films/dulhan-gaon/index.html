@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="hi" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #f3c58a;
+      }
+      #root { width: 100%; height: 100%; position: relative; }
+    </style>
+  </head>
+  <body>
+    <div data-hf-id="hf-hj9e"
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="42"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div data-hf-id="hf-itt2" id="bus" data-composition-id="bus" data-composition-src="compositions/bus.html" data-start="0" data-duration="5.2" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div data-hf-id="hf-z4j9" id="window" data-composition-id="window" data-composition-src="compositions/window.html" data-start="5.2" data-duration="4.4" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div data-hf-id="hf-j9do" id="stop" data-composition-id="stop" data-composition-src="compositions/stop.html" data-start="9.6" data-duration="4.6" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div data-hf-id="hf-5azg" id="leave" data-composition-id="leave" data-composition-src="compositions/leave.html" data-start="14.2" data-duration="4.4" data-track-index="4" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div data-hf-id="hf-fiat" id="border" data-composition-id="border" data-composition-src="compositions/border.html" data-start="18.6" data-duration="5" data-track-index="5" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div data-hf-id="hf-mlhd" id="walk" data-composition-id="walk" data-composition-src="compositions/walk.html" data-start="23.6" data-duration="5.6" data-track-index="6" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div data-hf-id="hf-idvq" id="gate" data-composition-id="gate" data-composition-src="compositions/gate.html" data-start="29.2" data-duration="5" data-track-index="7" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div data-hf-id="hf-kxz5" id="home" data-composition-id="home" data-composition-src="compositions/home.html" data-start="34.2" data-duration="7.8" data-track-index="8" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <audio data-hf-id="hf-o86h" id="bed" class="clip" src="assets/music/walking-in-the-park.mp3" data-start="0" data-duration="42" data-media-start="48" data-volume="0.72" data-fade-in="0.4" data-fade-out="1.8" data-track-index="20"></audio>
+      <audio data-hf-id="hf-gazx" id="bus-whoosh" class="clip" src="assets/sfx/whoosh.mp3" data-start="14.27" data-duration="0.58" data-volume="0.8" data-track-index="21"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

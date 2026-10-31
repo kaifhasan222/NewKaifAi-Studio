@@ -1,0 +1,77 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #f3c58a; font-family: "Archivo Black", sans-serif; }
+    #leave-world { position: absolute; inset: 0; transform-origin: 40% 60%; }
+    .horizon { position: absolute; left: 0; top: 700px; width: 1400px; height: 140px; background: #e8894a; }
+    .ground { position: absolute; left: 0; top: 820px; width: 1400px; height: 1100px; background: #c9956a; }
+    .road { position: absolute; left: 0; top: 1120px; width: 1400px; height: 800px; background: #a97848; }
+    #leave-bus { position: absolute; left: 520px; top: 760px; width: 640px; height: 320px; transform-origin: 50% 80%; }
+    .busbody { position: absolute; inset: 0; background: #f0e2c4; }
+    .stripe { position: absolute; left: 0; top: 150px; width: 640px; height: 48px; background: #2e6b45; }
+    .w { position: absolute; top: 40px; width: 90px; height: 70px; background: #245c3e; }
+    .wheel { position: absolute; top: 260px; width: 78px; height: 78px; background: #3a1a14; border-radius: 39px; }
+    #leave-dust { position: absolute; left: 680px; top: 1040px; width: 220px; height: 70px; background: #e8894a; border-radius: 40px; opacity: 0.01; }
+    #leave-bride { position: absolute; left: 40px; top: 640px; width: 520px; height: 980px; transform-origin: 50% 100%; z-index: 3; }
+    #leave-dupatta { transform-origin: 90px 180px; }
+    .plate { position: absolute; left: 0; top: 196px; width: 860px; height: 140px; background: #7a2433; z-index: 6; display: flex; align-items: center; padding-left: 48px; }
+    .plate span { font-size: 64px; color: #f8ebd2; letter-spacing: -0.02em; line-height: 1; }
+    .gold { position: absolute; left: 28px; top: 344px; width: 780px; height: 10px; background: #e4c56a; z-index: 6; }
+    .grain { position: absolute; inset: 0; width: 1080px; height: 1920px; opacity: 0.16; mix-blend-mode: multiply; pointer-events: none; z-index: 7; }
+  </style>
+  <div data-hf-id="hf-lsve" id="root" data-composition-id="leave" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-x2oy" id="leave-world" data-layout-allow-overflow="true">
+      <div data-hf-id="hf-t4i1" class="horizon"></div>
+      <div data-hf-id="hf-ygft" class="ground"></div>
+      <div data-hf-id="hf-7zfm" class="road"></div>
+      <div data-hf-id="hf-lhwv" id="leave-dust"></div>
+      <div data-hf-id="hf-v9nf" id="leave-bus">
+        <div data-hf-id="hf-rag6" class="busbody"></div>
+        <div data-hf-id="hf-wdzv" class="stripe"></div>
+        <div data-hf-id="hf-reas" class="w" style="left: 40px"></div>
+        <div data-hf-id="hf-5v0f" class="w" style="left: 160px"></div>
+        <div data-hf-id="hf-tbb6" class="w" style="left: 280px"></div>
+        <div data-hf-id="hf-t7qn" class="wheel" style="left: 70px"></div>
+        <div data-hf-id="hf-b87g" class="wheel" style="left: 460px"></div>
+      </div>
+      <div data-hf-id="hf-1mz1" id="leave-bride">
+        <svg data-hf-id="hf-n9k9" viewBox="0 0 240 560" width="520" height="980">
+          <ellipse data-hf-id="hf-kun2" cx="120" cy="540" rx="74" ry="14" fill="#3a1a14" opacity="0.22"/>
+          <ellipse data-hf-id="hf-vazz" cx="96" cy="530" rx="24" ry="12" fill="#6b1d2a"/>
+          <ellipse data-hf-id="hf-w8tk" cx="158" cy="530" rx="24" ry="12" fill="#6b1d2a"/>
+          <path data-hf-id="hf-rmho" d="M48 260 C36 440 32 490 26 524 C98 560 170 560 218 524 C208 490 202 440 192 260 Z" fill="#7e1c34"/>
+          <path data-hf-id="hf-zfwp" d="M52 368 C102 406 160 406 194 368 L208 514 C160 546 80 546 38 514 Z" fill="#c4323a"/>
+          <path data-hf-id="hf-0pu9" d="M84 214 C120 254 164 214 172 296 C140 326 94 326 72 294 Z" fill="#a32038"/>
+          <g data-hf-id="hf-gu8e" id="leave-dupatta">
+            <path data-hf-id="hf-5080" d="M78 150 C20 260 8 400 64 490 C110 410 100 240 130 176 Z" fill="#c4323a"/>
+            <path data-hf-id="hf-egmz" d="M84 170 C40 270 36 390 78 460" fill="none" stroke="#e4c56a" stroke-width="6"/>
+          </g>
+          <ellipse data-hf-id="hf-ssw3" cx="124" cy="168" rx="48" ry="56" fill="#e8c4a8"/>
+          <path data-hf-id="hf-75qp" d="M76 150 C82 90 168 90 176 150 C154 118 98 118 76 150 Z" fill="#2a140c"/>
+          <circle data-hf-id="hf-9p7s" cx="126" cy="146" r="5" fill="#c4323a"/>
+          <ellipse data-hf-id="hf-m80w" cx="108" cy="172" rx="6" ry="7" fill="#2a140c"/>
+          <ellipse data-hf-id="hf-77fe" cx="148" cy="170" rx="6" ry="7" fill="#2a140c"/>
+          <path data-hf-id="hf-0az3" d="M110 196 Q126 208 144 196" fill="none" stroke="#8e4a3a" stroke-width="3" stroke-linecap="round"/>
+          <circle data-hf-id="hf-84xc" cx="88" cy="184" r="3.5" fill="#e4c56a"/>
+        </svg>
+      </div>
+    </div>
+    <div data-hf-id="hf-2f75" id="leave-title" class="clip" data-start="0" data-duration="4.3" data-track-index="2">
+      <div data-hf-id="hf-69d8" class="plate"><span data-hf-id="hf-q3cl">Bus aage badhi</span></div>
+      <div data-hf-id="hf-yb4a" class="gold"></div>
+    </div>
+    <svg data-hf-id="hf-zldx" class="grain" data-layout-ignore="true" viewBox="0 0 1080 1920" preserveAspectRatio="none">
+      <filter data-hf-id="hf-hqob" id="leave-grain"><feTurbulence data-hf-id="hf-upwo" type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="9"/></filter>
+      <rect data-hf-id="hf-1ved" width="1080" height="1920" filter="url(#leave-grain)"/>
+    </svg>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#leave-world", { x: 40, scale: 1 }, { x: -30, scale: 1.04, duration: 4.3, ease: "power1.inOut" }, 0);
+    tl.fromTo("#leave-bus", { x: 0, scale: 1 }, { x: 520, scale: 0.72, duration: 2.6, ease: "power2.in" }, 0.2);
+    tl.fromTo("#leave-dust", { opacity: 0.01, scaleX: 0.4, x: 0 }, { opacity: 0.85, scaleX: 1.8, x: 180, duration: 1.4, ease: "power2.out" }, 0.8);
+    tl.fromTo("#leave-dust", { opacity: 0.85 }, { opacity: 0.2, duration: 1.2, ease: "power1.in", immediateRender: false }, 2.3);
+    tl.fromTo("#leave-dupatta", { rotation: 4 }, { rotation: -8, duration: 1.6, ease: "sine.inOut" }, 0.4);
+    tl.fromTo("#leave-bride", { y: 0 }, { y: -12, duration: 0.6, ease: "power2.out" }, 2.6);
+    window.__timelines["leave"] = tl;
+  </script>
+</template>

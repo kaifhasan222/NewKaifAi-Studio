@@ -1,0 +1,73 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #f3c58a; font-family: "Archivo Black", sans-serif; }
+    #walk-world { position: absolute; inset: 0; transform-origin: 50% 62%; }
+    #walk-pan { position: absolute; left: -400px; top: 0; width: 1900px; height: 1920px; }
+    .horizon { position: absolute; left: 0; top: 700px; width: 1900px; height: 140px; background: #e8894a; }
+    .ground { position: absolute; left: 0; top: 820px; width: 1900px; height: 1100px; background: #c9956a; }
+    .road { position: absolute; left: 0; top: 1100px; width: 1900px; height: 820px; background: #a97848; }
+    .dash { position: absolute; top: 1320px; width: 80px; height: 14px; background: #e4c56a; }
+    .trunk { position: absolute; left: 1280px; top: 620px; width: 36px; height: 520px; background: #6a3a22; }
+    .canopy { position: absolute; left: 1120px; top: 420px; width: 360px; height: 280px; background: #3e6b3a; border-radius: 180px; }
+    #walk-bride { position: absolute; left: 250px; top: 520px; width: 580px; height: 1100px; transform-origin: 50% 100%; z-index: 3; }
+    #walk-dupatta { transform-origin: 120px 170px; }
+    .plate { position: absolute; left: 0; top: 196px; width: 860px; height: 140px; background: #7a2433; z-index: 6; display: flex; align-items: center; padding-left: 48px; }
+    .plate span { font-size: 60px; color: #f8ebd2; letter-spacing: -0.02em; line-height: 1; }
+    .gold { position: absolute; left: 28px; top: 344px; width: 780px; height: 10px; background: #e4c56a; z-index: 6; }
+    .grain { position: absolute; inset: 0; width: 1080px; height: 1920px; opacity: 0.16; mix-blend-mode: multiply; pointer-events: none; z-index: 7; }
+  </style>
+  <div data-hf-id="hf-5q6y" id="root" data-composition-id="walk" data-width="1080" data-height="1920">
+    <div data-hf-id="hf-43ok" id="walk-world" data-layout-allow-overflow="true">
+      <div data-hf-id="hf-r4dg" id="walk-pan">
+        <div data-hf-id="hf-t4i1" class="horizon"></div>
+        <div data-hf-id="hf-ygft" class="ground"></div>
+        <div data-hf-id="hf-7zfm" class="road"></div>
+        <div data-hf-id="hf-6z5l" class="dash" style="left: 200px"></div>
+        <div data-hf-id="hf-zepj" class="dash" style="left: 480px"></div>
+        <div data-hf-id="hf-ddoe" class="dash" style="left: 760px"></div>
+        <div data-hf-id="hf-gf0a" class="dash" style="left: 1040px"></div>
+        <div data-hf-id="hf-zsk7" class="dash" style="left: 1320px"></div>
+        <div data-hf-id="hf-ezqo" class="dash" style="left: 1600px"></div>
+        <div data-hf-id="hf-03cq" class="trunk"></div>
+        <div data-hf-id="hf-mkl0" class="canopy"></div>
+      </div>
+      <div data-hf-id="hf-7fpx" id="walk-bride">
+        <svg data-hf-id="hf-ixkk" viewBox="0 0 240 560" width="580" height="1100">
+          <ellipse data-hf-id="hf-cnma" cx="120" cy="542" rx="76" ry="14" fill="#3a1a14" opacity="0.22"/>
+          <ellipse data-hf-id="hf-lhat" cx="96" cy="532" rx="24" ry="12" fill="#6b1d2a"/>
+          <ellipse data-hf-id="hf-mf72" cx="158" cy="532" rx="24" ry="12" fill="#6b1d2a"/>
+          <path data-hf-id="hf-5o53" d="M46 248 C34 420 30 480 22 520 C96 558 168 558 220 520 C210 480 204 420 194 248 Z" fill="#7e1c34"/>
+          <path data-hf-id="hf-k6qb" d="M50 360 C100 400 160 400 194 360 L208 512 C160 544 80 544 36 512 Z" fill="#c4323a"/>
+          <path data-hf-id="hf-oe5r" d="M82 200 C118 242 164 200 174 286 C140 318 92 318 70 284 Z" fill="#a32038"/>
+          <g data-hf-id="hf-dis6" id="walk-dupatta">
+            <path data-hf-id="hf-o5g6" d="M70 150 C24 250 16 400 72 490 C112 410 98 240 128 176 Z" fill="#c4323a"/>
+            <path data-hf-id="hf-u53n" d="M80 168 C44 260 40 380 78 460" fill="none" stroke="#e4c56a" stroke-width="6"/>
+          </g>
+          <ellipse data-hf-id="hf-xajd" cx="122" cy="164" rx="48" ry="56" fill="#e8c4a8"/>
+          <path data-hf-id="hf-6eme" d="M74 146 C80 84 166 84 174 146 C152 114 96 114 74 146 Z" fill="#2a140c"/>
+          <circle data-hf-id="hf-5h1u" cx="124" cy="142" r="5" fill="#c4323a"/>
+          <ellipse data-hf-id="hf-7xrp" cx="106" cy="168" rx="6" ry="7" fill="#2a140c"/>
+          <ellipse data-hf-id="hf-vty7" cx="146" cy="166" rx="6" ry="7" fill="#2a140c"/>
+          <path data-hf-id="hf-v5ly" d="M108 194 Q126 208 146 194" fill="none" stroke="#8e4a3a" stroke-width="3" stroke-linecap="round"/>
+          <circle data-hf-id="hf-8b6i" cx="86" cy="180" r="3.5" fill="#e4c56a"/>
+        </svg>
+      </div>
+    </div>
+    <div data-hf-id="hf-f4km" id="walk-title" class="clip" data-start="0" data-duration="5.5" data-track-index="2">
+      <div data-hf-id="hf-69d8" class="plate"><span data-hf-id="hf-xzgy">Khushi se chali</span></div>
+      <div data-hf-id="hf-yb4a" class="gold"></div>
+    </div>
+    <svg data-hf-id="hf-zldx" class="grain" data-layout-ignore="true" viewBox="0 0 1080 1920" preserveAspectRatio="none">
+      <filter data-hf-id="hf-gtm5" id="walk-grain"><feTurbulence data-hf-id="hf-rlqv" type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="13"/></filter>
+      <rect data-hf-id="hf-a4h1" width="1080" height="1920" filter="url(#walk-grain)"/>
+    </svg>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#walk-world", { scale: 1 }, { scale: 1.06, duration: 5.5, ease: "power1.inOut" }, 0);
+    tl.fromTo("#walk-pan", { x: 0 }, { x: -280, duration: 5.5, ease: "none" }, 0);
+    tl.fromTo("#walk-bride", { y: 0 }, { y: -16, duration: 0.42, ease: "sine.inOut", yoyo: true, repeat: 11 }, 0);
+    tl.fromTo("#walk-dupatta", { rotation: -4 }, { rotation: 8, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 6 }, 0.16);
+    window.__timelines["walk"] = tl;
+  </script>
+</template>
