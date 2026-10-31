@@ -3,15 +3,30 @@
 Project: YouTube Shorts + Instagram Reels channel "New Kaif Ai". Tech content, **Hinglish (Roman script)**, 30-60 sec, 9:16, 1080x1920.
 Owner: Kaif. Uses his own photo and own recorded voice (`brand/`). Final approval hamesha Kaif ka.
 
+## Shortcuts & Slash Commands
+Jab bhi Kaif yeh shortcuts likhe, agent ko turant yeh workflow execute karna hai:
+- **/start** (ya "start", "aaj ka video"): Interactive episode wizard shuru karo. Pehle Kaif se intake ke 5 sawaal poochho:
+  1. **Topic:** Kaunsa topic par video banana hai? (Ya reference link/topic). Agar Kaif bole *"kuch topic nahi hai"*, *"auto kar do"*, ya *"tum decide karo"* -> internet se aaj ka trending AI/tech topic khud search karke select karo.
+  2. **Motion Graphics Style:** `prompts/motion-styles.md` se (e.g. *Pop Info*, *Creator Motion Graphics*, *Clean Tech*, *Chalk Talk*, *Data Story*, *Software Walkthrough*) ya "Auto-pick".
+  3. **Animation / Zoom Vibe:** Punch zoom & fast viral cuts, smooth zoom-in calm explainer, ya screen UI demo.
+  4. **Audio / Voice Source:** Phone se record karoge (`episodes/epNNN/voice.mp3`), ya brand/existing voice?
+  5. **Visual Mode:** Google Flow clips ya Faceless animation.
+  - Sawaal poochhne ke baad Roman Hinglish script ready karo.
+- **/start auto**: Bina ruke sab kuch auto mode mein chalao: Trending AI news search karo, best motion style & zoom vibe choose karo, script aur prompts draft karke assemble karo.
+- **Script Review & Revision Loop**: Script hamesha Roman Hinglish mein dikhao. Kaif se poochho: *"Script check karo. Changes chahiye ya lock karein?"* Agar Kaif changes bataye to uske mutabiq update karo; jab Kaif "Approved" ya "OK" bole tabhi production par aage badho.
+- **/content** (ya **/publish**): Current episode ka SEO publishing pack generate karo (`episodes/epNNN/publish.md`): 3 high-CTR viral titles, YouTube description, tags, hashtags, pinned comment, aur Instagram Reels caption (copy-paste block format mein).
+- **/edit**: Current episode ko rebuild karo `py -3.12 tools\build_video.py episodes\epNNN\episode.json` se (captions, music ducking, ya sfx adjustments ke baad).
+- **/status**: Bataye current episode kaunsa hai aur kis step par hai (Script, Audio, Flow Prompts, Captions, Build, QA, Publish).
+
 ## Kaam karne ka tareeka
 - Pehle `PIPELINE.md` aur `prompts/script-style-guide.md` padho.
 - Naya episode: `episodes/_template/` copy karke `episodes/epNNN/` banao.
 - Script se pehle motion style poochho (`prompts/motion-styles.md`, source [nafay3d.com](https://nafay3d.com)). Kaif "Pop Info" jaise naam bole to wahi look. "Jo achha ho" bole to tum style chuno, naam likho, phir banao. Unka prompt, music, ya voice copy mat karo.
 - Scripts: `prompts/script-style-guide.md` follow karo. Facts ke liye search karo, andaza mat lagao. `Voice:` line bolne layak likho, har scene mein ek reaction (`Aree`, `Achaa`, `Dekho`). Vowel mat kheench.
 - Flow prompts: `prompts/flow-prompt-template.md` ke format mein, har scene alag.
-- Edit: `python tools/build_video.py episodes/epNNN/episode.json` (Kaif ke Windows PC par `py -3.12 tools\...` use karo kyunki `python` purana 3.8 hai; Mac par `python3`). Naya edit code mat likho jab tak tool ki kami na ho.
-- Captions: `tools/make_captions.py`, phir text Roman Hinglish mein badlo, timings waise hi rakho.
-- QA: `tools/check_video.py`, contact sheet dekho, dikkat likho (kata hua text, black frames, awaaz/music balance).
+- Edit: `py -3.12 tools\build_video.py episodes\epNNN\episode.json` (Kaif ke Windows PC par `py -3.12 tools\...` use karo kyunki `python` purana 3.8 hai; Mac par `python3`). Naya edit code mat likho jab tak tool ki kami na ho.
+- Captions: `tools\make_captions.py`, phir text Roman Hinglish mein badlo, timings waise hi rakho.
+- QA: `tools\check_video.py`, contact sheet dekho, dikkat likho (kata hua text, black frames, awaaz/music balance).
 - Har episode ke saath `publish.md` banao (title options, description, tags, hashtags, Instagram caption) `prompts/publishing-guide.md` ke hisaab se, keywords web search se.
 - Flow limit khatam ho ya topic animation ke layak ho to `prompts/faceless-mode.md` follow karo.
 - Agar Kaif topic + reference video de: `prompts/reference-style-workflow.md` follow karo. Style-card banao, Kaif se confirm karo, phir original video banao. Reference ka script/footage/music/voice kabhi copy mat karo.

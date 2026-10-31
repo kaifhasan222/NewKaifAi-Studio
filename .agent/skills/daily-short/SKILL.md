@@ -1,20 +1,77 @@
 ---
 name: daily-short
-description: Run the New Kaif Ai daily workflow to produce one Hinglish tech short (script, Flow or faceless visuals, edit, QA, publish pack). Use when the user says "daily-short", "new episode", "aaj ka video", gives a topic, or gives a topic plus a reference video to match in style.
+description: Run the New Kaif Ai studio workflow to produce one Hinglish tech short (script, Flow or faceless visuals, edit, QA, publish pack). Triggered by "/start", "/start auto", "daily-short", "new episode", "aaj ka video", "/content", or "/edit".
 ---
 
-# daily-short
+# daily-short & Studio Workflow
 
-1. Read `AGENTS.md`, `PIPELINE.md`, `prompts/script-style-guide.md`.
-2. Pick the next episode number from `episodes/` and copy `episodes/_template/` to `episodes/epNNN/`.
-3. If a reference video is given, follow `prompts/reference-style-workflow.md` first: analyze it, write a style-card, get Kaif's OK. Copy the style only, never the content.
-   If no topic is given, propose 3 topics (search the web for current tech news first) and wait for a choice.
-   Before the script, ask which motion style from `prompts/motion-styles.md` (https://nafay3d.com). Wait for a name such as Pop Info. If Kaif says to pick whatever fits the video, choose one style, say which and why, then continue. Do not copy that site's prompt text, music, or voice.
-4. Decide mode: Flow, or faceless (`prompts/faceless-mode.md`) when Flow credits are out or the topic suits animation/screen demo. Write `script.md` (Hinglish, 30-60s, hook in first 2s, one idea, clear CTA) and `flow-prompts.md` using `prompts/flow-prompt-template.md`. Each `Voice:` line is what gets spoken: one natural reaction per scene (`Aree`, `Achaa`, `Dekho`, `Matlab`, `Bas`), written in `prompts/script-style-guide.md`. Do not stretch vowels. On-screen titles stay clean.
-5. Generate clips in Google Flow if browser control is available; otherwise stop and ask Kaif to paste the prompts and put downloads in `raw-clips/` named `epNNN_01.mp4`, `epNNN_02.mp4`, ...
-6. Make captions with `tools/make_captions.py`, rewrite to Roman Hinglish keeping timings.
-7. Fill `episode.json` (clips, voice, music, sfx, captions, overlays) and run `tools/build_video.py`.
-8. Run `tools/check_video.py`, look at the contact sheet, fix obvious issues, rebuild once.
-9. Write `episodes/epNNN/publish.md` (titles, description, tags, hashtags, pinned comment, Instagram caption, upload checklist) per `prompts/publishing-guide.md`, keywords from web search. Channel "NEW KAIF AI" / @kaifhasan222, emojis per the guide's emoji rules, description and caption in copy-paste code blocks.
-10. Report to Kaif: file path, what was assumed, what to check. Never post anything.
-11. Do not git-add `episodes/epNNN/` or any video file. Photos and music/sfx may be committed. Push only to GitHub `kaifhasan222`.
+## Commands & Triggers
+- **/start** (or "aaj ka video", "new episode"): Triggers interactive intake questionnaire (Step 1).
+- **/start auto**: Skips questions, automatically researches today's trending tech news, picks best motion style & zoom effect, and proceeds to script & flow prompts.
+- **/content** (or **/publish**): Generates the complete publishing pack (`episodes/epNNN/publish.md`).
+- **/edit**: Rebuilds the current episode video using `py -3.12 tools\build_video.py`.
+- **/status**: Reports current progress of the episode.
+
+---
+
+## Workflow Steps
+
+### Step 1: Interactive Intake (`/start`)
+When `/start` is triggered, ask Kaif these 5 key questions:
+1. **Topic:** What topic or reference link? (Or choose `Auto / Trending`).
+2. **Motion Graphics Style:** From `prompts/motion-styles.md` (`Pop Info`, `Creator Motion Graphics`, `Clean Tech`, `Chalk Talk`, `Data Story`, `Software Walkthrough`) or `Auto`.
+3. **Zoom & Animation Vibe:** Punch zoom & fast viral cuts, smooth zoom-in calm explainer, or UI demo.
+4. **Voice / Audio Source:** Record on phone (`episodes/epNNN/voice.mp3`), or use brand/existing voice?
+5. **Visual Mode:** Google Flow clips or Faceless animation (`prompts/faceless-mode.md`).
+
+*Auto-Fallback:* If Kaif says "kuch topic nahi hai", "auto kar do", "tum decide karo", or enters `/start auto`:
+- Search the web for current AI/tech news.
+- Pick the most viral/relevant topic, best matching motion style, and zoom vibe.
+- Announce what was picked and continue immediately.
+
+### Step 2: Next Episode Setup
+1. Find the next episode folder number in `episodes/` (e.g., `ep001`, `ep002`, ...).
+2. Copy `episodes/_template/` to `episodes/epNNN/`.
+
+### Step 3: Script Drafting & Review Loop
+1. Write `episodes/epNNN/script.md` using `prompts/script-style-guide.md`:
+   - Language: **Roman Hinglish**.
+   - Length: 30-60 seconds.
+   - Hook in the first 2 seconds (visual + voice).
+   - Natural reactions in scenes (`Aree`, `Achaa`, `Dekho`, `Matlab`, `Bas`).
+   - Clear call to action (CTA) at the end.
+2. **Review Loop:** Show the complete script to Kaif in chat.
+   - Ask: *"Script check karo. Kya koi change chahiye ya approved hai?"*
+   - If Kaif requests edits, revise `script.md`.
+   - When Kaif confirms ("Approved", "OK", "theek hai"), proceed to asset generation.
+
+### Step 4: Visuals & Audio Assets
+1. **Flow Prompts:** Generate scene-by-scene prompts in `episodes/epNNN/flow-prompts.md` using `prompts/flow-prompt-template.md`.
+2. **Visual Clips:** Kaif generates clips in Google Flow (or browser automation) and puts them in `raw-clips/epNNN_01.mp4`, `epNNN_02.mp4`... (Or generate faceless assets if in Faceless mode).
+3. **Voiceover:**
+   - If Kaif records on phone: guide to save as `episodes/epNNN/voice.mp3`.
+   - If using existing brand audio: copy from `brand/voice.mp3`.
+
+### Step 5: Captions & Assembly
+1. **Captions:** Run `py -3.12 tools\make_captions.py episodes\epNNN\voice.mp3`. Verify and clean up text into Roman Hinglish while preserving timestamps (`captions.srt`).
+2. **Config:** Fill `episodes/epNNN/episode.json` with clips, voice, music, sfx, captions, and zoom/overlay parameters.
+3. **Build:** Run `py -3.12 tools\build_video.py episodes\epNNN\episode.json` to generate `output/epNNN.mp4`.
+
+### Step 6: QA Review
+1. Run `py -3.12 tools\check_video.py output\epNNN.mp4`.
+2. Review the generated contact sheet for cut-off captions, black frames, and check audio balance (voice loud & clear, music ducked to ~0.12, -16 LUFS).
+3. Report any issues and rebuild if needed.
+
+### Step 7: Publishing Kit (`/content`)
+Write `episodes/epNNN/publish.md` following `prompts/publishing-guide.md`:
+- 3 Click-worthy viral title options.
+- YouTube description with keywords from web search.
+- SEO tags & hashtags.
+- Pinned comment.
+- Instagram Reel caption formatted in a copy-paste code block with appropriate emojis.
+- Final upload checklist.
+
+### Step 8: Final Report & Approval
+- Give Kaif a summary of the generated video, file path, what was assumed, and what to verify.
+- Kaif gives final approval and manually uploads to YouTube Shorts & Instagram Reels.
+- **Git rules:** Never git-add `episodes/epNNN/` or `.mp4` video files. Push code/prompts only to `kaifhasan222`.

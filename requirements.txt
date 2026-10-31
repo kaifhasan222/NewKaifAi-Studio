@@ -3,3 +3,4 @@
 # Earshot has its own venv. Versions for that, Node, and the sound skills are in package.json.
 faster-whisper==1.2.1
 numpy==2.0.2
+edge-tts>=7.0.0
