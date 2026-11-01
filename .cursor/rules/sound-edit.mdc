@@ -1,0 +1,11 @@
+---
+description: Hook zoom SFX aur background music sirf edit pe.
+alwaysApply: true
+---
+
+# Edit sound
+
+- Music voice file mein mat milaao. Edit pe `episode.json` mein lagao. Default `assets/music/chill-tech-01.mp3`, volume `0.12`. Build voice bolte waqt music dheema kar deta hai.
+- Hook shuru (`at: 0.0`) pe zoom SFX `assets/sfx/whoosh.mp3`, volume `0.4`. Doosri jagah tabhi jab us scene ka visual punch zoom ho.
+- Filler reaction SFX mat lagao (`faaah`, `vine-boom`).
+- Flow clip ka audio mute. Bolne wali awaaz `episodes/epNNN/voice.mp3` se aati hai.

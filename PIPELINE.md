@@ -47,10 +47,10 @@ Script se pehle Kaif se poochho: kaunsa style. List [nafay3d.com](https://nafay3
 ---
 
 ## Core Rules
-- **Hook pehle 2 second mein.** Overlay text + voice dono.
+- **Hook pehle 2 second mein.** Overlay text + voice dono. Visual punch zoom. Edit pe `assets/sfx/whoosh.mp3` time `0.0`, volume `0.4`.
 - Flow clips chhote rakho (3-6 sec ke scenes), edit mein jodte hain.
-- Flow ka apna audio ho to use mute karte hain; voice aur music hum controlled mix karte hain.
-- Music voice ke neeche (volume ~0.12, auto-ducking). SFX sirf transitions/emphasis par.
+- Flow ka apna audio mute. Bolne wali awaaz `voice.mp3`. Music aur SFX sirf edit pe, voice file mein nahi.
+- Music `assets/music/chill-tech-01.mp3`, volume `0.12`, voice pe auto-duck. Filler reaction SFX nahi.
 - Final loudness about -16 LUFS.
 - **Tum hamesha final video dekhte ho.** AI frames se check karta hai, par insaani nazar zaroori hai.
 - Episode folder aur video files git mein nahi jaati. Sirf code, template, photo, music aur sfx. Remote personal GitHub `kaifhasan222`, author `kaifhasan222@gmail.com`.

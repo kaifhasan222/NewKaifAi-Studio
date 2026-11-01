@@ -1,11 +1,14 @@
 ---
-description: Sirf Voice line Devanagari Hindi mein. Overlay aur caption Roman Hinglish.
+description: Voice line Devanagari. Delivery alag. Koi reaction filler nahi.
 alwaysApply: true
 ---
 
 # Voice text
 
-- `Voice:` line hamesha Devanagari Hindi mein likho. Yahi text awaaz banega.
-- Overlay, title, caption aur baaki script Roman Hinglish mein raho.
+- `Voice:` line hamesha Devanagari Hindi mein likho. Yahi text awaaz banega. Delivery, pause, loud, tez jaise shabd is line mein mat likho.
+- `Delivery:` alag likho. Yeh awaaz mein nahi jaata. Sirf teen baatein: tez / normal / dheema, kis shabd par zor, ruk kahan (comma ya full stop).
+- Reaction filler mat likho: Aree, Achaa, Dekho, Suno, Matlab, Bas. Na voice mein, na caption mein, na overlay mein.
+- Overlay, title, caption Roman Hinglish.
 - Tech words voice mein Devanagari: गिट, गिटहब, कमिट, पुश. Roman spelling voice line mein mat chhodo.
 - Vowel mat kheench. Ek line ek saans.
+- Hook ek chhota vaakya, tez, pehla keyword zor se. Beech normal, fact ke baad ruk. Aakhri line dheemi aur saaf.

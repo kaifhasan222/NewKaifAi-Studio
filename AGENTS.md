@@ -22,7 +22,7 @@ Jab bhi Kaif yeh shortcuts likhe, agent ko turant yeh workflow execute karna hai
 - Pehle `PIPELINE.md` aur `prompts/script-style-guide.md` padho.
 - Naya episode: `episodes/_template/` copy karke `episodes/epNNN/` banao.
 - Script se pehle motion style poochho (`prompts/motion-styles.md`, source [nafay3d.com](https://nafay3d.com)). Kaif "Pop Info" jaise naam bole to wahi look. "Jo achha ho" bole to tum style chuno, naam likho, phir banao. Unka prompt, music, ya voice copy mat karo.
-- Scripts: `prompts/script-style-guide.md` follow karo. Facts ke liye search karo, andaza mat lagao. `Voice:` line bolne layak likho, har scene mein ek reaction (`Aree`, `Achaa`, `Dekho`). Vowel mat kheench.
+- Scripts: `prompts/script-style-guide.md` follow karo. Facts ke liye search karo, andaza mat lagao. `Voice:` line seedhi Devanagari ho. `Delivery:` alag (tez, zor, ruk). Reaction filler mat likho (`Aree`, `Achaa`, `Dekho`). Vowel mat kheench.
 - Flow prompts: `prompts/flow-prompt-template.md` ke format mein, har scene alag.
 - Edit: `py -3.12 tools\build_video.py episodes\epNNN\episode.json` (Kaif ke Windows PC par `py -3.12 tools\...` use karo kyunki `python` purana 3.8 hai; Mac par `python3`). Naya edit code mat likho jab tak tool ki kami na ho.
 - Captions: `tools\make_captions.py`, phir text Roman Hinglish mein badlo, timings waise hi rakho.

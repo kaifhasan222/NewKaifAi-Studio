@@ -16,30 +16,27 @@
 ## Voice line (jo awaaz bolegi)
 `Voice:` wahi text hai jo awaaz banegi. Sirf yahi line Devanagari Hindi mein likho. Baaki script, overlay, title aur caption Roman Hinglish mein rahenge.
 
-- Likhne ka andaaz bolchal ka ho, lekin akshar Hindi ke hon. Roman Hinglish voice line mein mat chhodo.
+- Likhne ka andaaz seedha aur professional ho, jaise Kaif camera pe explain kar raha ho. Dosti wala filler nahi.
+- Reaction filler mat likho: Aree, Achaa, Dekho, Suno, Matlab, Bas. Na voice mein, na caption mein.
 - Tech word Devanagari mein likho, taaki awaaz ka tool atke nahi: गिट, गिटहब, कमिट, पुश.
-- Seedha paragraph mat likho. Aise likho jaise Kaif dost ko samjha raha ho.
+- Ek line ek saans. Vowel mat kheench. Josh spelling se nahi aata.
 
-- Har scene mein **ek** interjection. Har sentence mein nahi, warna natak lagega.
-- Interjection alag chhota tukda ho, phir baat. "..." ka matlab chhoti rukawat.
-- Kaunsa reaction kab:
-  - Hook / shock: `Aree!` ya `Suno!`
-  - Samajh aaya: `Achaa...`
-  - Screen dikhao: `Dekho,`
-  - Simple banao: `Matlab`
-  - Nichod: `Bas.`
-  - CTA seedha rahe. Optional: `Ek kaam karo,`
-- Vowel mat kheench (`Areeeeee`, `Achaaaaa`). Awaaz ka tool repeat par atak jaata hai ya line kaat deta hai. Josh tool ke emotion setting se aayega, spelling se nahi.
-- On-screen title aur card saaf rakho (`YOU SHOT FIRST`, `SIGNAL DELAY`). "Aree" sirf voice aur caption mein.
+## Delivery (awaaz mein nahi jaata)
+Har scene ke saath `Delivery:` likho. Yeh generator ke liye hai. Text box mein sirf `Voice:` jaata hai.
 
-Flat: `Ye koi hack nahi hai. Signal jaane mein time lagta hai.`
-Bolne layak: `Aree, ye koi hack nahi hai. Dekho, signal jaane mein thoda time lagta hai.`
+- Tez / normal / dheema: hook tez, beech normal, CTA dheema.
+- Zor: ek keyword tez aur thoda upar. Poori line chillao mat.
+- Ruk: voice line mein comma chhoti ruk, full stop lambi ruk. "Pause" shabd mat likho.
+- Sample Kaif ki energetic recording ho, 6-10 second, bina music. Shaant padhai wali file hook pe mat do.
+
+Flat: `ये कोई हैक नहीं है सिग्नल जाने में समय लगता है`
+Bolne layak: `ये कोई हैक नहीं है। सिग्नल जाने में थोड़ा समय लगता है।` Delivery: pehli line tez, pehla shabd zor. Poori ruk. Doosri line normal.
 
 ## Hook formulas
 - "Ye AI tool aapka [kaam] 10 minute mein kar dega."
 - "99% log [cheez] galat use karte hain."
 - "Aaj ke baad [purani cheez] ki zarurat nahi."
-- "Maine [cheez] try ki, result dekho."
+- "Maine [cheez] try ki. Result yeh raha."
 
 ## Fact rules
 - Har claim (naam, price, feature) search karke verify karo. Source `script.md` ke neeche likho.
@@ -49,8 +46,8 @@ Bolne layak: `Aree, ye koi hack nahi hai. Dekho, signal jaane mein thoda time la
 ```
 # epNNN: <title>
 Hook: ...
-[Scene 1 | 0-4s] Voice: Aree! ... | Visual: ...
-[Scene 2 | 4-9s] Voice: ... | Visual: ...
+[Scene 1 | 0-2s] Voice: ... | Delivery: tez, pehla shabd zor | Visual: punch zoom
+[Scene 2 | 2-8s] Voice: ... | Delivery: normal, fact ke baad ruk | Visual: ...
 CTA: ...
 Sources: ...
 ```

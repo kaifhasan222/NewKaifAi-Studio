@@ -38,7 +38,7 @@ When `/start` is triggered, ask Kaif these 5 key questions:
    - Language: **Roman Hinglish**.
    - Length: 30-60 seconds.
    - Hook in the first 2 seconds (visual + voice).
-   - Natural reactions in scenes (`Aree`, `Achaa`, `Dekho`, `Matlab`, `Bas`).
+   - `Voice:` is spoken Devanagari only. Separate `Delivery:` for pace, emphasis and pause. No filler reactions (`Aree`, `Achaa`, `Dekho`, `Matlab`, `Bas`).
    - Clear call to action (CTA) at the end.
 2. **Review Loop:** Show the complete script to Kaif in chat.
    - Ask: *"Script check karo. Kya koi change chahiye ya approved hai?"*
@@ -54,7 +54,7 @@ When `/start` is triggered, ask Kaif these 5 key questions:
 
 ### Step 5: Captions & Assembly
 1. **Captions:** Run `py -3.12 tools\make_captions.py episodes\epNNN\voice.mp3`. Verify and clean up text into Roman Hinglish while preserving timestamps (`captions.srt`).
-2. **Config:** Fill `episodes/epNNN/episode.json` with clips, voice, music, sfx, captions, and zoom/overlay parameters.
+2. **Config:** Fill `episodes/epNNN/episode.json` with clips, voice, music, sfx, captions, and overlays. Music edit-only: `assets/music/chill-tech-01.mp3` at 0.12. Hook zoom SFX: `assets/sfx/whoosh.mp3` at 0.0, volume 0.4. Do not bake music or SFX into `voice.mp3`.
 3. **Build:** Run `py -3.12 tools\build_video.py episodes\epNNN\episode.json` to generate `output/epNNN.mp4`.
 
 ### Step 6: QA Review

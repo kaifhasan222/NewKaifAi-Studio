@@ -277,9 +277,12 @@ def main():
             write_overlays_ass(cfg["overlays"], w, h, tmp_overlay)
             vf.append(f"subtitles={tmp_overlay.as_posix()}")
         if cfg.get("captions"):
-            vf.append(
-                f"subtitles={Path(cfg['captions']).as_posix()}:force_style='{cfg['caption_style']}'"
-            )
+            cap = Path(cfg["captions"])
+            # .ass apna style laata hai (pill, yellow word). .srt par purana force_style.
+            if cap.suffix.lower() == ".ass":
+                vf.append(f"subtitles={cap.as_posix()}:fontsdir=assets/fonts")
+            else:
+                vf.append(f"subtitles={cap.as_posix()}:force_style='{cfg['caption_style']}'")
         vchain = "[0:v]" + (",".join(vf) if vf else "null") + "[vout]"
 
         # ---- audio graph: voice + ducked music + sfx

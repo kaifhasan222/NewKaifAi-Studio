@@ -7,7 +7,7 @@ Google Flow ke UI/options tumhare account ke hisaab se thode alag ho sakte hain.
 Subject: <kaun/kya, 1 line>
 Action: <kya ho raha hai>
 Setting: <jagah, background>
-Camera: <close-up / medium / slow push-in / handheld / top-down>
+Camera: <hook = fast punch-in zoom; baaki close-up / medium / slow push-in>
 Lighting & mood: <soft daylight / neon cyberpunk / clean studio>
 Style: <realistic / 3D render / flat motion graphic>
 Format: vertical 9:16

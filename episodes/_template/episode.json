@@ -10,8 +10,7 @@
   "voice": "episodes/ep001/voice.mp3",
   "music": {"file": "assets/music/chill-tech-01.mp3", "volume": 0.12},
   "sfx": [
-    {"file": "assets/sfx/whoosh-01.mp3", "at": 3.8, "volume": 0.8},
-    {"file": "assets/sfx/pop-01.mp3", "at": 8.7, "volume": 0.7}
+    {"file": "assets/sfx/whoosh.mp3", "at": 0.0, "volume": 0.4}
   ],
   "captions": "episodes/ep001/captions.srt",
   "overlays": [
