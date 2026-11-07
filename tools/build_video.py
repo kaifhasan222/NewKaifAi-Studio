@@ -8,6 +8,7 @@ Usage (project root se chalao):
 Sab paths episode.json mein project root ke relative hote hain.
 Full clip par optional "zoom": "punch" (hook snap-in) ya "slow" (dheema push-in).
 Har clip par optional "transition": us clip mein aane wala xfade type (jaise "smoothup", "circleopen"); duration global rehti hai.
+Split clip ke "card" mein optional "theme": "clean" (Clean Tech: off-white bar, blue accent, dark title).
 Mac aur Windows dono par chalta hai (sirf ffmpeg + Python chahiye).
 """
 import json
@@ -90,6 +91,10 @@ def render_media_split(clip, idx, w, h, fps, tmp):
     media_h = top_h - bar_h
     title = card["title"]
     title_size = 118 if len(title) <= 8 else 84
+    # "theme": "clean" = Clean Tech bar (off-white, blue accent, dark title). Default = dark + orange.
+    bar_bg, accent, title_color = (
+        ("0xF6F5F1", "0x2563EB", "0x111827") if card.get("theme") == "clean" else ("0x070709", ORANGE, "white")
+    )
 
     def tf(key, text):
         return _textfile(tmp, f"c{idx}_{key}.txt", text)
@@ -101,9 +106,9 @@ def render_media_split(clip, idx, w, h, fps, tmp):
         f"[1:v]scale={w}:{media_h}:force_original_aspect_ratio=increase,"
         f"crop={w}:{media_h},fps={fps},setsar=1,format=yuv420p[mv];"
         "[2:v]format=yuv420p"
-        f",drawbox=x=0:y=0:w={w}:h=10:color={ORANGE}:t=fill"
-        + "," + _drawtext(FONT_DISPLAY, tf("kicker", card["kicker"]), 36, ORANGE, "(w-text_w)/2", 40)
-        + "," + _drawtext(FONT_DISPLAY, tf("title", title), title_size, "white", "(w-text_w)/2", 92)
+        f",drawbox=x=0:y=0:w={w}:h=10:color={accent}:t=fill"
+        + "," + _drawtext(FONT_DISPLAY, tf("kicker", card["kicker"]), 36, accent, "(w-text_w)/2", 40)
+        + "," + _drawtext(FONT_DISPLAY, tf("title", title), title_size, title_color, "(w-text_w)/2", 92)
         + "[bar];[bar][mv]vstack=inputs=2[top];[top][face]vstack=inputs=2,format=yuv420p[v]"
     )
     cmd = _src(clip)
@@ -111,7 +116,7 @@ def render_media_split(clip, idx, w, h, fps, tmp):
     if card.get("media_start"):
         cmd += ["-ss", str(card["media_start"])]
     cmd += ["-t", f"{dur:.3f}", "-i", card["media"]]
-    cmd += ["-f", "lavfi", "-t", f"{dur:.3f}", "-i", f"color=c=0x070709:s={w}x{bar_h}:r={fps}"]
+    cmd += ["-f", "lavfi", "-t", f"{dur:.3f}", "-i", f"color=c={bar_bg}:s={w}x{bar_h}:r={fps}"]
     cmd += ["-filter_complex", graph, "-map", "[v]"]
     return _encode(cmd, out)
 
