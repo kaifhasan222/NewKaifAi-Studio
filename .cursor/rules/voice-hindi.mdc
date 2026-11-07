@@ -6,7 +6,9 @@ alwaysApply: true
 # Voice text
 
 - `Voice:` line hamesha Devanagari Hindi mein likho. Yahi text awaaz banega. Delivery, pause, loud, tez jaise shabd is line mein mat likho.
-- `Delivery:` alag likho. Yeh awaaz mein nahi jaata. Sirf teen baatein: tez / normal / dheema, kis shabd par zor, ruk kahan (comma ya full stop).
+- `Delivery:` alag likho. Yeh awaaz mein nahi jaata. Format: `tez|normal|dheema, josh 1-5, zor "शब्द", ruk <sec>` (optional `sur upar|neeche`). `tools/voice_clone.py` yahi padhta hai. Detail `prompts/voice-delivery.md`.
+- `Action:` alag likho: camera par body language, josh ke hisaab se (josh 5 = jhukna/point, josh 2 = muskaan/nod).
+- Josh poori video mein upar-neeche ho: hook 5, beech 3-4, CTA 2.
 - Reaction filler mat likho: Aree, Achaa, Dekho, Suno, Matlab, Bas. Na voice mein, na caption mein, na overlay mein.
 - Overlay, title, caption Roman Hinglish.
 - Tech words voice mein Devanagari: गिट, गिटहब, कमिट, पुश. Roman spelling voice line mein mat chhodo.

@@ -26,3 +26,4 @@ episodes/*
 *.webm
 *.avi
 *.m4v
+.venv-voice/

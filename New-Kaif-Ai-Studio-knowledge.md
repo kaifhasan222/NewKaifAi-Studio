@@ -43,7 +43,8 @@ Yeh file bharo, Claude har video mein isse follow karega. (TODO = tum bharo)
 ## Voice line (jo awaaz bolegi)
 `Voice:` wahi text hai jo awaaz banegi. Seedha Devanagari. Reaction filler nahi: Aree, Achaa, Dekho, Suno, Matlab, Bas.
 
-- `Delivery:` alag likho. Yeh awaaz mein nahi jaata. Tez / normal / dheema, kis shabd par zor, ruk kahan.
+- `Delivery:` alag likho. Yeh awaaz mein nahi jaata. Format: `tez|normal|dheema, josh 1-5, zor "शब्द", ruk <sec>`. Josh upar-neeche: hook 5, beech 3-4, CTA 2.
+- `Action:` alag likho: camera par body language (josh 5 = jhukna/point, josh 2 = muskaan/nod). Detail `prompts/voice-delivery.md`.
 - Comma chhoti ruk, full stop lambi ruk. Vowel mat kheench.
 - Hook tez, beech normal, CTA dheema. Sample energetic recording ho, music ke bina.
 
@@ -64,8 +65,8 @@ Bolne layak: `ये कोई हैक नहीं है। सिग्न�
 ```
 # epNNN: <title>
 Hook: ...
-[Scene 1 | 0-4s] Voice: ... | Visual: ...
-[Scene 2 | 4-9s] Voice: ... | Visual: ...
+[Scene 1 | 0-4s] Voice: ... | Delivery: tez, josh 5, zor "...", ruk 0.3 | Action: ... | Visual: ...
+[Scene 2 | 4-9s] Voice: ... | Delivery: normal, josh 3, ruk 0.5 | Action: ... | Visual: ...
 CTA: ...
 Sources: ...
 ```
@@ -158,7 +159,7 @@ Flow ke bina bhi video banega: **animation + awaaz + sound design**, bina chehre
 
 ## Awaaz
 - Pehli pasand: **tumhari apni awaaz** (`voice.mp3`), brand consistent rehta hai.
-- Agar roz record nahi kar sakte: free TTS (jaise edge-tts, unofficial hai, kabhi band ho sakta hai) ya koi aur tool. Quality aur terms pehle check karo, aur channel par ek hi voice rakho.
+- Agar roz record nahi kar sakte: apni hi awaaz ka clone, `tools/voice_clone.py` (free, local). Koi aur TTS voice nahi.
 
 ## Sound design (faceless mein aur zaroori)
 - Har scene change par halka whoosh/swipe.

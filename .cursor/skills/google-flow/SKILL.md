@@ -19,10 +19,23 @@ Primary project: `https://flow.google.com/project/1e11e2a3-ffc0-4a2d-ade0-6c54ca
 
 Prompt box mein yeh tags tab likho jab kaam unpar depend kare:
 
-- `@me` — Kaif ki awaaz aur avatar. AI avatar wale har clip mein yeh hamesha likho.
-- `@me_photo` — Kaif ki photo. Us photo se video banani ho to yeh likho.
+- `@me` — Kaif ki awaaz aur avatar.
+- `@me_photo` — Kaif ki photo (`me_photo.jpg`), chehra isi se banta hai.
 
-Dono tags project **me** mein hone chahiye. Missing hon to pehle Flow mein add karo, phir clip generate karo.
+**Jis bhi clip mein Kaif dikhe, dono tags saath likho: `@me @me_photo`.** Sirf ek tag se chehra badal sakta hai.
+
+Dono tags project **me** mein hone chahiye. Missing hon to pehle Flow mein add karo (photo ke liye `brand/photo.jpg` upload karke naam `me_photo`), phir clip generate karo.
+
+## Chehra har clip mein same (consistency)
+
+1. `flow-prompts.md` ke upar ek `CHARACTER:` line likho aur har Kaif wale scene mein **word-for-word** copy karo:
+   `CHARACTER: @me @me_photo, same face as @me_photo, same hairstyle, same outfit: <ek outfit, poore episode ke liye>, looks directly into the camera`
+2. Chehre ko apne shabdon mein describe mat karo (umar, daadhi, baal, rang). Sirf "same face as @me_photo". Naya description chehra badal deta hai.
+3. Ek episode = ek outfit, ek background family, ek `STYLE:` line. Beech mein mat badlo.
+4. Lighting soft aur saamne se, chehra frame ke beech mein, close-up ya medium shot. Side profile, door ka shot, chehra dhaka (haath, mic, cap, chashma) mat maango.
+5. Ek clip mein sirf Kaif. Koi doosra insaan ya bheed nahi.
+6. Generate ke baad har clip ka chehra `me_photo` se milao. Na mile (alag shakal, alag baal, alag kapde) to wahi prompt dobara chalao. Mismatch clip edit mein mat daalo.
+7. Dono accounts (`kaifhasan222`, `newpub222`) ke **me** project mein wahi `me_photo.jpg` aur wahi `Me` avatar ho, taaki account badalne par chehra na badle.
 
 ## Accounts
 

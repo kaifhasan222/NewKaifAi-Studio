@@ -21,7 +21,7 @@ When `/start` is triggered, ask Kaif these 5 key questions:
 1. **Topic:** What topic or reference link? (Or choose `Auto / Trending`).
 2. **Motion Graphics Style:** From `prompts/motion-styles.md` (`Pop Info`, `Creator Motion Graphics`, `Clean Tech`, `Chalk Talk`, `Data Story`, `Software Walkthrough`) or `Auto`.
 3. **Zoom & Animation Vibe:** Punch zoom & fast viral cuts, smooth zoom-in calm explainer, or UI demo.
-4. **Voice / Audio Source:** Record on phone (`episodes/epNNN/voice.mp3`), or use brand/existing voice?
+4. **Voice / Audio Source:** Record on phone with the Delivery card (`episodes/epNNN/voice_raw.mp3`), clone of Kaif's own voice (`tools/voice_clone.py`), or brand/existing voice?
 5. **Visual Mode:** Google Flow clips or Faceless animation (`prompts/faceless-mode.md`).
 
 *Auto-Fallback:* If Kaif says "kuch topic nahi hai", "auto kar do", "tum decide karo", or enters `/start auto`:
@@ -38,7 +38,7 @@ When `/start` is triggered, ask Kaif these 5 key questions:
    - Language: **Roman Hinglish**.
    - Length: 30-60 seconds.
    - Hook in the first 2 seconds (visual + voice).
-   - `Voice:` is spoken Devanagari only. Separate `Delivery:` for pace, emphasis and pause. No filler reactions (`Aree`, `Achaa`, `Dekho`, `Matlab`, `Bas`).
+   - `Voice:` is spoken Devanagari only. Separate `Delivery:` as `tez|normal|dheema, josh 1-5, zor "शब्द", ruk <sec>` and an `Action:` (body language matched to josh), per `prompts/voice-delivery.md`. Josh rises and falls: hook 5, middle 3-4, CTA 2. No filler reactions (`Aree`, `Achaa`, `Dekho`, `Matlab`, `Bas`).
    - Clear call to action (CTA) at the end.
 2. **Review Loop:** Show the complete script to Kaif in chat.
    - Ask: *"Script check karo. Kya koi change chahiye ya approved hai?"*
@@ -46,10 +46,11 @@ When `/start` is triggered, ask Kaif these 5 key questions:
    - When Kaif confirms ("Approved", "OK", "theek hai"), proceed to asset generation.
 
 ### Step 4: Visuals & Audio Assets
-1. **Flow Prompts:** Generate scene-by-scene prompts in `episodes/epNNN/flow-prompts.md` using `prompts/flow-prompt-template.md`.
+1. **Flow Prompts:** Generate scene-by-scene prompts in `episodes/epNNN/flow-prompts.md` using `prompts/flow-prompt-template.md`. Put each scene's `Action:` and josh into the `@me` prompt's Action. Every clip that shows Kaif uses `@me @me_photo` plus the `CHARACTER:` line copied word for word, so the face stays the same; check each clip's face against `me_photo` and regenerate mismatches.
 2. **Visual Clips:** Kaif generates clips in Google Flow (or browser automation) and puts them in `raw-clips/epNNN_01.mp4`, `epNNN_02.mp4`... (Or generate faceless assets if in Faceless mode).
 3. **Voiceover:**
-   - If Kaif records on phone: guide to save as `episodes/epNNN/voice.mp3`.
+   - If Kaif records on phone: show him the Delivery card, save as `episodes/epNNN/voice_raw.mp3`, run `py -3.12 tools\voice_report.py episodes\epNNN\voice_raw.mp3`, ask for re-takes of FIX lines, then `py -3.12 tools\polish_voice.py episodes\epNNN\voice_raw.mp3 episodes\epNNN\voice.mp3 --speed 1.05`.
+   - If Kaif wants the clone: `.venv-voice\Scripts\python tools\voice_clone.py episodes\epNNN\script.md --takes 3`, Kaif listens to `voice_takes\` and picks with `--use scene=take`. Reference is only Kaif's own recording (`brand/voice_ref.wav`), never anyone else's voice.
    - If using existing brand audio: copy from `brand/voice.mp3`.
 
 ### Step 5: Captions & Assembly
