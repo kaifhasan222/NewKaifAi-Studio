@@ -58,9 +58,9 @@ Duration: 8 sec. Avoid: text, logos, extra fingers, distorted face, other people
 ### K6 (Scene 6, 22-28s, split)
 File: `ep001_06.mp4`
 ```
-@me @me_photo, same face as @me_photo, same hairstyle, same outfit: plain black crew-neck t-shirt, looks directly into the camera. photorealistic, warm cozy room, wooden desk, soft warm lamp light from the front, shallow depth of field, gentle film grain, vertical 9:16. Chest-up shot, face in the upper part of the frame. He raises three fingers, then slowly moves an open hand sideways like wiping a window clean.
+@me @me_photo, same face as @me_photo, same hairstyle, same outfit: plain black crew-neck t-shirt, looks directly into the camera. photorealistic, warm cozy room, wooden desk, soft warm lamp light from the front, shallow depth of field, gentle film grain, vertical 9:16. Chest-up shot, face in the upper part of the frame. He raises three fingers, then slowly moves an open hand sideways like wiping a window clean. Nothing on the desk, no microphone.
 Dialogue: @me says "अब हर स्टेप पर वो थोड़ा नॉइज़ हटाता है, और प्रॉम्प्ट के हिसाब से तस्वीर साफ़ होती जाती है।" | Tone: confident, building up
-Duration: 8 sec. Avoid: text, logos, extra fingers, distorted face, other people.
+Duration: 8 sec. Avoid: text, logos, extra fingers, distorted face, other people, microphone.
 ```
 
 ### K7 (Scene 7, 28-31s, split)
@@ -116,7 +116,7 @@ Full-frame colorful random noise, like old analog TV static, flickering dots of 
 ### B6 (Scene 6)
 File: `ep001_b06.mp4`
 ```
-Starts as colorful TV static noise that slowly fades and resolves, step by step, into a hand-painted anime-style illustration with soft watercolor textures: a rainy evening street in a small town, warm shop lights reflecting on wet ground, and a young anime-style girl with short black hair and a yellow raincoat standing in the rain under a red umbrella. The image becomes clearer and sharper over time. Original art style, no text, no logos. Duration: 8 sec.
+Starts as full-frame random colorful TV static noise (no color bars, no test pattern) that slowly fades and resolves, step by step, into a hand-painted anime-style illustration with soft watercolor textures: a rainy evening street in a small town, warm shop lights reflecting on wet ground, and a young anime-style girl with short black hair and a yellow raincoat standing in the rain under a red umbrella. The image becomes clearer and sharper over time. Original art style, no text, no logos. Duration: 8 sec.
 ```
 
 ### B7 (Scene 7)

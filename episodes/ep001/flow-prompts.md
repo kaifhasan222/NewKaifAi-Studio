@@ -38,9 +38,9 @@ Dialogue: @me says "फिर वो शुरू करता है बिल�
 Duration: 8 sec. Avoid: text, logos, extra fingers, distorted face, other people.
 
 K6 (Scene 6, 22-28s, split) -> file: raw-clips/ep001_06.mp4
-CHARACTER + STYLE. Chest-up shot, face in the upper part of the frame. He raises three fingers, then slowly moves an open hand sideways like wiping a window clean.
+CHARACTER + STYLE. Chest-up shot, face in the upper part of the frame. He raises three fingers, then slowly moves an open hand sideways like wiping a window clean. Nothing on the desk, no microphone.
 Dialogue: @me says "अब हर स्टेप पर वो थोड़ा नॉइज़ हटाता है, और प्रॉम्प्ट के हिसाब से तस्वीर साफ़ होती जाती है।" | Tone: confident, building up
-Duration: 8 sec. Avoid: text, logos, extra fingers, distorted face, other people.
+Duration: 8 sec. Avoid: text, logos, extra fingers, distorted face, other people, microphone.
 
 K7 (Scene 7, 28-31s, split) -> file: raw-clips/ep001_07.mp4
 CHARACTER + STYLE. Chest-up shot, face in the upper part of the frame. He snaps his fingers and gives a big smile.
@@ -76,7 +76,7 @@ B5 (Scene 5) -> file: raw-clips/ep001_b05.mp4
 Full-frame colorful random noise, like old analog TV static, flickering dots of many colors, slight scan lines. No text, no logos. Duration: 8 sec.
 
 B6 (Scene 6) -> file: raw-clips/ep001_b06.mp4
-Starts as colorful TV static noise that slowly fades and resolves, step by step, into WORLD: GIRL standing in the rain under her umbrella. The image becomes clearer and sharper over time. No text. Duration: 8 sec.
+Starts as full-frame random colorful TV static noise (no color bars, no test pattern) that slowly fades and resolves, step by step, into WORLD: GIRL standing in the rain under her umbrella. The image becomes clearer and sharper over time. No text. Duration: 8 sec.
 
 B7 (Scene 7) -> file: raw-clips/ep001_b07.mp4
 WORLD. Final clear painting: GIRL stands under her umbrella, rain drops sparkling in warm shop light, slow push-in. Duration: 8 sec.
