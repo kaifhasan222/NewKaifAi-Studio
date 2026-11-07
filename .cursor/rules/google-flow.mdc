@@ -6,7 +6,8 @@ alwaysApply: true
 # Google Flow
 
 - Clips sirf maujood project **me** ke andar banao. Naya Flow project mat kholo. Primary: `https://flow.google.com/project/1e11e2a3-ffc0-4a2d-ade0-6c54ca3c4e21`.
-- Avatar ya awaaz chahiye ho to prompt mein `@me` likho. Photo chahiye ho to `@me_photo` likho. Dono isi project mein milte hain.
+- Avatar ya awaaz ke liye `@me`, chehre ke liye `@me_photo`. Jis clip mein Kaif dikhe, dono saath likho: `@me @me_photo`.
+- Consistency: `flow-prompts.md` ki `CHARACTER:` line har Kaif wale scene mein word-for-word copy. Chehra apne shabdon mein describe mat karo, sirf "same face as @me_photo". Ek episode ek outfit. Generate ke baad chehra `me_photo` se milao, na mile to dobara.
 - `@me` ya `@me_photo` na dikhe to pehle add karo, phir generate karo.
 - Kaif ka chehra aur awaaz sirf is channel par. Kisi aur insaan ke saath mat milao.
 - Login ya password khud mat bharo. Account pehle se login hai.
