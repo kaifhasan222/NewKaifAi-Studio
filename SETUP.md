@@ -30,7 +30,7 @@ Install ke baad PowerShell band karke dobara kholo. Windows par `python3` ki jag
 `node` sirf tab chahiye jab motion graphics ke liye Remotion use karo (optional).
 
 ### Sound tools (video fiki na lage)
-Yeh project ke `requirements.txt` mein nahi hain. Dono machines par alag se lagte hain. Awaaz clone nahi karte. Sound effects aur audio balance ke liye hain.
+Yeh project ke `requirements.txt` mein nahi hain. Dono machines par alag se lagte hain. Awaaz clone nahi karte (clone ke liye neeche "Voice clone"). Sound effects aur audio balance ke liye hain.
 
 | Tool | Kahan | Note |
 |---|---|---|
@@ -40,6 +40,21 @@ Yeh project ke `requirements.txt` mein nahi hain. Dono machines par alag se lagt
 | FFmpeg skill | `~/.claude/skills/ffmpeg-skill` | Local cuts, loudness, captions |
 
 Mac par Homebrew likhne layak na ho to Python 3.12 `uv` se lo: `uv python install 3.12`. Earshot ke sunne wale models (~1.1 GB) pehli baar `earshot doctor --fetch` se aate hain.
+
+### Voice clone (optional, free)
+Kaif ki apni awaaz ka clone, `tools/voice_clone.py` ke liye. Model Chatterbox Multilingual (Resemble AI, MIT licence), Hindi bolta hai. Alag venv `.venv-voice` isi folder mein (git mein nahi), ~6 GB disk (packages + ~3 GB model). Tested Python 3.11.
+
+Mac / Windows dono (`uv` se, Earshot jaisa):
+```
+uv python install 3.11
+uv venv --python 3.11 .venv-voice
+uv pip install --python .venv-voice -r requirements-voice.txt
+```
+Pehli baar `voice_clone.py` chalne par model Hugging Face se download hota hai.
+- Mac M1/M2/M3: GPU (MPS) apne aap use hota hai.
+- Windows NVIDIA GPU: CUDA wala torch chahiye, warna CPU par chalega (1 line mein ~1 min ya zyada).
+- Reference: apni 10-15 sec josh wali saaf recording `brand/voice_ref.wav`. Guide `prompts/voice-delivery.md`.
+- Output mein Resemble ka Perth watermark hota hai (sunai nahi deta).
 
 ## 3. Check
 ```

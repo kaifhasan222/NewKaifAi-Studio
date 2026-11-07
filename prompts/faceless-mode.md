@@ -14,7 +14,7 @@ Flow ke bina bhi video banega: **animation + awaaz + sound design**, bina chehre
 
 ## Awaaz
 - Pehli pasand: **tumhari apni awaaz** (`voice.mp3`), brand consistent rehta hai.
-- Agar roz record nahi kar sakte: free TTS (jaise edge-tts, unofficial hai, kabhi band ho sakta hai) ya koi aur tool. Quality aur terms pehle check karo, aur channel par ek hi voice rakho.
+- Agar roz record nahi kar sakte: apni hi awaaz ka clone, `tools/voice_clone.py` (free, local, `prompts/voice-delivery.md`). Koi aur TTS voice nahi, channel par ek hi awaaz rahe.
 
 ## Sound design (faceless mein aur zaroori)
 - Har scene change par halka whoosh/swipe.

@@ -24,13 +24,24 @@
 ## Delivery (awaaz mein nahi jaata)
 Har scene ke saath `Delivery:` likho. Yeh generator ke liye hai. Text box mein sirf `Voice:` jaata hai.
 
-- Tez / normal / dheema: hook tez, beech normal, CTA dheema.
-- Zor: ek keyword tez aur thoda upar. Poori line chillao mat.
-- Ruk: voice line mein comma chhoti ruk, full stop lambi ruk. "Pause" shabd mat likho.
-- Sample Kaif ki energetic recording ho, 6-10 second, bina music. Shaant padhai wali file hook pe mat do.
+Poora guide (recording tips, clone): `prompts/voice-delivery.md`. `tools/voice_clone.py` yahi shabd padhta hai, isliye inhi shabdon mein likho:
+
+- **Pace:** `tez` / `normal` / `dheema`. Hook tez, beech normal, CTA dheema.
+- **Josh 1-5:** `josh 5` hook, `josh 3-4` beech, `josh 2-3` CTA. Har line ek hi number par mat rakho, upar-neeche hona chahiye.
+- **Zor:** `zor "शब्द"`, ek line mein ek shabd. Woh shabd thoda upar aur lamba. Poori line chillao mat.
+- **Ruk:** `ruk 0.5` = line ke baad 0.5 sec chup. Fact/reveal ke baad 0.4-0.7, hook ke baad 0.3. Voice line ke andar comma chhoti ruk, full stop lambi. "Pause" shabd voice mein mat likho.
+- **Sur (optional):** `upar` sawaal/hairani, `neeche` pakka fact.
+- Clone ke liye reference Kaif ki energetic recording ho, 10-15 second, bina music (`brand/voice_ref.wav`). Shaant padhai wali file mat do.
 
 Flat: `ये कोई हैक नहीं है सिग्नल जाने में समय लगता है`
-Bolne layak: `ये कोई हैक नहीं है। सिग्नल जाने में थोड़ा समय लगता है।` Delivery: pehli line tez, pehla shabd zor. Poori ruk. Doosri line normal.
+Bolne layak: `ये कोई हैक नहीं है।` Delivery: `tez, josh 5, zor "हैक", ruk 0.3`. Phir `सिग्नल जाने में थोड़ा समय लगता है।` Delivery: `normal, josh 3, zor "समय", sur neeche, ruk 0.5`.
+
+## Action (body language, Flow avatar aur recording dono ke liye)
+Har scene ke saath `Action:` likho: Kaif camera par kya kare. Josh ke hisaab se:
+- josh 5: camera ki taraf jhukna, ungli se point, bhaun uthana, tez haath.
+- josh 3-4: haath se ginti (1, 2, 3), "chhota/bada" ka ishara, halka sir hilana.
+- josh 1-2: seedha khade, muskaan, halka nod.
+Ek scene mein ek hi action. Zor wale shabd par action. Flow prompt ke `Action:` mein yahi jaata hai.
 
 ## Hook formulas
 - "Ye AI tool aapka [kaam] 10 minute mein kar dega."
@@ -46,8 +57,8 @@ Bolne layak: `ये कोई हैक नहीं है। सिग्न�
 ```
 # epNNN: <title>
 Hook: ...
-[Scene 1 | 0-2s] Voice: ... | Delivery: tez, pehla shabd zor | Visual: punch zoom
-[Scene 2 | 2-8s] Voice: ... | Delivery: normal, fact ke baad ruk | Visual: ...
+[Scene 1 | 0-2s] Voice: ... | Delivery: tez, josh 5, zor "...", ruk 0.3 | Action: ... | Visual: punch zoom
+[Scene 2 | 2-8s] Voice: ... | Delivery: normal, josh 3, zor "...", ruk 0.5 | Action: ... | Visual: ...
 CTA: ...
 Sources: ...
 ```

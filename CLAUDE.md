@@ -8,7 +8,9 @@ Owner: Kaif. Uses his own photo and own recorded voice (`brand/`). Final approva
 - Naya episode: `episodes/_template/` copy karke `episodes/epNNN/` banao.
 - Script se pehle motion style poochho (`prompts/motion-styles.md`, source [nafay3d.com](https://nafay3d.com)). Kaif "Pop Info" jaise naam bole to wahi look. "Jo achha ho" bole to tum style chuno, naam likho, phir banao. Unka prompt, music, ya voice copy mat karo.
 - Scripts: `prompts/script-style-guide.md` follow karo. Facts ke liye search karo, andaza mat lagao. `Voice:` line seedhi Devanagari ho. `Delivery:` alag (tez, zor, ruk). Reaction filler mat likho (`Aree`, `Achaa`, `Dekho`). Vowel mat kheench.
-- Flow prompts: `prompts/flow-prompt-template.md` ke format mein, har scene alag.
+- Har scene ke `Delivery:` mein `tez|normal|dheema, josh 1-5, zor "शब्द", ruk <sec>` aur alag `Action:` (body language). Josh upar-neeche ho. Detail `prompts/voice-delivery.md`.
+- Awaaz: Kaif ki recording par `tools/voice_report.py`, phir `tools/polish_voice.py`. Clone chahiye to `tools/voice_clone.py` (`.venv-voice` ke python se), reference sirf Kaif ki apni awaaz.
+- Flow prompts: `prompts/flow-prompt-template.md` ke format mein, har scene alag. `@me` scene ke `Action:` mein script ka action aur josh.
 - Edit: `python tools/build_video.py episodes/epNNN/episode.json` (Windows par `python`, Mac par `python3`). Naya edit code mat likho jab tak tool ki kami na ho.
 - Captions: `tools/make_captions.py`, phir text Roman Hinglish mein badlo, timings waise hi rakho.
 - QA: `tools/check_video.py`, contact sheet dekho, dikkat likho (kata hua text, black frames, awaaz/music balance).
@@ -19,6 +21,7 @@ Owner: Kaif. Uses his own photo and own recorded voice (`brand/`). Final approva
 
 ## Mat karo
 - Kaif ki awaaz ya chehra kisi aur ke saath na milao, na kisi aur ka misuse.
+- Kisi aur ki awaaz clone mat karo (reference YouTuber ki bhi nahi). Clone reference sirf Kaif ki recording.
 - Copyrighted music, clips ya logos use mat karo.
 - Flow ya kisi site par login/password khud mat bharo; Kaif khud login karta hai.
 - Bina Kaif ke approve kiye kuch publish/post mat karo.
@@ -34,6 +37,9 @@ Kaif se Hinglish mein, seedhi aur chhoti baat karo. Har episode ke baad: kya ban
 - Git mein nahi: episode folders, raw clips, final videos, koi bhi video file.
 - Git mein theek: code, prompts, `episodes/_template/`, photo, music, sfx.
 - Nayi dependency add ho to `requirements.txt`, `SETUP.md`, `README.md`, `AGENTS.md` aur yeh file update karo.
+
+## Voice clone (local, isi repo mein)
+- Chatterbox Multilingual (Resemble AI, MIT), venv `.venv-voice/` (git mein nahi), packages `requirements-voice.txt`. Model ~3 GB pehli baar Hugging Face se. Setup `SETUP.md` -> Voice clone.
 
 ## Sound tools (local, repo ke bahar)
 - Openverse API (no key), Real SFX `~/.claude/skills/real-sfx`, Earshot `~/tools/earshot`, FFmpeg skill `~/.claude/skills/ffmpeg-skill`. Detail `AGENTS.md` mein.

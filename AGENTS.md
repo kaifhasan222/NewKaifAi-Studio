@@ -9,7 +9,7 @@ Jab bhi Kaif yeh shortcuts likhe, agent ko turant yeh workflow execute karna hai
   1. **Topic:** Kaunsa topic par video banana hai? (Ya reference link/topic). Agar Kaif bole *"kuch topic nahi hai"*, *"auto kar do"*, ya *"tum decide karo"* -> internet se aaj ka trending AI/tech topic khud search karke select karo.
   2. **Motion Graphics Style:** `prompts/motion-styles.md` se (e.g. *Pop Info*, *Creator Motion Graphics*, *Clean Tech*, *Chalk Talk*, *Data Story*, *Software Walkthrough*) ya "Auto-pick".
   3. **Animation / Zoom Vibe:** Punch zoom & fast viral cuts, smooth zoom-in calm explainer, ya screen UI demo.
-  4. **Audio / Voice Source:** Phone se record karoge (`episodes/epNNN/voice.mp3`), ya brand/existing voice?
+  4. **Audio / Voice Source:** Delivery card dekh ke phone se record (`episodes/epNNN/voice_raw.mp3`), apni awaaz ka clone (`tools/voice_clone.py`), ya brand/existing voice?
   5. **Visual Mode:** Google Flow clips ya Faceless animation.
   - Sawaal poochhne ke baad Roman Hinglish script ready karo.
 - **/start auto**: Bina ruke sab kuch auto mode mein chalao: Trending AI news search karo, best motion style & zoom vibe choose karo, script aur prompts draft karke assemble karo.
@@ -23,7 +23,9 @@ Jab bhi Kaif yeh shortcuts likhe, agent ko turant yeh workflow execute karna hai
 - Naya episode: `episodes/_template/` copy karke `episodes/epNNN/` banao.
 - Script se pehle motion style poochho (`prompts/motion-styles.md`, source [nafay3d.com](https://nafay3d.com)). Kaif "Pop Info" jaise naam bole to wahi look. "Jo achha ho" bole to tum style chuno, naam likho, phir banao. Unka prompt, music, ya voice copy mat karo.
 - Scripts: `prompts/script-style-guide.md` follow karo. Facts ke liye search karo, andaza mat lagao. `Voice:` line seedhi Devanagari ho. `Delivery:` alag (tez, zor, ruk). Reaction filler mat likho (`Aree`, `Achaa`, `Dekho`). Vowel mat kheench.
-- Flow prompts: `prompts/flow-prompt-template.md` ke format mein, har scene alag.
+- Har scene ke `Delivery:` mein `tez|normal|dheema, josh 1-5, zor "शब्द", ruk <sec>` aur alag `Action:` (body language). Josh upar-neeche ho. Detail `prompts/voice-delivery.md`.
+- Awaaz: Kaif ki recording par `py -3.12 tools\voice_report.py`, phir `py -3.12 tools\polish_voice.py`. Clone chahiye to `.venv-voice\Scripts\python tools\voice_clone.py`, reference sirf Kaif ki apni awaaz.
+- Flow prompts: `prompts/flow-prompt-template.md` ke format mein, har scene alag. `@me` scene ke `Action:` mein script ka action aur josh.
 - Edit: `py -3.12 tools\build_video.py episodes\epNNN\episode.json` (Kaif ke Windows PC par `py -3.12 tools\...` use karo kyunki `python` purana 3.8 hai; Mac par `python3`). Naya edit code mat likho jab tak tool ki kami na ho.
 - Captions: `tools\make_captions.py`, phir text Roman Hinglish mein badlo, timings waise hi rakho.
 - QA: `tools\check_video.py`, contact sheet dekho, dikkat likho (kata hua text, black frames, awaaz/music balance).
@@ -34,6 +36,7 @@ Jab bhi Kaif yeh shortcuts likhe, agent ko turant yeh workflow execute karna hai
 
 ## Mat karo
 - Kaif ki awaaz ya chehra kisi aur ke saath na milao, na kisi aur ka misuse.
+- Kisi aur ki awaaz clone mat karo (reference YouTuber ki bhi nahi). Clone reference sirf Kaif ki recording.
 - Copyrighted music, clips ya logos use mat karo.
 - Flow ya kisi site par login/password khud mat bharo; Kaif khud login karta hai.
 - Bina Kaif ke approve kiye kuch publish/post mat karo.
@@ -54,7 +57,11 @@ Kaif se Hinglish mein (Roman script), seedhi aur chhoti baat karo. Har episode k
 - Commit author hamesha personal: `kaifhasan222 <kaifhasan222@gmail.com>`. Is repo ka local git author yahi hai. Mac ka global git (`kaif@roopya.com`) mat badlo, aur us email se is repo mein commit mat karo. Push se pehle `gh auth status` mein account `kaifhasan222` hona chahiye.
 - Git mein nahi: episode folders (`episodes/epNNN/`), raw clips, final videos, koi bhi `.mp4` / `.mov` / `.webm`.
 - Git mein theek: code, prompts, `episodes/_template/`, `brand/photo.jpg`, `brand/voice.mp3`, `assets/` ki music aur sfx (mp3), photos.
-- Nayi dependency add ho to `requirements.txt`, `SETUP.md`, `README.md` aur yeh file update karo.
+- Nayi dependency add ho to `requirements.txt` (clone ke liye `requirements-voice.txt`), `SETUP.md`, `README.md`, `CLAUDE.md` aur yeh file update karo.
+- `.venv-voice/` (clone model ka venv) git mein nahi.
+
+## Voice clone (local, isi repo mein)
+- Chatterbox Multilingual (Resemble AI, MIT licence), Hindi. Venv `.venv-voice\`, packages `requirements-voice.txt`. Model ~3 GB pehli baar Hugging Face se. Setup `SETUP.md` -> Voice clone. GPU na ho to CPU par chalega, dheere.
 
 ## Sound tools (local, repo ke bahar)
 Video fiki lage to yeh tools use karo. Yeh awaaz badalte nahi. Cuts par sound effects lagate hain.
