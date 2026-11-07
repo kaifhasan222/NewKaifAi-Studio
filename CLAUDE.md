@@ -14,6 +14,7 @@ Owner: Kaif. Uses his own photo and own recorded voice (`brand/`). Final approva
 - Edit: `python tools/build_video.py episodes/epNNN/episode.json` (Windows par `python`, Mac par `python3`). Naya edit code mat likho jab tak tool ki kami na ho.
 - Captions: `tools/make_captions.py`, phir text Roman Hinglish mein badlo, timings waise hi rakho.
 - QA: `tools/check_video.py`, contact sheet dekho, dikkat likho (kata hua text, black frames, awaaz/music balance).
+- Thumbnail: `prompts/thumbnail-guide.md`, `tools/make_thumbnail.py episodes/epNNN/thumb.json` se 3 options (A/B/C), Kaif chunta hai.
 - Har episode ke saath `publish.md` banao (title options, description, tags, hashtags, Instagram caption) `prompts/publishing-guide.md` ke hisaab se, keywords web search se.
 - Flow clips sirf project **me** mein. Awaaz ke liye `@me`, avatar (chehra) ke liye `@me_photo`; Kaif wale har clip mein dono saath, aur `flow-prompts.md` ki `CHARACTER:` line word-for-word taaki chehra har clip mein same rahe. Generate ke baad chehra `me_photo` se milao, na mile to dobara. Credit khatam ho to `newpub222@gmail.com` par switch karke wahi **me** project. Dono accounts khatam hon tab `prompts/faceless-mode.md`. Detail `.cursor/skills/google-flow/SKILL.md`. Login/password mat bharo.
 - Agar Kaif topic + reference video de: `prompts/reference-style-workflow.md` follow karo. Style-card banao, Kaif se confirm karo, phir original video banao. Reference ka script/footage/music/voice kabhi copy mat karo.

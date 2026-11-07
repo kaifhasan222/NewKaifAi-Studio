@@ -1,0 +1,81 @@
+{
+  "episode": "epNNN",
+  "options": {
+    "A": {
+      "layout": "face",
+      "face": {
+        "file": "episodes/epNNN/raw-clips/epNNN_01.mp4",
+        "t": 2.25,
+        "zoom": 1.08,
+        "y": -0.03
+      },
+      "text_y": 1010,
+      "lines": [
+        {
+          "text": "EK LINE =",
+          "color": "white",
+          "size": 200
+        },
+        {
+          "text": "POORI DUNIYA?",
+          "color": "yellow",
+          "size": 190
+        }
+      ]
+    },
+    "B": {
+      "layout": "before_after",
+      "before": {
+        "file": "episodes/epNNN/raw-clips/epNNN_b06.mp4",
+        "t": 0.3
+      },
+      "after": {
+        "file": "episodes/epNNN/raw-clips/epNNN_b06.mp4",
+        "t": 6.5
+      },
+      "face": {
+        "file": "episodes/epNNN/raw-clips/epNNN_07.mp4",
+        "t": 2.25,
+        "y": -0.17
+      },
+      "lines": [
+        {
+          "text": "NOISE SE",
+          "color": "white",
+          "size": 190
+        },
+        {
+          "text": "TASVEER",
+          "color": "yellow",
+          "size": 210
+        }
+      ],
+      "top_h": 700
+    },
+    "C": {
+      "layout": "split",
+      "media": {
+        "file": "episodes/epNNN/motion/mg_seeds.mp4",
+        "t": 4.0
+      },
+      "face": {
+        "file": "episodes/epNNN/raw-clips/epNNN_01.mp4",
+        "t": 1.25,
+        "y": -0.125
+      },
+      "lines": [
+        {
+          "text": "SAME PROMPT",
+          "color": "white",
+          "size": 170
+        },
+        {
+          "text": "ALAG TASVEER?",
+          "color": "yellow",
+          "size": 180
+        }
+      ],
+      "top_h": 700
+    }
+  }
+}

@@ -44,6 +44,7 @@ Script se pehle Kaif se poochho: kaunsa style. List [nafay3d.com](https://nafay3
 | 6 | Music & SFX Config | AI | `assets/` | `episodes/epNNN/episode.json` |
 | 7 | Video Assembly | AI | `py -3.12 tools\build_video.py` | `output/epNNN.mp4` |
 | 8 | QA & Preview Check | AI + Kaif | `tools\check_video.py` | Contact sheet + report |
+| 8.5 | Thumbnail A/B/C | AI + Kaif chunta hai | `tools/make_thumbnail.py`, `prompts/thumbnail-guide.md` | `output/epNNN_thumb_A/B/C.jpg` |
 | 9 | Publishing Pack (`/content`) | AI | `prompts/publishing-guide.md` | `episodes/epNNN/publish.md` |
 | 10 | Final Approval & Post | Kaif | YouTube Shorts / Reels | Live |
 

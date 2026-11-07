@@ -70,6 +70,10 @@ keyword 1, keyword 2, ..., new kaif ai
 
 ---
 
+## Thumbnail
+- Options: `output/epNNN_thumb_A.jpg`, `_B.jpg`, `_C.jpg` (preview `output/epNNN_thumbs_preview.jpg`)
+- Chuna hua: __
+
 ## Upload checklist
 - [ ] Title mein `#Shorts`, video 9:16
 - [ ] Description ki pehli line mein main keyword
