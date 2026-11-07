@@ -290,12 +290,15 @@ def main():
         achain, mix = [], []
         idx = 1
         fmt = "aformat=sample_rates=44100:channel_layouts=stereo"
+        music = cfg.get("music")
         if voice:
             inputs += ["-i", voice]
-            achain.append(f"[{idx}:a]{fmt},apad,asplit=2[vo][vsc]")  # apad: tail mein music chalta rahe
+            if music:  # [vsc] sirf music ducking ke liye; bina music ke split ka output khaali reh jaata
+                achain.append(f"[{idx}:a]{fmt},apad,asplit=2[vo][vsc]")  # apad: tail mein music chalta rahe
+            else:
+                achain.append(f"[{idx}:a]{fmt},apad[vo]")
             mix.append("[vo]")
             idx += 1
-        music = cfg.get("music")
         if music:
             inputs += ["-stream_loop", "-1", "-i", music["file"]]
             mv = music.get("volume", cfg["music_volume"])

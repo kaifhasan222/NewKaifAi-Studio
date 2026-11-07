@@ -256,7 +256,7 @@ Sirf cuts ki ginti pe bharosa mat karo: crossfade/dissolve cuts ke roop mein det
 ## Rules
 - **Hook pehle 2 second mein.** Overlay text + voice dono.
 - Flow clips chhote rakho (3-6 sec ke scenes), edit mein jodte hain.
-- Flow ka apna audio ho to use mute karte hain; voice aur music hum controlled mix karte hain.
+- Flow ki `@me` awaaz rakhni ho to `tools/flow_voice.py` clips se `voice.mp3` banata hai (lip-sync same); warna Flow audio mute. Voice aur music hum controlled mix karte hain.
 - Music voice ke neeche (volume ~0.12, auto-ducking). SFX sirf transitions/emphasis par.
 - Final loudness about -16 LUFS.
 - **Tum hamesha final video dekhte ho.** Claude frames se check karta hai, par insaani nazar zaroori hai.

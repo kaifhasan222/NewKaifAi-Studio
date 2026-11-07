@@ -46,11 +46,12 @@ When `/start` is triggered, ask Kaif these 5 key questions:
    - When Kaif confirms ("Approved", "OK", "theek hai"), proceed to asset generation.
 
 ### Step 4: Visuals & Audio Assets
-1. **Flow Prompts:** Generate scene-by-scene prompts in `episodes/epNNN/flow-prompts.md` using `prompts/flow-prompt-template.md`. Put each scene's `Action:` and josh into the `@me` prompt's Action. Every clip that shows Kaif uses `@me @me_photo` plus the `CHARACTER:` line copied word for word, so the face stays the same; check each clip's face against `me_photo` and regenerate mismatches.
+1. **Flow Prompts:** Generate scene-by-scene prompts in `episodes/epNNN/flow-prompts.md` using `prompts/flow-prompt-template.md`. Put each scene's `Action:` and josh into the `@me` prompt's Action. `@me` is Kaif's voice, `@me_photo` is his avatar (face). Every clip that shows Kaif uses `@me @me_photo` plus the `CHARACTER:` line copied word for word, so the face stays the same; check each clip's face against `me_photo` and regenerate mismatches.
 2. **Visual Clips:** Kaif generates clips in Google Flow (or browser automation) and puts them in `raw-clips/epNNN_01.mp4`, `epNNN_02.mp4`... (Or generate faceless assets if in Faceless mode).
 3. **Voiceover:**
    - If Kaif records on phone: show him the Delivery card, save as `episodes/epNNN/voice_raw.mp3`, run `py -3.12 tools\voice_report.py episodes\epNNN\voice_raw.mp3`, ask for re-takes of FIX lines, then `py -3.12 tools\polish_voice.py episodes\epNNN\voice_raw.mp3 episodes\epNNN\voice.mp3 --speed 1.05`.
    - If Kaif wants the clone: `.venv-voice\Scripts\python tools\voice_clone.py episodes\epNNN\script.md --takes 3`, Kaif listens to `voice_takes\` and picks with `--use scene=take`. Reference is only Kaif's own recording (`brand/voice_ref.wav`), never anyone else's voice.
+   - If Kaif wants the Flow `@me` voice: put `Dialogue: @me says "<Voice line>" | Tone: ...` in each Flow prompt, then `py -3.12 tools\flow_voice.py episodes\epNNN\episode.json` builds `voice.mp3` from the clips (lip-sync stays; no --speed or gap cutting).
    - If using existing brand audio: copy from `brand/voice.mp3`.
 
 ### Step 5: Captions & Assembly

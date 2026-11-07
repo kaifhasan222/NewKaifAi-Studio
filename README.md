@@ -21,13 +21,13 @@ Cost: sirf Claude Pro. Baaki sab free tools (ffmpeg, Whisper, free music/sfx lib
 | `raw-clips/` | Flow clips. Git mein nahi |
 | `assets/` | Music, sfx, photos. Video files git mein nahi |
 | `templates/` | Episode JSON example, motion graphics notes |
-| `tools/` | `build_video.py`, `make_captions.py`, `check_video.py`, `analyze_reference.py`, `download_meme_sfx.py`, `setup_check.py`, `voice_report.py`, `polish_voice.py`, `voice_clone.py` |
+| `tools/` | `build_video.py`, `make_captions.py`, `check_video.py`, `analyze_reference.py`, `download_meme_sfx.py`, `setup_check.py`, `voice_report.py`, `polish_voice.py`, `voice_clone.py`, `flow_voice.py` |
 | `output/` | Final videos |
 | `CLAUDE.md` | Claude ke liye standing instructions (Cowork / Claude Code padhta hai) |
 | `.claude/skills/daily-short/` | Ek-command daily workflow skill |
 
 ## Awaaz (professional sound)
-Script mein har line ka `Delivery:` (pace, josh 1-5, zor, ruk) aur `Action:` (body language). Recording ke baad `voice_report.py` (kitni flat hai) aur `polish_voice.py` (saaf, clipping khatam, -16 LUFS). Clone awaaz: `voice_clone.py` (Chatterbox Multilingual, MIT, free, local), apna alag venv `.venv-voice` (`requirements-voice.txt`). Guide: `prompts/voice-delivery.md`.
+Script mein har line ka `Delivery:` (pace, josh 1-5, zor, ruk) aur `Action:` (body language). Recording ke baad `voice_report.py` (kitni flat hai) aur `polish_voice.py` (saaf, clipping khatam, -16 LUFS). Flow ki `@me` awaaz: `flow_voice.py` (clips se, lip-sync same). Clone awaaz: `voice_clone.py` (Chatterbox Multilingual, MIT, free, local), apna alag venv `.venv-voice` (`requirements-voice.txt`). Guide: `prompts/voice-delivery.md`.
 
 ## Abhi kya tested hai
 `build_video.py`, `check_video.py` aur `analyze_reference.py` dummy video par test hue hain (9:16 crop, crossfade, voice + ducked music + sfx, captions, title overlay, loudness). `make_captions.py` (Whisper) aur Flow browser automation tumhare computer par pehli baar chalenge: pehle episode mein dekhna.
