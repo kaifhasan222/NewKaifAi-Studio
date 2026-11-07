@@ -4,6 +4,9 @@ Har video ke liye Claude `episodes/epNNN/publish.md` banata hai (template: `epis
 Channel name: **NEW KAIF AI** (YouTube), Instagram handle **@kaifhasan222**. Har description/caption ke CTA mein yahi naam.
 Sample (achha bana hua): `episodes/ep001/publish.md`. Episode folder git mein nahi jata, isliye pattern neeche likha hai.
 
+## Skill
+`.claude/skills/youtube-seo-optimizer` (Mode E Shorts) se package banao, phir is guide ke rules lagao.
+
 ## Keyword research (har video se pehle)
 - Claude web search karke dekhta hai: abhi us topic par kya trend kar raha hai, log kya search karte hain (YouTube/Google suggestions, Trends), competitors ke titles.
 - **Hinglish + English dono** keywords: jaise "AI tools Hindi mein" aur "free AI tools". Indian audience dono tarah search karti hai.
@@ -29,7 +32,7 @@ Sample (achha bana hua): `episodes/ep001/publish.md`. Episode folder git mein na
 - **Pinned comment:** ek sawaal jo comments laye, options ke saath (jaise "20ms 🟢 | 60ms 🟡 | 100ms+ 🔴").
 
 ## Instagram Reels
-- **On-screen cover text:** 3-5 shabd + 1 emoji.
+- **On-screen cover text:** 3-5 shabd + 1 emoji. Cover image: `prompts/thumbnail-guide.md`.
 - **Caption:** code block mein. Pehli line hook (keyword ke saath) + emoji, 3-4 emoji points, ek punch line, phir CTA: comment 💬, save/share 📌, "🔔 Follow @kaifhasan222".
 - **Hashtags:** 8-10, alag code block: 2 broad (#tech #gaming), 4-5 niche (#bgmiindia #techinhindi), 1 brand (#newkaifai).
 - Caption mein hi keywords likho (search/discovery ke liye).
