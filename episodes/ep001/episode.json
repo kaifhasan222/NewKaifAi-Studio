@@ -1,0 +1,150 @@
+{
+  "output": "output/ep001.mp4",
+  "size": "1080x1920",
+  "transition": {
+    "type": "fade",
+    "duration": 0.25
+  },
+  "clips": [
+    {
+      "file": "raw-clips/ep001_01.mp4",
+      "duration": 3.25
+    },
+    {
+      "file": "raw-clips/ep001_02.mp4",
+      "duration": 5.25,
+      "layout": "split",
+      "card": {
+        "kicker": "PROMPT",
+        "title": "Baarish + chhatri",
+        "media": "raw-clips/ep001_b02.mp4"
+      }
+    },
+    {
+      "file": "raw-clips/ep001_03.mp4",
+      "duration": 3.25
+    },
+    {
+      "file": "raw-clips/ep001_04.mp4",
+      "duration": 6.25,
+      "layout": "split",
+      "card": {
+        "kicker": "STEP 1",
+        "title": "Prompt -> numbers",
+        "media": "raw-clips/ep001_b04.mp4"
+      }
+    },
+    {
+      "file": "raw-clips/ep001_05.mp4",
+      "duration": 5.25,
+      "layout": "split",
+      "card": {
+        "kicker": "STEP 2",
+        "title": "Random noise",
+        "media": "raw-clips/ep001_b05.mp4"
+      }
+    },
+    {
+      "file": "raw-clips/ep001_06.mp4",
+      "duration": 6.25,
+      "layout": "split",
+      "card": {
+        "kicker": "STEP 3",
+        "title": "Step by step saaf",
+        "media": "raw-clips/ep001_b06.mp4"
+      }
+    },
+    {
+      "file": "raw-clips/ep001_07.mp4",
+      "duration": 3.25,
+      "layout": "split",
+      "card": {
+        "kicker": "RESULT",
+        "title": "READY!",
+        "media": "raw-clips/ep001_b07.mp4"
+      }
+    },
+    {
+      "file": "raw-clips/ep001_08.mp4",
+      "duration": 6.25
+    },
+    {
+      "file": "raw-clips/ep001_09.mp4",
+      "duration": 6.25,
+      "layout": "split",
+      "card": {
+        "kicker": "VIDEO",
+        "title": "Bahut saare frames",
+        "media": "raw-clips/ep001_b09.mp4"
+      }
+    },
+    {
+      "file": "raw-clips/ep001_10.mp4",
+      "duration": 4.0
+    }
+  ],
+  "voice": "episodes/ep001/voice.mp3",
+  "music": {
+    "file": "assets/music/chill-tech-01.mp3",
+    "volume": 0.12
+  },
+  "sfx": [
+    {
+      "file": "assets/sfx/whoosh.mp3",
+      "at": 0.0,
+      "volume": 0.4
+    },
+    {
+      "file": "assets/sfx/pop-01.mp3",
+      "at": 11.0,
+      "volume": 0.5
+    },
+    {
+      "file": "assets/sfx/pop-01.mp3",
+      "at": 17.0,
+      "volume": 0.5
+    },
+    {
+      "file": "assets/sfx/pop-01.mp3",
+      "at": 22.0,
+      "volume": 0.5
+    },
+    {
+      "file": "assets/sfx/riser-01.mp3",
+      "at": 26.0,
+      "volume": 0.4
+    },
+    {
+      "file": "assets/sfx/hit-01.mp3",
+      "at": 28.0,
+      "volume": 0.5
+    }
+  ],
+  "captions": "episodes/ep001/captions.srt",
+  "overlays": [
+    {
+      "text": "EK LINE = POORI DUNIYA",
+      "start": 0.0,
+      "end": 2.8,
+      "position": "top"
+    },
+    {
+      "text": "KAISE?",
+      "start": 8.2,
+      "end": 10.8,
+      "position": "top"
+    },
+    {
+      "text": "Same prompt, alag tasveer",
+      "start": 31.2,
+      "end": 36.8,
+      "position": "top"
+    },
+    {
+      "text": "Follow New Kaif AI",
+      "start": 43.0,
+      "end": 47.0,
+      "position": "top"
+    }
+  ]
+}
