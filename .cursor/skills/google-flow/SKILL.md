@@ -19,8 +19,8 @@ Primary project: `https://flow.google.com/project/1e11e2a3-ffc0-4a2d-ade0-6c54ca
 
 Prompt box mein yeh tags tab likho jab kaam unpar depend kare:
 
-- `@me` — Kaif ki awaaz aur avatar.
-- `@me_photo` — Kaif ki photo (`me_photo.jpg`), chehra isi se banta hai.
+- `@me` — Kaif ki **awaaz**. Clip mein Kaif bole to yeh tag.
+- `@me_photo` — Kaif ka **avatar** (`me_photo.jpg`), chehra isi se banta hai.
 
 **Jis bhi clip mein Kaif dikhe, dono tags saath likho: `@me @me_photo`.** Sirf ek tag se chehra badal sakta hai.
 
@@ -45,6 +45,18 @@ Dono tags project **me** mein hone chahiye. Missing hon to pehle Flow mein add k
 
 ## Clip
 
-- Video, vertical 9:16. Flow audio baad mein mute hota hai.
+- Video, vertical 9:16.
 - Generated text aur brand logos mat maango. On-screen lines edit mein overlay hain.
 - Save: `raw-clips/epNNN_01.mp4`, phir `02`, `03`, usi order mein.
+
+## Awaaz @me se (Flow wali Kaif ki awaaz)
+
+Kaif ki awaaz `@me` mein hai. Clip mein Kaif khud bole aur wahi awaaz final video mein rahe:
+1. Prompt mein bolne wali line do, script ki `Voice:` line (Devanagari) waise hi:
+   `Dialogue: @me says "<Voice line>" | Tone: <josh ke hisaab se: energetic and fast / confident / calm and warm>`
+2. Ek clip = ek line, 3-6 sec. Line lambi ho to do clip.
+3. Download ke baad: `python tools/flow_voice.py episodes/epNNN/episode.json`. Har clip ki awaaz unhi trim aur transition ke saath judti hai, lip-sync nahi tootta. Output `voice.mp3`.
+4. `python tools/voice_report.py episodes/epNNN/voice.mp3` se check. Galat shabd ya flat line ho to wahi clip dobara.
+5. Is awaaz par `polish_voice.py --speed` ya khamoshi katna mat chalao, lip-sync toot jayega.
+
+Flow ki awaaz na rakhni ho to clip ka audio mute rehta hai aur `voice.mp3` Kaif ki recording ya clone se aata hai (`prompts/voice-delivery.md`).

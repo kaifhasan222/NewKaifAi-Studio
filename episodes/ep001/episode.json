@@ -1,0 +1,378 @@
+{
+  "output": "output/ep001.mp4",
+  "size": "1080x1920",
+  "transition": {
+    "type": "fade",
+    "duration": 0.25
+  },
+  "clips": [
+    {
+      "file": "episodes/ep001/raw-clips/ep001_01.mp4",
+      "duration": 5.6,
+      "start": 0,
+      "zoom": "punch"
+    },
+    {
+      "file": "episodes/ep001/raw-clips/ep001_02.mp4",
+      "duration": 6.85,
+      "layout": "split",
+      "card": {
+        "kicker": "PROMPT",
+        "title": "Baarish + chhatri",
+        "media": "episodes/ep001/raw-clips/ep001_b02.mp4"
+      },
+      "start": 0,
+      "transition": "smoothup"
+    },
+    {
+      "file": "episodes/ep001/raw-clips/ep001_03.mp4",
+      "duration": 2.7,
+      "start": 2.9,
+      "zoom": "slow",
+      "transition": "circleopen"
+    },
+    {
+      "file": "episodes/ep001/raw-clips/ep001_04.mp4",
+      "duration": 5.5,
+      "layout": "split",
+      "card": {
+        "kicker": "STEP 1",
+        "title": "Prompt -> numbers",
+        "media": "episodes/ep001/motion/mg_tokens.mp4"
+      },
+      "start": 1.0,
+      "transition": "smoothleft"
+    },
+    {
+      "file": "episodes/ep001/raw-clips/ep001_05.mp4",
+      "duration": 5.25,
+      "layout": "split",
+      "card": {
+        "kicker": "STEP 2",
+        "title": "Random noise",
+        "media": "episodes/ep001/raw-clips/ep001_b05.mp4"
+      },
+      "start": 0.75,
+      "transition": "pixelize"
+    },
+    {
+      "file": "episodes/ep001/raw-clips/ep001_06.mp4",
+      "duration": 6.35,
+      "layout": "split",
+      "card": {
+        "kicker": "STEP 3",
+        "title": "Step by step saaf",
+        "media": "episodes/ep001/raw-clips/ep001_b06.mp4"
+      },
+      "start": 0.9,
+      "transition": "dissolve"
+    },
+    {
+      "file": "episodes/ep001/raw-clips/ep001_07.mp4",
+      "duration": 7.3,
+      "layout": "split",
+      "card": {
+        "kicker": "RESULT",
+        "title": "READY!",
+        "media": "episodes/ep001/raw-clips/ep001_b07.mp4"
+      },
+      "start": 0.45,
+      "transition": "radial"
+    },
+    {
+      "file": "episodes/ep001/raw-clips/ep001_08.mp4",
+      "duration": 7.15,
+      "start": 0,
+      "layout": "split",
+      "card": {
+        "kicker": "SAME PROMPT",
+        "title": "Alag tasveer",
+        "media": "episodes/ep001/motion/mg_seeds.mp4"
+      },
+      "transition": "smoothleft"
+    },
+    {
+      "file": "episodes/ep001/raw-clips/ep001_09.mp4",
+      "duration": 6.85,
+      "layout": "split",
+      "card": {
+        "kicker": "VIDEO",
+        "title": "Bahut saare frames",
+        "media": "episodes/ep001/motion/mg_frames.mp4"
+      },
+      "start": 0.85,
+      "transition": "smoothup"
+    },
+    {
+      "file": "episodes/ep001/raw-clips/ep001_10.mp4",
+      "duration": 4.8,
+      "start": 1.1,
+      "zoom": "slow",
+      "transition": "zoomin"
+    }
+  ],
+  "voice": "episodes/ep001/voice.mp3",
+  "music": {
+    "file": "assets/music/lofi-upbeat-raspberrymusic.mp3",
+    "volume": 0.1
+  },
+  "sfx": [
+    {
+      "file": "assets/sfx/whoosh.mp3",
+      "at": 0.0,
+      "volume": 0.4
+    },
+    {
+      "file": "assets/sfx/ui/swipe.ogg",
+      "at": 5.3,
+      "volume": 0.3
+    },
+    {
+      "file": "assets/sfx/whoosh-01.mp3",
+      "at": 11.9,
+      "volume": 0.3
+    },
+    {
+      "file": "assets/sfx/ui/swipe.ogg",
+      "at": 14.35,
+      "volume": 0.3
+    },
+    {
+      "file": "assets/sfx/whoosh-01.mp3",
+      "at": 19.6,
+      "volume": 0.3
+    },
+    {
+      "file": "assets/sfx/whoosh-01.mp3",
+      "at": 24.6,
+      "volume": 0.3
+    },
+    {
+      "file": "assets/sfx/whoosh-01.mp3",
+      "at": 30.7,
+      "volume": 0.3
+    },
+    {
+      "file": "assets/sfx/ui/swipe.ogg",
+      "at": 37.75,
+      "volume": 0.3
+    },
+    {
+      "file": "assets/sfx/ui/swipe.ogg",
+      "at": 44.65,
+      "volume": 0.3
+    },
+    {
+      "file": "assets/sfx/whoosh-01.mp3",
+      "at": 51.25,
+      "volume": 0.3
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 15.15,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 15.24,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 15.33,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 15.42,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 15.51,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 15.6,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 15.69,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 15.78,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 15.87,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 15.96,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 16.05,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 16.14,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 16.23,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 16.32,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 16.41,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 16.5,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/typing.ogg",
+      "at": 16.59,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/select.mp3",
+      "at": 17.3,
+      "volume": 0.4
+    },
+    {
+      "file": "assets/sfx/ui/select.mp3",
+      "at": 17.46,
+      "volume": 0.4
+    },
+    {
+      "file": "assets/sfx/ui/select.mp3",
+      "at": 17.62,
+      "volume": 0.4
+    },
+    {
+      "file": "assets/sfx/ui/select.mp3",
+      "at": 17.78,
+      "volume": 0.4
+    },
+    {
+      "file": "assets/sfx/ui/select.mp3",
+      "at": 17.94,
+      "volume": 0.4
+    },
+    {
+      "file": "assets/sfx/ui/select.mp3",
+      "at": 18.1,
+      "volume": 0.4
+    },
+    {
+      "file": "assets/sfx/ui/select.mp3",
+      "at": 18.26,
+      "volume": 0.4
+    },
+    {
+      "file": "assets/sfx/ui/select.mp3",
+      "at": 18.42,
+      "volume": 0.4
+    },
+    {
+      "file": "assets/sfx/riser-01.mp3",
+      "at": 29.45,
+      "volume": 0.35
+    },
+    {
+      "file": "assets/sfx/hit-01.mp3",
+      "at": 30.75,
+      "volume": 0.5
+    },
+    {
+      "file": "assets/sfx/faaah.mp3",
+      "at": 36.35,
+      "volume": 0.8
+    },
+    {
+      "file": "assets/sfx/ui/swipe.ogg",
+      "at": 38.5,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/swipe.ogg",
+      "at": 39.1,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/swipe.ogg",
+      "at": 39.7,
+      "volume": 0.45
+    },
+    {
+      "file": "assets/sfx/ui/snap.mp3",
+      "at": 45.1,
+      "volume": 0.35
+    },
+    {
+      "file": "assets/sfx/ui/snap.mp3",
+      "at": 45.28,
+      "volume": 0.35
+    },
+    {
+      "file": "assets/sfx/ui/snap.mp3",
+      "at": 45.46,
+      "volume": 0.35
+    },
+    {
+      "file": "assets/sfx/ui/snap.mp3",
+      "at": 45.64,
+      "volume": 0.35
+    },
+    {
+      "file": "assets/sfx/ui/snap.mp3",
+      "at": 45.82,
+      "volume": 0.35
+    },
+    {
+      "file": "assets/sfx/ui/success.mp3",
+      "at": 51.9,
+      "volume": 0.3
+    }
+  ],
+  "captions": "episodes/ep001/captions.ass",
+  "overlays": [
+    {
+      "text": "EK LINE = POORI DUNIYA",
+      "start": 0.0,
+      "end": 2.8,
+      "position": "top"
+    },
+    {
+      "text": "KAISE?",
+      "start": 12.149999999999999,
+      "end": 14.3,
+      "position": "top"
+    },
+    {
+      "text": "Follow New Kaif AI",
+      "start": 51.8,
+      "end": 56.1,
+      "position": "top"
+    }
+  ],
+  "loudness": "I=-18:TP=-1.5:LRA=11"
+}

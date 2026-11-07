@@ -12,12 +12,13 @@ Lighting & mood: <soft daylight / neon cyberpunk / clean studio>
 Style: <realistic / 3D render / flat motion graphic>
 Format: vertical 9:16
 Duration: <3-6 sec>
+Dialogue: <optional: @me says "<Voice line>" | Tone: ...>
 Avoid: text/logos/watermarks in video, extra fingers, distorted faces
 ```
 
 ## Kahan banao
 - Sirf Google Flow project **me** ke andar. Naya project nahi.
-- Avatar ya awaaz ke liye `@me`, chehre ke liye `@me_photo`. Kaif wale har scene mein dono saath: `@me @me_photo`. Dono usi project mein add hon.
+- Awaaz ke liye `@me`, avatar (chehra) ke liye `@me_photo`. Kaif wale har scene mein dono saath: `@me @me_photo`. Dono usi project mein add hon.
 - Credit khatam ho to `newpub222@gmail.com` par switch karke wahi **me** project. Detail `.cursor/skills/google-flow/SKILL.md`.
 
 ## Body language (Kaif professional YouTuber jaisa dikhe)
@@ -30,7 +31,13 @@ Script ki `Action:` line aur `josh` se Flow ka `Action:` English mein likho:
 
 - Ek scene mein ek hi action. Haath frame ke andar rahein (extra fingers se bachne ke liye haath simple rakho).
 - Hamesha "looks directly into the camera" likho, YouTuber wali eye contact.
-- Flow ka audio mute hota hai, awaaz `voice.mp3` se aati hai. Isliye action utna hi lamba ho jitni line (3-6 sec).
+- Action utna hi lamba ho jitni line (3-6 sec).
+
+## Awaaz @me se
+Kaif clip mein khud bole aur wahi awaaz rakhni ho to prompt mein:
+`Dialogue: @me says "<script ki Voice line, Devanagari>" | Tone: <josh 5: energetic and fast / josh 3-4: confident / josh 1-2: calm and warm>`
+Ek clip = ek line. Download ke baad `python tools/flow_voice.py episodes/epNNN/episode.json` (lip-sync same). Detail `.cursor/skills/google-flow/SKILL.md`.
+Flow awaaz na rakhni ho to `Dialogue` mat likho, audio mute, awaaz `voice.mp3` (recording/clone).
 
 ## Consistency ke liye
 - Ek `STYLE:` line har scene mein copy-paste karo (same look).

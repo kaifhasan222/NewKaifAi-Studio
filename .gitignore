@@ -27,3 +27,6 @@ episodes/*
 *.avi
 *.m4v
 .venv-voice/
+
+# Secrets (API keys)
+.env

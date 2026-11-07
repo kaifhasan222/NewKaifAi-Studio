@@ -6,11 +6,12 @@ alwaysApply: true
 # Google Flow
 
 - Clips sirf maujood project **me** ke andar banao. Naya Flow project mat kholo. Primary: `https://flow.google.com/project/1e11e2a3-ffc0-4a2d-ade0-6c54ca3c4e21`.
-- Avatar ya awaaz ke liye `@me`, chehre ke liye `@me_photo`. Jis clip mein Kaif dikhe, dono saath likho: `@me @me_photo`.
+- Awaaz ke liye `@me`, avatar (chehra) ke liye `@me_photo`. Jis clip mein Kaif dikhe, dono saath likho: `@me @me_photo`.
 - Consistency: `flow-prompts.md` ki `CHARACTER:` line har Kaif wale scene mein word-for-word copy. Chehra apne shabdon mein describe mat karo, sirf "same face as @me_photo". Ek episode ek outfit. Generate ke baad chehra `me_photo` se milao, na mile to dobara.
 - `@me` ya `@me_photo` na dikhe to pehle add karo, phir generate karo.
 - Kaif ka chehra aur awaaz sirf is channel par. Kisi aur insaan ke saath mat milao.
 - Login ya password khud mat bharo. Account pehle se login hai.
 - Credit khatam ho to `newpub222@gmail.com` par switch karo. Wahan bhi project **me** hai, aur usme bhi `@me` aur `@me_photo` hone chahiye. Na hon to add karo. Top-up mat karo jab tak Kaif na bole.
-- Flow ka audio mute. Screen text edit ke overlay mein aata hai, Flow se mat likhwao.
+- Awaaz do tarah: (1) `@me` wali Flow awaaz rakhni ho to `tools/flow_voice.py episodes/epNNN/episode.json` clips se awaaz nikaal ke `voice.mp3` banata hai, lip-sync same; (2) warna Flow audio mute aur `voice.mp3` alag (recording/clone).
+- Screen text edit ke overlay mein aata hai, Flow se mat likhwao.
 - Download naam: `raw-clips/epNNN_01.mp4`, `epNNN_02.mp4`, ...

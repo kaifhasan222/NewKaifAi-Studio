@@ -6,6 +6,8 @@ Usage (project root se chalao):
     python tools/build_video.py episodes/ep001/episode.json
 
 Sab paths episode.json mein project root ke relative hote hain.
+Full clip par optional "zoom": "punch" (hook snap-in) ya "slow" (dheema push-in).
+Har clip par optional "transition": us clip mein aane wala xfade type (jaise "smoothup", "circleopen"); duration global rehti hai.
 Mac aur Windows dono par chalta hai (sirf ffmpeg + Python chahiye).
 """
 import json
@@ -175,6 +177,16 @@ def render_split(clip, idx, w, h, fps, tmp):
     return _encode(cmd, out)
 
 
+def _zoom(kind, w, h, fps):
+    """Full clips par motion. "punch" = shuru mein 0.3s ka zoom-in snap, "slow" = dheema push-in."""
+    if not kind:
+        return ""
+    n = max(1, int(0.3 * fps))
+    z = {"punch": f"if(lt(on,{n}),1.16-0.16*on/{n},1)", "slow": "min(1+0.0009*on,1.12)"}[kind]
+    return (f",zoompan=z='{z}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'"
+            f":d=1:s={w}x{h}:fps={fps}")
+
+
 def render_clip(clip, idx, w, h, fps, tmp):
     """Har clip ko 1080x1920, same fps, bina audio ke convert karta hai."""
     out = tmp / f"clip{idx}.mp4"
@@ -184,6 +196,7 @@ def render_clip(clip, idx, w, h, fps, tmp):
     trim = _trim_prefix(clip.get("start"), dur) if dur else ""
     vf = (f"{trim}scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},"
           f"setsar=1,fps={fps},format=yuv420p")
+    vf += _zoom(clip.get("zoom"), w, h, fps)
     if clip.get("label"):
         tf = _textfile(tmp, f"lab{idx}.txt", clip["label"])
         vf += "," + _drawtext(FONT_DISPLAY, tf, 54, "white", "(w-text_w)/2", 188)
@@ -192,7 +205,7 @@ def render_clip(clip, idx, w, h, fps, tmp):
     return _encode(cmd, out)
 
 
-def join_clips(files, trans, tmp):
+def join_clips(files, trans, tmp, types=None):
     out = tmp / "joined.mp4"
     n = len(files)
     if n == 1:
@@ -209,7 +222,7 @@ def join_clips(files, trans, tmp):
         for i in range(1, n):
             lab = f"[x{i}]" if i < n - 1 else "[v]"
             parts.append(
-                f"{last}[{i}:v]xfade=transition={trans.get('type', 'fade')}:"
+                f"{last}[{i}:v]xfade=transition={(types or [None] * n)[i] or trans.get('type', 'fade')}:"
                 f"duration={d}:offset={acc - d:.3f}{lab}"
             )
             last = lab
@@ -243,7 +256,7 @@ def write_overlays_ass(overlays, w, h, path):
         text = o["text"].replace("\n", "\\N")
         lines.append(
             f"Dialogue: 0,{ass_time(o['start'])},{ass_time(o['end'])},{style},,0,0,0,,"
-            f"{{\\fad(250,250)}}{text}"
+            f"{{\\fad(150,250)\\fscx70\\fscy70\\t(0,180,\\fscx100\\fscy100)}}{text}"
         )
     path.write_text(head + "\n".join(lines) + "\n", encoding="utf-8")
 
@@ -263,7 +276,7 @@ def main():
         print("1/3 clips normalize kar raha hoon...")
         files = [render_clip(c, i, w, h, cfg["fps"], tmp) for i, c in enumerate(cfg["clips"])]
         print("2/3 clips jod raha hoon...")
-        video = join_clips(files, cfg["transition"], tmp)
+        video = join_clips(files, cfg["transition"], tmp, [c.get("transition") for c in cfg["clips"]])
         vdur = duration(video)
 
         voice = cfg.get("voice")
@@ -290,12 +303,15 @@ def main():
         achain, mix = [], []
         idx = 1
         fmt = "aformat=sample_rates=44100:channel_layouts=stereo"
+        music = cfg.get("music")
         if voice:
             inputs += ["-i", voice]
-            achain.append(f"[{idx}:a]{fmt},apad,asplit=2[vo][vsc]")  # apad: tail mein music chalta rahe
+            if music:  # [vsc] sirf music ducking ke liye; bina music ke split ka output khaali reh jaata
+                achain.append(f"[{idx}:a]{fmt},apad,asplit=2[vo][vsc]")  # apad: tail mein music chalta rahe
+            else:
+                achain.append(f"[{idx}:a]{fmt},apad[vo]")
             mix.append("[vo]")
             idx += 1
-        music = cfg.get("music")
         if music:
             inputs += ["-stream_loop", "-1", "-i", music["file"]]
             mv = music.get("volume", cfg["music_volume"])

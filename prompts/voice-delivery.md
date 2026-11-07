@@ -3,13 +3,14 @@
 Dikkat: awaaz saaf hai par flat lagti hai. Har line ek hi zor se, ek hi sur mein, bina sochi-samjhi ruk ke.
 `brand/voice.mp3` ka naap (7 Nov 2026): zor ka range 2.7 LU (flat), pitch spread 6 semitone, peak +0.3 dB (clipping).
 
-Teen raaste hain. Teeno free hain aur isi project mein hain.
+Chaar raaste hain. Sab free hain aur isi project mein hain.
 
 | Raasta | Kab | Tool |
 |---|---|---|
 | A. Khud record + polish | Roz ka default. Sabse asli lagta hai | Delivery card, `tools/polish_voice.py` |
 | B. Clone awaaz | Record karne ka time na ho, ya ek line baar baar galat ho | `tools/voice_clone.py` (Chatterbox, MIT) |
 | C. Mix | Zyada lines khud ki, 1-2 line clone se theek | Dono |
+| D. Flow `@me` | Clip mein Kaif khud bole, Flow wali awaaz hi rakhni ho | `Dialogue:` Flow prompt mein, `tools/flow_voice.py` |
 
 Teeno ke baad check: `python tools/voice_report.py <file>`. Delivery naapne ke liye RAW recording do.
 
@@ -74,6 +75,14 @@ Model: Chatterbox Multilingual (Resemble AI), Hindi bhi bolta hai, MIT licence, 
 5. **Test ek line:** `--line "ये कोई हैक नहीं है।" --josh 5 --pace tez`.
 
 `josh` model ke "exaggeration" knob ko badalta hai (1=0.3 ... 5=1.0). `tez/dheema` pace badalte hain. Ek shabd par zor model control nahi karta. Woh zaroori ho to woh line khud record karo (raasta C).
+
+## 4. Flow `@me` awaaz (raasta D)
+`@me` mein Kaif ki awaaz hai, `@me_photo` mein avatar.
+1. Flow prompt: `Dialogue: @me says "<Voice line>" | Tone: energetic and fast` (josh 5), `confident` (josh 3-4), `calm and warm` (josh 1-2). Saath mein `CHARACTER:` line (`@me @me_photo ...`).
+2. Ek clip = ek line.
+3. `python tools/flow_voice.py episodes/epNNN/episode.json` -> `voice.mp3`, har clip ki awaaz unhi trim/transition ke saath, lip-sync same.
+4. `python tools/voice_report.py episodes/epNNN/voice.mp3`. Galat shabd ya flat ho to wahi clip dobara Flow mein.
+5. Is awaaz par `polish_voice.py --speed` ya khamoshi katna nahi (lip-sync toot jayega). `flow_voice.py` khud EQ aur loudness karta hai.
 
 ## Pakke rules
 - Clone **sirf Kaif ki apni awaaz** ka. Kisi aur ki recording reference mein kabhi nahi, reference YouTuber ki bhi nahi.

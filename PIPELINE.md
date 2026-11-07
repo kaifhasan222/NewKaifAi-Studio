@@ -38,11 +38,13 @@ Script se pehle Kaif se poochho: kaunsa style. List [nafay3d.com](https://nafay3
 | 3 | Clips generate karna | Kaif / Flow | Google Flow | `raw-clips/epNNN_*.mp4` |
 | 4 | Apni Awaaz (Voiceover) | Kaif | Phone / Mic, Delivery card (`prompts/voice-delivery.md`) | `episodes/epNNN/voice_raw.mp3` |
 | 4.1 | Awaaz check + polish | AI | `tools/voice_report.py`, `tools/polish_voice.py` | `episodes/epNNN/voice.mp3` |
+| 4.3 | (Optional) Flow `@me` awaaz | AI | `tools/flow_voice.py` | `voice.mp3` (clips se, lip-sync same) |
 | 4.2 | (Optional) Clone awaaz | AI + Kaif sunta hai | `tools/voice_clone.py` (Chatterbox, free) | `voice_takes/`, `voice.mp3` |
 | 5 | Captions Generation | AI | `tools\make_captions.py` (Whisper) | `episodes/epNNN/captions.srt` |
 | 6 | Music & SFX Config | AI | `assets/` | `episodes/epNNN/episode.json` |
 | 7 | Video Assembly | AI | `py -3.12 tools\build_video.py` | `output/epNNN.mp4` |
 | 8 | QA & Preview Check | AI + Kaif | `tools\check_video.py` | Contact sheet + report |
+| 8.5 | Thumbnail A/B/C | AI + Kaif chunta hai | `tools/make_thumbnail.py`, `prompts/thumbnail-guide.md` | `output/epNNN_thumb_A/B/C.jpg` |
 | 9 | Publishing Pack (`/content`) | AI | `prompts/publishing-guide.md` | `episodes/epNNN/publish.md` |
 | 10 | Final Approval & Post | Kaif | YouTube Shorts / Reels | Live |
 
@@ -54,6 +56,7 @@ Detail `prompts/voice-delivery.md`.
 - **Raasta A (default):** Kaif delivery card dekh ke record karta hai (`voice_raw.mp3`). `python tools/voice_report.py episodes/epNNN/voice_raw.mp3`. FIX wali line dobara. Phir `python tools/polish_voice.py episodes/epNNN/voice_raw.mp3 episodes/epNNN/voice.mp3 --speed 1.05`.
 - **Raasta B (clone):** `.venv-voice/bin/python tools/voice_clone.py episodes/epNNN/script.md --takes 3`, Kaif takes sunke `--use scene=take` chunta hai. Reference sirf Kaif ki josh wali recording `brand/voice_ref.wav`.
 - **Raasta C:** zyada lines khud ki, galat lines clone se, phir polish.
+- **Raasta D (Flow `@me`):** Flow prompt mein `Dialogue: @me says "..."`, Kaif clip mein khud bolta hai. `python tools/flow_voice.py episodes/epNNN/episode.json` usi clips se `voice.mp3` banata hai. Is par `--speed` ya khamoshi katna nahi.
 - Clone sirf Kaif ki apni awaaz ka. Clone wali video par YouTube ka "altered/synthetic content" sawaal Kaif khud dekhe.
 
 ---
@@ -61,7 +64,7 @@ Detail `prompts/voice-delivery.md`.
 ## Core Rules
 - **Hook pehle 2 second mein.** Overlay text + voice dono. Visual punch zoom. Edit pe `assets/sfx/whoosh.mp3` time `0.0`, volume `0.4`.
 - Flow clips chhote rakho (3-6 sec ke scenes), edit mein jodte hain.
-- Flow ka apna audio mute. Bolne wali awaaz `voice.mp3`. Music aur SFX sirf edit pe, voice file mein nahi.
+- Bolne wali awaaz `voice.mp3`. Flow ki `@me` awaaz rakhni ho to `tools/flow_voice.py` clips se `voice.mp3` banata hai (lip-sync same); warna Flow audio mute. Music aur SFX sirf edit pe, voice file mein nahi.
 - Music `assets/music/chill-tech-01.mp3`, volume `0.12`, voice pe auto-duck. Filler reaction SFX nahi.
 - Final loudness about -16 LUFS.
 - **Tum hamesha final video dekhte ho.** AI frames se check karta hai, par insaani nazar zaroori hai.

@@ -31,3 +31,5 @@ Neeche ke sab sounds aur music **original hain**: Claude ne `assets/generate_ass
 | films/dulhan-gaon/assets/sfx/whoosh.mp3 | HyperFrames bundled SFX (short whoosh) | Bundled with HyperFrames, reused locally |
 
 Note: yeh basic/placeholder quality hain. Behtar sound chahiye to Pixabay/Mixkit/YouTube Audio Library se aur asset daalo, aur uska source + licence is table mein likho.
+| music/lofi-upbeat-raspberrymusic.mp3 | "Raspberrymusic - Lofi Hip Hop Upbeat" by raspberrymusic, Wikimedia Commons https://commons.wikimedia.org/w/index.php?curid=152182241 (found via Openverse), converted to mp3, -2 dB | CC BY 4.0 https://creativecommons.org/licenses/by/4.0/ : commercial use OK, **credit zaroori** (description mein). Checked 7 Nov 2026 |
+| sfx/ui/typing.ogg, select.mp3, swipe.ogg, snap.mp3, success.mp3 | uisfx "studio" pack (npm `uisfx`, via ~/.claude/skills/real-sfx/vendor) | CC0 1.0 (LICENSE-AUDIO), commercial use OK, credit zaroori nahi. Checked 7 Nov 2026 |
