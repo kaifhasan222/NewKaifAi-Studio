@@ -30,3 +30,4 @@ episodes/*
 
 # Secrets (API keys)
 .env
+archive/

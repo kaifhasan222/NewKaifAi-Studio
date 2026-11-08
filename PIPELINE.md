@@ -38,7 +38,7 @@ Script se pehle Kaif se poochho: kaunsa style. List [nafay3d.com](https://nafay3
 | 3 | Clips generate karna | Kaif / Flow | Google Flow | `raw-clips/epNNN_*.mp4` |
 | 4 | Apni Awaaz (Voiceover) | Kaif | Phone / Mic, Delivery card (`prompts/voice-delivery.md`) | `episodes/epNNN/voice_raw.mp3` |
 | 4.1 | Awaaz check + polish | AI | `tools/voice_report.py`, `tools/polish_voice.py` | `episodes/epNNN/voice.mp3` |
-| 4.3 | (Optional) Flow `@me` awaaz | AI | `tools/flow_voice.py` | `voice.mp3` (clips se, lip-sync same) |
+| 4.3 | (Optional) Flow `@me` awaaz | AI | `tools/cut_silence.py --whisper`, phir `tools/flow_voice.py` | jump cuts + `voice.mp3` (lip-sync same) |
 | 4.2 | (Optional) Clone awaaz | AI + Kaif sunta hai | `tools/voice_clone.py` (Chatterbox, free) | `voice_takes/`, `voice.mp3` |
 | 5 | Captions Generation | AI | `tools\make_captions.py` (Whisper) | `episodes/epNNN/captions.srt` |
 | 6 | Music & SFX Config | AI | `assets/` | `episodes/epNNN/episode.json` |

@@ -55,8 +55,9 @@ Kaif ki awaaz `@me` mein hai. Clip mein Kaif khud bole aur wahi awaaz final vide
 1. Prompt mein bolne wali line do, script ki `Voice:` line (Devanagari) waise hi:
    `Dialogue: @me says "<Voice line>" | Tone: <josh ke hisaab se: energetic and fast / confident / calm and warm>`
 2. Ek clip = ek line, 3-6 sec. Line lambi ho to do clip.
-3. Download ke baad: `python tools/flow_voice.py episodes/epNNN/episode.json`. Har clip ki awaaz unhi trim aur transition ke saath judti hai, lip-sync nahi tootta. Output `voice.mp3`.
+3. Download ke baad: pehle `.venv/bin/python tools/cut_silence.py episodes/epNNN/episode.json --whisper` (clip ki khamoshi video se hi kaatta hai), phir `python tools/flow_voice.py episodes/epNNN/episode.json`. Har clip ki awaaz unhi trim aur transition ke saath judti hai, lip-sync nahi tootta. Output `voice.mp3`.
 4. `python tools/voice_report.py episodes/epNNN/voice.mp3` se check. Galat shabd ya flat line ho to wahi clip dobara.
-5. Is awaaz par `polish_voice.py --speed` ya khamoshi katna mat chalao, lip-sync toot jayega.
+5. Is awaaz par `polish_voice.py --speed` ya uski gap-cutting mat chalao, lip-sync toot jayega. Khamoshi sirf `tools/cut_silence.py` se kaato.
+6. Flow policy error: "पिन डालो", "पिन डाला", "बैंक पिन चेक" jaisi lines (paise/PIN daalne ka hukm) fail hoti hain. Matlab wahi rakho, line naram karo (ep004 notes).
 
 Flow ki awaaz na rakhni ho to clip ka audio mute rehta hai aur `voice.mp3` Kaif ki recording ya clone se aata hai (`prompts/voice-delivery.md`).

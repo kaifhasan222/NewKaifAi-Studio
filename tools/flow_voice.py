@@ -54,6 +54,8 @@ def clip_audio(clip, idx, tmp):
     if has_audio:
         run(["ffmpeg", "-y", "-v", "error", "-i", f, "-af",
              f"atrim=start={start:.3f}:duration={dur:.3f},asetpts=PTS-STARTPTS,"
+             # 12 ms fade: jump cut (tools/cut_silence.py) par click na aaye
+             f"afade=t=in:d=0.012,afade=t=out:st={max(0, dur - 0.012):.3f}:d=0.012,"
              f"apad=whole_dur={dur:.3f}", "-ar", str(SR), "-ac", "1", str(out)])
     else:
         run(["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-t", f"{dur:.3f}",

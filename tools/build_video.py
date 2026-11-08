@@ -6,12 +6,17 @@ Usage (project root se chalao):
     python tools/build_video.py episodes/ep001/episode.json
 
 Sab paths episode.json mein project root ke relative hote hain.
-Full clip par optional "zoom": "punch" (hook snap-in) ya "slow" (dheema push-in).
+Full clip par optional "zoom": "punch" (hook snap-in), "slow" (dheema push-in) ya "tight" (seedha 1.12x, jump cut ke liye).
 Har clip par optional "transition": us clip mein aane wala xfade type (jaise "smoothup", "circleopen"); duration global rehti hai.
-Split clip ke "card" mein optional "theme": "clean" (Clean Tech: off-white bar, blue accent, dark title).
+Split clip ke "card" mein optional "theme": "clean" (Clean Tech: off-white bar, blue accent, dark title)
+ya "chalk" (Chalk Talk: board green bar, yellow chalk accent, chalk-white title)
+ya "creator" (Creator Motion Graphics: near-black bar, yellow accent, white title).
+Top-level "logo": {"file": "brand/youtube/icon_round_240.png", "x": 842, "y": 1682, "w": 116} = channel icon, Gemini sparkle (center 900,1740) ke upar; clip par zoom se pehle lagta hai.
+Overlay par "kinetic": true = bade Anton caps word-by-word slam; *shabd* yellow serif accent.
 Mac aur Windows dono par chalta hai (sirf ffmpeg + Python chahiye).
 """
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -52,6 +57,16 @@ CARD_BG = "0x141416"
 MUTED = "0xB5B5B5"
 
 
+LOGO = None  # main() cfg["logo"] se bharta hai
+
+
+def _logo_overlay(src, dst):
+    """Channel icon ko [src] par overlay karke [dst] label deta hai (movie= source filter)."""
+    lw = int(LOGO.get("w", 116))
+    return (f"movie={Path(LOGO['file']).as_posix()},scale={lw}:{lw},format=rgba[lg];"
+            f"{src}[lg]overlay={int(LOGO.get('x', 842))}:{int(LOGO.get('y', 1682))}:format=auto{dst}")
+
+
 def _textfile(tmp, name, text):
     path = tmp / name
     path.write_text(text, encoding="utf-8")
@@ -71,9 +86,12 @@ def _encode(cmd, out):
     return out
 
 
-def _trim_prefix(start, dur):
-    """Keyframe seek nahi: mouth voice ke usi second par rahe."""
-    return f"trim=start={float(start or 0):.3f}:duration={float(dur):.3f},setpts=PTS-STARTPTS,"
+def _trim_prefix(start, dur, fps=30):
+    """Keyframe seek nahi: mouth voice ke usi second par rahe.
+    Pehle output fps par lao, phir trim: jump cut ke chhote tukde exact frames ke bante hain,
+    warna 24fps source par har tukda thoda lamba/chhota hota hai aur video awaaz se khisakta hai."""
+    return (f"fps={fps},trim=start={float(start or 0):.4f}:duration={float(dur):.4f},"
+            "setpts=PTS-STARTPTS,")
 
 
 def _src(clip):
@@ -91,17 +109,20 @@ def render_media_split(clip, idx, w, h, fps, tmp):
     media_h = top_h - bar_h
     title = card["title"]
     title_size = 118 if len(title) <= 8 else 84
-    # "theme": "clean" = Clean Tech bar (off-white, blue accent, dark title). Default = dark + orange.
-    bar_bg, accent, title_color = (
-        ("0xF6F5F1", "0x2563EB", "0x111827") if card.get("theme") == "clean" else ("0x070709", ORANGE, "white")
-    )
+    # "theme": "clean" = Clean Tech bar (off-white, blue accent, dark title).
+    # "theme": "chalk" = Chalk Talk bar (board green, yellow chalk accent, chalk-white title). Default = dark + orange.
+    bar_bg, accent, title_color = {
+        "clean": ("0xF6F5F1", "0x2563EB", "0x111827"),
+        "chalk": ("0x1F3B2D", "0xFACC15", "0xF1F5EE"),
+        "creator": ("0x0B0B0D", "0xFFD60A", "0xF5F4F0"),
+    }.get(card.get("theme"), ("0x070709", ORANGE, "white"))
 
     def tf(key, text):
         return _textfile(tmp, f"c{idx}_{key}.txt", text)
 
     graph = (
         f"[0:v]{_trim_prefix(clip.get('start'), dur)}"
-        f"scale={w}:{h}:force_original_aspect_ratio=increase,"
+        f"scale={w}:{h}:force_original_aspect_ratio=increase:flags=lanczos,"
         f"crop={w}:{bot_h}:(iw-{w})/2:36,fps={fps},setsar=1,format=yuv420p[face];"
         f"[1:v]scale={w}:{media_h}:force_original_aspect_ratio=increase,"
         f"crop={w}:{media_h},fps={fps},setsar=1,format=yuv420p[mv];"
@@ -109,7 +130,8 @@ def render_media_split(clip, idx, w, h, fps, tmp):
         f",drawbox=x=0:y=0:w={w}:h=10:color={accent}:t=fill"
         + "," + _drawtext(FONT_DISPLAY, tf("kicker", card["kicker"]), 36, accent, "(w-text_w)/2", 40)
         + "," + _drawtext(FONT_DISPLAY, tf("title", title), title_size, title_color, "(w-text_w)/2", 92)
-        + "[bar];[bar][mv]vstack=inputs=2[top];[top][face]vstack=inputs=2,format=yuv420p[v]"
+        + "[bar];[bar][mv]vstack=inputs=2[top];[top][face]vstack=inputs=2,format=yuv420p"
+        + ("[vv];" + _logo_overlay("[vv]", "[v]") if LOGO else "[v]")
     )
     cmd = _src(clip)
     cmd += ["-stream_loop", "-1"]
@@ -117,7 +139,7 @@ def render_media_split(clip, idx, w, h, fps, tmp):
         cmd += ["-ss", str(card["media_start"])]
     cmd += ["-t", f"{dur:.3f}", "-i", card["media"]]
     cmd += ["-f", "lavfi", "-t", f"{dur:.3f}", "-i", f"color=c={bar_bg}:s={w}x{bar_h}:r={fps}"]
-    cmd += ["-filter_complex", graph, "-map", "[v]"]
+    cmd += ["-filter_complex", graph, "-map", "[v]", "-frames:v", str(round(dur * fps))]  # +1 frame drift rokta hai
     return _encode(cmd, out)
 
 
@@ -178,7 +200,7 @@ def render_split(clip, idx, w, h, fps, tmp):
     graph += "[top];[top][face]vstack=inputs=2,format=yuv420p[v]"
     cmd = _src(clip)
     cmd += ["-f", "lavfi", "-t", f"{dur:.3f}", "-i", f"color=c=0x070709:s={w}x{top_h}:r={fps}"]
-    cmd += ["-filter_complex", graph, "-map", "[v]"]
+    cmd += ["-filter_complex", graph, "-map", "[v]", "-frames:v", str(round(dur * fps))]  # +1 frame drift rokta hai
     return _encode(cmd, out)
 
 
@@ -187,6 +209,9 @@ def _zoom(kind, w, h, fps):
     if not kind:
         return ""
     n = max(1, int(0.3 * fps))
+    if kind == "tight":  # jump cut: seedha andar, zoompan ki zaroorat nahi
+        cw, ch = int(w / 1.12) // 2 * 2, int(h / 1.12) // 2 * 2
+        return f",crop={cw}:{ch}:(iw-{cw})/2:(ih-{ch})/2*0.7,scale={w}:{h},setsar=1"
     z = {"punch": f"if(lt(on,{n}),1.16-0.16*on/{n},1)", "slow": "min(1+0.0009*on,1.12)"}[kind]
     return (f",zoompan=z='{z}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'"
             f":d=1:s={w}x{h}:fps={fps}")
@@ -199,14 +224,19 @@ def render_clip(clip, idx, w, h, fps, tmp):
         return render_split(clip, idx, w, h, fps, tmp)
     dur = float(clip.get("duration") or 0)
     trim = _trim_prefix(clip.get("start"), dur) if dur else ""
-    vf = (f"{trim}scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},"
+    vf = (f"{trim}scale={w}:{h}:force_original_aspect_ratio=increase:flags=lanczos,crop={w}:{h},"
           f"setsar=1,fps={fps},format=yuv420p")
-    vf += _zoom(clip.get("zoom"), w, h, fps)
+    tail = _zoom(clip.get("zoom"), w, h, fps)
     if clip.get("label"):
         tf = _textfile(tmp, f"lab{idx}.txt", clip["label"])
-        vf += "," + _drawtext(FONT_DISPLAY, tf, 54, "white", "(w-text_w)/2", 188)
-        vf += ":box=1:boxcolor=0x111111@0.9:boxborderw=18"
-    cmd = _src(clip) + ["-vf", vf]
+        tail += "," + _drawtext(FONT_DISPLAY, tf, 54, "white", "(w-text_w)/2", 188)
+        tail += ":box=1:boxcolor=0x111111@0.9:boxborderw=18"
+    if LOGO:
+        # icon zoom se pehle: Gemini ka sparkle zoom ke saath khisakta hai, icon uske saath khisakta hai
+        graph = f"[0:v]{vf}[b];" + _logo_overlay("[b]", "[o]") + ";[o]null" + tail + "[v]"
+        cmd = _src(clip) + ["-filter_complex", graph, "-map", "[v]"]
+    else:
+        cmd = _src(clip) + ["-vf", vf + tail]
     return _encode(cmd, out)
 
 
@@ -244,6 +274,25 @@ def ass_time(t):
     return f"{int(h)}:{int(m):02d}:{s:05.2f}"
 
 
+def _kinetic_line(o):
+    """Creator style: har shabd 0.13s ke gap par slam (1.45x -> 1x), *shabd* = yellow serif accent."""
+    per = float(o.get("per", 0.13))
+    words = o["text"].split()
+    parts = []
+    for k, wd in enumerate(words):
+        t0 = int(k * per * 1000)
+        acc = wd.startswith("*") and wd.endswith("*")
+        wd = wd.strip("*")
+        look = "\\fnDM Serif Display\\i1\\c&H0AD6FF&\\fs146" if acc else "\\fnAnton\\i0\\c&HF0F4F5&\\fs132"
+        parts.append(
+            f"{{{look}\\alpha&HFF&\\fscx145\\fscy145"
+            f"\\t({t0},{t0 + 1},\\alpha&H00&)\\t({t0},{t0 + 170},0.6,\\fscx100\\fscy100)}}{wd}"
+        )
+    y = {"top": 250, "middle": 860, "bottom": 1250}.get(o.get("position", "top"), 250)
+    return (f"Dialogue: 1,{ass_time(o['start'])},{ass_time(o['end'])},Kin,,0,0,{y},,"
+            f"{{\\fad(0,200)}}" + " ".join(parts))
+
+
 def write_overlays_ass(overlays, w, h, path):
     """Title/hook text overlays (animated fade) ASS subtitle file ke through."""
     head = (
@@ -252,11 +301,15 @@ def write_overlays_ass(overlays, w, h, path):
         "BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,"
         "Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding\n"
         "Style: Top,Arial,88,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,1,0,0,0,100,100,0,0,1,5,0,8,60,60,260,1\n"
-        "Style: Mid,Arial,110,&H0000D7FF,&H0000D7FF,&H00000000,&H80000000,1,0,0,0,100,100,0,0,1,6,0,5,60,60,0,1\n\n"
+        "Style: Mid,Arial,110,&H0000D7FF,&H0000D7FF,&H00000000,&H80000000,1,0,0,0,100,100,0,0,1,6,0,5,60,60,0,1\n"
+        "Style: Kin,Anton,132,&H00F0F4F5,&H00F0F4F5,&H000D0B0B,&H99000000,0,0,0,0,100,100,1,0,1,7,4,8,50,50,250,1\n\n"
         "[Events]\nFormat: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text\n"
     )
     lines = []
     for o in overlays:
+        if o.get("kinetic"):
+            lines.append(_kinetic_line(o))
+            continue
         style = "Mid" if o.get("position") == "middle" else "Top"
         text = o["text"].replace("\n", "\\N")
         lines.append(
@@ -271,6 +324,8 @@ def main():
         print(__doc__)
         sys.exit(1)
     cfg = {**DEFAULTS, **json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))}
+    global LOGO
+    LOGO = cfg.get("logo")
     w, h = (int(x) for x in cfg["size"].split("x"))
     out = Path(cfg["output"])
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -293,7 +348,7 @@ def main():
             vf.append(f"tpad=stop_mode=clone:stop_duration={total - vdur + 0.1:.3f}")
         if cfg.get("overlays"):
             write_overlays_ass(cfg["overlays"], w, h, tmp_overlay)
-            vf.append(f"subtitles={tmp_overlay.as_posix()}")
+            vf.append(f"subtitles={tmp_overlay.as_posix()}:fontsdir=assets/fonts")
         if cfg.get("captions"):
             cap = Path(cfg["captions"])
             # .ass apna style laata hai (pill, yellow word). .srt par purana force_style.
@@ -302,6 +357,7 @@ def main():
             else:
                 vf.append(f"subtitles={cap.as_posix()}:force_style='{cfg['caption_style']}'")
         vchain = "[0:v]" + (",".join(vf) if vf else "null") + "[vout]"
+
 
         # ---- audio graph: voice + ducked music + sfx
         inputs = ["-i", video]
@@ -345,13 +401,35 @@ def main():
             cmd += ["-filter_complex", graph, "-map", "[vout]", "-map", "[aout]"]
         else:
             cmd += ["-filter_complex", vchain, "-map", "[vout]"]
-        cmd += ["-t", f"{total:.3f}", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+        cmd += ["-t", f"{total:.3f}", "-c:v", "libx264", "-preset", "medium", "-crf", "17",
                 "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out]
         print("3/3 final render (captions + audio mix)...")
         run(cmd)
 
     tmp_overlay.unlink(missing_ok=True)
+    fix_loudness(out, cfg["loudness"])
     print(f"Done -> {out}  ({total:.1f}s)")
+
+
+def fix_loudness(out, spec):
+    """Bahut saare SFX ke saath single-pass loudnorm target se hat jaata hai (jaise -13 LUFS).
+    Final file naap ke audio par seedha gain + limiter, video copy (dobara encode nahi)."""
+    target = float(re.search(r"I=(-?[\d.]+)", spec).group(1))
+    r = subprocess.run(["ffmpeg", "-nostats", "-i", str(out), "-af", "ebur128", "-f", "null", "-"],
+                       capture_output=True, text=True)
+    m = re.findall(r"I:\s+(-?[\d.]+) LUFS", r.stderr)
+    if not m:
+        return
+    got = float(m[-1])
+    if abs(got - target) <= 1.0:
+        return
+    gain = target - got
+    tmpf = Path(out).with_suffix(".loud.mp4")
+    run(["ffmpeg", "-y", "-v", "error", "-i", out, "-c:v", "copy",
+         "-af", f"volume={gain:.2f}dB,alimiter=limit=0.84:attack=5:release=50",
+         "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", tmpf])
+    tmpf.replace(out)
+    print(f"loudness {got:.1f} -> ~{target:.0f} LUFS (gain {gain:+.1f} dB)")
 
 
 if __name__ == "__main__":
