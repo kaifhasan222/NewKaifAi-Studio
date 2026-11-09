@@ -5,3 +5,5 @@
 faster-whisper==1.2.1
 numpy==2.0.2
 edge-tts>=7.0.0
+# Thumbnail text card (tools/thumb_card.py). Checked 9 Nov 2026 in .venv (Python 3.11).
+pillow==12.3.0; python_version >= "3.10"

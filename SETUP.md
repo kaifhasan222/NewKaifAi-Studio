@@ -15,6 +15,7 @@ claude.ai/download se install karo, Claude Pro account se login. Is folder (`new
 ```
 brew install ffmpeg python node
 pip3 install faster-whisper
+.venv/bin/pip install pillow==12.3.0   # tools/thumb_card.py (thumbnail text)
 ```
 Homebrew nahi hai to pehle brew.sh se install karo.
 
@@ -23,7 +24,7 @@ Homebrew nahi hai to pehle brew.sh se install karo.
 winget install Gyan.FFmpeg
 winget install Python.Python.3.12
 winget install OpenJS.NodeJS.LTS
-pip install faster-whisper
+pip install faster-whisper pillow==12.3.0
 ```
 Install ke baad PowerShell band karke dobara kholo. Windows par `python3` ki jagah `python` use karo.
 

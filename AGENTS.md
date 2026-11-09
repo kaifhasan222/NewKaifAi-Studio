@@ -59,6 +59,7 @@ Kaif se Hinglish mein (Roman script), seedhi aur chhoti baat karo. Har episode k
 - Git mein theek: code, prompts, `episodes/_template/`, `brand/photo.jpg`, `brand/voice.mp3`, `assets/` ki music aur sfx (mp3), photos.
 - Nayi dependency add ho to `requirements.txt` (clone ke liye `requirements-voice.txt`), `SETUP.md`, `README.md`, `CLAUDE.md` aur yeh file update karo.
 - `.venv-voice/` (clone model ka venv) git mein nahi.
+- Thumbnail text card: `.venv/bin/python tools/thumb_card.py episodes/epNNN/thumb_card.json` (Pillow 12.3.0, `requirements.txt`). Asli chehra (Gemini edit of `brand/photo.jpg`) + clean text, detail `prompts/thumbnail-guide.md`.
 
 ## Voice clone (local, isi repo mein)
 - Chatterbox Multilingual (Resemble AI, MIT licence), Hindi. Venv `.venv-voice\`, packages `requirements-voice.txt`. Model ~3 GB pehli baar Hugging Face se. Setup `SETUP.md` -> Voice clone. GPU na ho to CPU par chalega, dheere.

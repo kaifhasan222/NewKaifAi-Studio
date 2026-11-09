@@ -37,3 +37,9 @@ Skill `video-thumbnail` ke prompt template se concept likho, `brand-style.md` jo
 
 ## Optional: Flow se custom photo
 Video frame kaafi na lage to Flow (project **me**, Image mode) mein `@me_photo` ke saath expressive pose. Credits lagte hain, pehle Kaif se ok. Chehra `me_photo` se milao.
+
+## Clean premium text style (Kaif ki pasand, 9 Nov 2026)
+- Mote kaale border wala text purana ho gaya. Ab `tools/thumb_card.py` (.venv, Pillow): Poppins Bold, halki shadow, ek line laal highlight box mein, ya gold text kaale glossy box mein (sirf typography style, kisi creator ka logo/chehra/content nahi).
+- Chehra: Gemini mein naya chehra mat banwao (Kaif jaisa nahi lagta). `brand/photo.jpg` ko EDIT karwao: "chehra 100% same, sirf kapde/background/props badlo". Phir ek follow-up edit se dramatic light, bada prop, light rays, halka "uh-oh" expression.
+- Image ko `shift_y` se neeche khiskao, upar `top_shade` dark gradient, text upar ke hisse mein (y ~255-560).
+- Run: `.venv/bin/python tools/thumb_card.py episodes/epNNN/thumb_card.json`

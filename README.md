@@ -42,6 +42,7 @@ Python captions: `requirements.txt`. Baaki tools: `package.json` ka `studio` blo
 |---|---|---|
 | faster-whisper | 1.2.1 | `requirements.txt` |
 | numpy (captions, Python 3.9) | 2.0.2 | `requirements.txt` |
+| pillow (`tools/thumb_card.py`, .venv) | 12.3.0 | `requirements.txt` |
 | ffmpeg | 9.0.2 | `package.json` |
 | Node | 22.17.0 | `package.json` |
 | yt-dlp | 2025.10.14 | `package.json` |

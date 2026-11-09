@@ -49,3 +49,18 @@ Sample (achha bana hua): `episodes/ep001/publish.md`. Episode folder git mein na
 
 ## Output format
 Dekho `episodes/_template/publish.md`.
+
+## Trending / viral sound (Kaif ka rule, 9 Nov 2026)
+- Sound sirf platform ke apne option se: Instagram "Add audio" (Trending tab), YouTube Shorts "Add sound" / Studio Editor Audio. Koi gaana download karke mp4 mein mix MAT karo (copyright claim / mute).
+- Sound hamesha dheema: voice (original audio) 100%, platform sound ~5-15%. Awaaz saaf sunai deni chahiye.
+- Volume set kiye bina direct post ya schedule MAT karo.
+- Web par sound ya volume ka option na mile to post mat karo. Kaif ko sound ka naam batao: "Ye sound lagao, volume kam kar dena", aur woh app se post kare.
+- Ek hi trending sound baar-baar mat lagao (spam signal).
+
+## Delivery default (Kaif ka rule, 9 Nov 2026)
+- Claude khud post/schedule NAHI karega. Video + thumbnail WhatsApp par Kaif ke apne chat "Kaif Jio (You)" mein **Document** ki tarah bhejo (quality compress na ho), saath mein publish.md ke copy-paste text (title, description, tags, IG caption, hashtags, pinned comment).
+- Music wali video hi bhejo (bina-music version nahi chahiye). Kaif post karte waqt app se trending music khud jodta hai.
+- Sirf jab Kaif bole "post kardo", tab Claude khud post kare.
+
+## Thumbnail video ke andar (Kaif, 9 Nov 2026)
+- WhatsApp delivery wali video ke shuru mein chuna hua thumbnail 0.4 sec ka frame lagao, aur wahi jpg cover art (attached_pic) embed karo. File: `output/epNNN_with_thumb.mp4`. Kaif app mein cover ke liye pehla frame chun sake.
