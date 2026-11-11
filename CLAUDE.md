@@ -15,7 +15,7 @@ Owner: Kaif. Uses his own photo and own recorded voice (`brand/`). Final approva
 - Visuals: `prompts/visual-assets.md`. Text ki jagah icon aur image: app ka naam = app ka icon (`assets/graphics/icons/`), kirdaar = Gemini se bana original cartoon (`assets/graphics/characters/`). Har scene mein kam se kam ek, aur har image hilti rahe (bob/wiggle/float). Asli insaan ki photo nahi (sirf Kaif ki).
 - Clone: hamesha `--takes 3`. Tool har take ko khud tez karta hai (tez 195 / normal 180 / dheema 160 shabd/min, aur tez `--speed 1.1`). Baad mein `tools/voice_report.py`: flat ho to script ka josh badlo ya naya take. Target `prompts/voice-delivery.md` -> "Clone kaisa hona chahiye".
 - Har scene ke `Delivery:` mein `tez|normal|dheema, josh 1-5, zor "शब्द", ruk <sec>` aur alag `Action:` (body language). Josh upar-neeche ho. Detail `prompts/voice-delivery.md`.
-- Awaaz: Kaif ki recording par `tools/voice_report.py`, phir `tools/polish_voice.py`. Clone chahiye to `tools/voice_clone.py` (`.venv-voice` ke python se), reference sirf Kaif ki apni awaaz. Flow ki `@me` awaaz rakhni ho to pehle `.venv/bin/python tools/cut_silence.py episodes/epNNN/episode.json --whisper` (khamoshi wale hisse video se hi kaat ke jump cuts, lip-sync same), phir `tools/flow_voice.py episodes/epNNN/episode.json`.
+- Awaaz: Kaif ki recording par `tools/voice_report.py`, phir `tools/polish_voice.py`. Clone chahiye to `tools/voice_clone.py` (`.venv-voice` ke python se), reference sirf `brand/voice_ref.wav` (Kaif ki chuni hui awaaz, 11 Nov 2026 se Gemini videos ki awaaz). Flow ki `@me` awaaz rakhni ho to pehle `.venv/bin/python tools/cut_silence.py episodes/epNNN/episode.json --whisper` (khamoshi wale hisse video se hi kaat ke jump cuts, lip-sync same), phir `tools/flow_voice.py episodes/epNNN/episode.json`.
 - Flow prompts: `prompts/flow-prompt-template.md` ke format mein, har scene alag. `@me` scene ke `Action:` mein script ka action aur josh.
 - Edit: `python tools/build_video.py episodes/epNNN/episode.json` (Windows par `python`, Mac par `python3`). Naya edit code mat likho jab tak tool ki kami na ho.
 - Captions: `tools/make_captions.py`, phir text Roman Hinglish mein badlo, timings waise hi rakho.
@@ -28,7 +28,7 @@ Owner: Kaif. Uses his own photo and own recorded voice (`brand/`). Final approva
 
 ## Mat karo
 - Kaif ki awaaz ya chehra kisi aur ke saath na milao, na kisi aur ka misuse.
-- Kisi aur ki awaaz clone mat karo (reference YouTuber ki bhi nahi). Clone reference sirf Kaif ki recording.
+- Kisi aur ki awaaz clone mat karo (reference YouTuber ki bhi nahi). Clone reference sirf `brand/voice_ref.wav`.
 - Copyrighted music ya clips use mat karo. Logo: sirf us app ka icon jiski video mein baat ho rahi hai, pehchan ke liye (`prompts/visual-assets.md`). Sarkari chinh aur kisi aur brand ka logo nahi.
 - Flow ya kisi site par login/password khud mat bharo; Kaif khud login karta hai.
 - Bina Kaif ke approve kiye kuch publish/post mat karo.

@@ -39,7 +39,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 JOSH = {1: 0.3, 2: 0.45, 3: 0.6, 4: 0.75, 5: 0.9}          # exaggeration (1.0+ par model bakwaas tail bolta hai)
-PACE = {"tez": (0.5, 1.06), "normal": (0.4, 1.0), "dheema": (0.3, 0.95)}  # (cfg_weight, purana atempo: sirf --no-auto-speed par)
+# (cfg_weight, purana atempo: sirf --no-auto-speed par). cfg 0.0: 11 Nov 2026 ke test mein reference se awaaz sabse zyada milti
+# thi (speaker similarity 0.925 vs 0.907 cfg .5). cfg_weight reference ki raftaar/andaaz ko dabata nahi, isliye 0.0.
+PACE = {"tez": (0.0, 1.06), "normal": (0.0, 1.0), "dheema": (0.0, 0.95)}
 # Har take ko is raftaar (shabd/minute) tak tez kiya jaata hai. Clone apne aap ~150 wpm bolta hai,
 # jo Shorts ke liye dheema hai. Pitch nahi badalti (atempo).
 TARGET_WPM = {"tez": 195, "normal": 180, "dheema": 160}
@@ -245,7 +247,7 @@ def assemble(items, out_mp3, tmp):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("script", nargs="?", help="episodes/epNNN/script.md")
-    ap.add_argument("--ref", help="Kaif ki saaf, josh wali recording (default brand/voice_ref.wav, warna brand/voice.mp3)")
+    ap.add_argument("--ref", help="Kaif ki saaf, josh wali recording (default brand/voice_ref.wav, warna brand/voice.mp3 ka pehla hissa)")
     ap.add_argument("--ref-start", type=float, default=0.0, help="reference mein kis second se 12s lena hai")
     ap.add_argument("--takes", type=int, default=1, help="har line ke kitne alag take")
     ap.add_argument("--use", default="", help="kaunsa take jodna: '2=3,4=2' (scene=take). Baaki take 1")

@@ -1,7 +1,7 @@
 # Voice delivery: awaaz professional YouTuber jaisi
 
 Dikkat: awaaz saaf hai par flat lagti hai. Har line ek hi zor se, ek hi sur mein, bina sochi-samjhi ruk ke.
-`brand/voice.mp3` ka naap (7 Nov 2026): zor ka range 2.7 LU (flat), pitch spread 6 semitone, peak +0.3 dB (clipping).
+Awaaz ka reference: 11 Nov 2026 se `brand/voice.mp3` (30 sec) aur clone ka reference `brand/voice_ref.wav` (10 sec, Hindi, josh wali) Kaif ke 3 Gemini videos ki awaaz se bane hain. Purani voice.mp3 git history mein hai (commit 09743b4). Naap: zor ka range 4.8 LU, pitch spread 8.9 semitone, yaani pehle (2.7 LU, 6 st) se zyada utaar-chadhaav.
 
 Chaar raaste hain. Sab free hain aur isi project mein hain.
 
@@ -61,7 +61,7 @@ Windows par `python` ki jagah `py -3.12`. Report "FIX" bole to woh line dobara r
 ## 3. Clone awaaz (raasta B)
 Model: Chatterbox Multilingual (Resemble AI), Hindi bhi bolta hai, MIT licence, free aur local. Setup `SETUP.md` ke "Voice clone" mein.
 
-1. **Reference:** apni hi 10-15 sec ki **josh wali** saaf recording `brand/voice_ref.wav` mein (music nahi, ek hi insaan). Clone wahi andaaz leta hai, isliye flat reference do to flat clone milega.
+1. **Reference:** `brand/voice_ref.wav` (Kaif ke Gemini videos ki awaaz, 11 Nov 2026), 10-15 sec, Hindi, josh wali, saaf, ek hi awaaz. Naya reference lagana ho to yahi file badlo. Clone wahi andaaz leta hai, isliye flat reference do to flat clone milega.
 2. **Banao:**
    ```
    .venv-voice/bin/python tools/voice_clone.py episodes/epNNN/script.md --takes 3
@@ -104,7 +104,7 @@ Hansi wali line: usse pehle `ruk 0.4`, line `dheema, josh 2` (deadpan), agli lin
 5. Is awaaz par `polish_voice.py --speed` ya khamoshi katna nahi (lip-sync toot jayega). `flow_voice.py` khud EQ aur loudness karta hai.
 
 ## Pakke rules
-- Clone **sirf Kaif ki apni awaaz** ka. Kisi aur ki recording reference mein kabhi nahi, reference YouTuber ki bhi nahi.
+- Clone ka reference sirf `brand/voice_ref.wav` (Kaif ki chuni hui awaaz). Kisi aur asli insaan ki recording reference mein kabhi nahi, reference YouTuber ki bhi nahi.
 - Reference video se sirf andaaz seekho: pace, ruk, josh ka graph. Unki awaaz, script ya lines copy nahi.
 - Clone wali video upload karte waqt YouTube Studio ka "Altered or synthetic content" sawaal dhyan se padh ke Kaif khud jawab de.
 - Channel par ek hi awaaz rahe: Kaif ki asli ya Kaif ka clone. Koi aur TTS voice nahi.
