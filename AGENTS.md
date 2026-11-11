@@ -26,6 +26,8 @@ Jab bhi Kaif yeh shortcuts likhe, agent ko turant yeh workflow execute karna hai
 - Hook: script se pehle `prompts/hook-guide.md` padho. 3 hook alag type ke likho, checklist par jaancho, ek chuno, `script.md` mein `Hook type:` aur `Hook options:` likho. Pehli line 10 shabd se kam, asli baat pehle 3 second mein, Scene 2 mein intro nahi. Pichhle 2 episode wala type dobara nahi.
 - Script aasaan aur funny: `prompts/script-fun-simple.md`. Har line bachcha samjhe (pehle desi misaal, phir tech naam), 60 sec mein 2-3 halki hansi (hook/warning mein nahi, fact galat na ho), josh 2-5 upar-neeche. `script.md` mein `Seedhi baat:`, `Misaal:`, `Hansi:`.
 - Ending: aakhri boli hui line topic par ek comment sawaal ho (viewer ki raay/POV, jawab 1-3 shabd mein). "Follow/like/subscribe karo" awaaz mein nahi, sirf end animation mein. Detail `prompts/script-style-guide.md` -> Ending.
+- Sound: `prompts/sound-design.md` padho. 3 parat SFX animation se sync (detail pop/click, zor wale hit, aur har hansi par ek meme/viral sound), 60 sec mein 50-70. Whoosh/glitch/typing/riser/faaah/shocked nahi. Music `lofi-upbeat-raspberrymusic.mp3` 0.10 par (credit description mein). Awaaz ki khamoshi kati ho (0.35s se lambi chup nahi). Deliver se pehle earshot se takes aur final mix ka noise check.
+- Visuals: `prompts/visual-assets.md`. Text ki jagah icon aur image: app ka naam = app ka icon (`assets/graphics/icons/`), kirdaar = Gemini se bana original cartoon (`assets/graphics/characters/`). Har scene mein kam se kam ek, aur har image hilti rahe (bob/wiggle/float). Asli insaan ki photo nahi (sirf Kaif ki).
 - Clone: hamesha `--takes 3`. Tool har take ko khud tez karta hai (tez 195 / normal 180 / dheema 160 shabd/min, aur tez `--speed 1.1`). Baad mein `tools/voice_report.py`: flat ho to script ka josh badlo ya naya take. Target `prompts/voice-delivery.md` -> "Clone kaisa hona chahiye".
 - Har scene ke `Delivery:` mein `tez|normal|dheema, josh 1-5, zor "शब्द", ruk <sec>` aur alag `Action:` (body language). Josh upar-neeche ho. Detail `prompts/voice-delivery.md`.
 - Awaaz: Kaif ki recording par `py -3.12 tools\voice_report.py`, phir `py -3.12 tools\polish_voice.py`. Clone chahiye to `.venv-voice\Scripts\python tools\voice_clone.py`, reference sirf Kaif ki apni awaaz. Flow ki `@me` awaaz rakhni ho to `py -3.12 tools\flow_voice.py episodes\epNNN\episode.json` (lip-sync same).
@@ -41,7 +43,7 @@ Jab bhi Kaif yeh shortcuts likhe, agent ko turant yeh workflow execute karna hai
 ## Mat karo
 - Kaif ki awaaz ya chehra kisi aur ke saath na milao, na kisi aur ka misuse.
 - Kisi aur ki awaaz clone mat karo (reference YouTuber ki bhi nahi). Clone reference sirf Kaif ki recording.
-- Copyrighted music, clips ya logos use mat karo.
+- Copyrighted music ya clips use mat karo. Logo: sirf us app ka icon jiski video mein baat ho rahi hai, pehchan ke liye (`prompts/visual-assets.md`). Sarkari chinh aur kisi aur brand ka logo nahi.
 - Flow ya kisi site par login/password khud mat bharo; Kaif khud login karta hai.
 - Bina Kaif ke approve kiye kuch publish/post mat karo.
 - Claims (tool ka naam, feature, price) bina verify kiye video mein mat daalo.

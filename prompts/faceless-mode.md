@@ -12,14 +12,16 @@ Flow ke bina bhi video banega: **animation + awaaz + sound design**, bina chehre
 3. **Free stock b-roll:** Pexels/Pixabay/Mixkit (`assets/ASSETS.md`, licence check).
 4. **Still images + slow zoom (Ken Burns):** tumhare banaye ya free licence ke images.
 
+- Icon aur image ka rule: `prompts/visual-assets.md` (text ki jagah app icon / kirdaar ki image, aur har image hile).
+
 ## Awaaz
 - Pehli pasand: **tumhari apni awaaz** (`voice.mp3`), brand consistent rehta hai.
 - Agar roz record nahi kar sakte: apni hi awaaz ka clone, `tools/voice_clone.py` (free, local, `prompts/voice-delivery.md`). Koi aur TTS voice nahi, channel par ek hi awaaz rahe.
 
 ## Sound design (faceless mein aur zaroori)
-- Har scene change par halka whoosh/swipe.
-- Text aane par pop/click. Reveal se pehle riser, reveal par hit.
-- Background music voice ke neeche (~0.12, auto-ducking, tool karta hai).
+- Poora rule `prompts/sound-design.md`. Whoosh/swipe/riser nahi (Kaif ko noise lagta hai).
+- Har cheez ke aane par pop/click, reveal par hit/boom, har hansi par ek meme sound.
+- Background music voice ke neeche (0.10, auto-ducking, tool karta hai).
 - Silence ka bhi use: hook ke baad 0.3s ruk kar.
 
 ## Pace (retention)

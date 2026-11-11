@@ -20,7 +20,8 @@ Script line format (prompts/script-style-guide.md):
 Delivery se kya padha jaata hai:
     tez / normal / dheema   -> pace. Har take naap ke 195 / 180 / 160 shabd/min tak tez hota hai (--speed se aur)
     josh 1-5                -> kitna josh (model ka exaggeration). Na likho to 3.
-    ruk <sec>               -> line ke baad khamoshi. Na likho to 0.3
+    ruk <sec>               -> line ke baad khamoshi. Na likho to 0.3. Khamoshi kat ke tight hoti hai:
+                               aam ruk 0.18s tak, 0.4+ wala 0.28s tak, line ke andar ki lambi chup 0.1s (--no-tighten se band)
     zor "..."               -> sirf Kaif/recording ke liye; model ek shabd par zor control nahi karta.
 
 Output:
@@ -124,8 +125,19 @@ def load_model():
 
 
 def wav_seconds(path):
+    """Bolne ki lambai: shuru aur aakhir ki khamoshi (-45 dB se neeche) chhod ke."""
     with wave.open(str(path), "rb") as w:
-        return w.getnframes() / float(w.getframerate())
+        n, sr = w.getnframes(), float(w.getframerate())
+        raw = w.readframes(n)
+    try:
+        import numpy as np
+        x = np.abs(np.frombuffer(raw, dtype="<i2").astype("float32")) / 32768.0
+        loud = np.nonzero(x > 10 ** (-45 / 20))[0]
+        if len(loud):
+            return (loud[-1] - loud[0] + 1) / sr
+    except ImportError:
+        pass
+    return n / sr
 
 
 def auto_tempo(wav, text, pace, speed):
@@ -134,6 +146,26 @@ def auto_tempo(wav, text, pace, speed):
     wpm = len(text.split()) / sec * 60.0
     tempo = TARGET_WPM[pace] * speed / max(wpm, 1.0)
     return round(min(max(tempo, TEMPO_MIN), TEMPO_MAX), 3), wpm
+
+
+def eff_ruk(ruk, max_ruk):
+    """Line ke baad ki khamoshi. Aam ruk max_ruk tak kat jaata hai (jump cut jaisa tight);
+    script mein 0.4+ likha ho (hansi/reveal se pehle) to thoda zyada bachta hai."""
+    if max_ruk <= 0:
+        return ruk
+    return min(ruk, max_ruk + 0.1) if ruk >= 0.4 else min(ruk, max_ruk)
+
+
+def take_af(tempo, ruk, tighten=True, max_ruk=0.18):
+    """Ek take ka ffmpeg filter: kinaron ki khamoshi hatao, line ke andar ki lambi khamoshi 0.1s karo,
+    tez karo, phir ruk. voice_clone aur episode ki make_episode.py dono yahi use karte hain (timing same rahe)."""
+    af = ("silenceremove=start_periods=1:start_threshold=-45dB,areverse,"
+          "silenceremove=start_periods=1:start_threshold=-45dB,areverse")
+    if tighten:
+        af += ",silenceremove=stop_periods=-1:stop_duration=0.2:stop_threshold=-40dB:stop_silence=0.1"
+    if abs(tempo - 1.0) > 1e-3:
+        af += f",atempo={tempo}"
+    return af + f",apad=pad_dur={eff_ruk(ruk, max_ruk) if tighten else ruk}"
 
 
 def write_wav(path, samples, sr):
@@ -194,15 +226,10 @@ def synth(torch, model, text, ref, josh, pace, seed, temperature):
 
 
 def assemble(items, out_mp3, tmp):
-    """items: list of (wav_path, atempo, ruk). Concat with silence, phir polish_voice."""
+    """items: list of (wav_path, ffmpeg filter). Jodo, phir polish_voice."""
     parts = []
-    for i, (wav, tempo, ruk) in enumerate(items):
+    for i, (wav, af) in enumerate(items):
         p = Path(tmp) / f"part_{i:02d}.wav"
-        af = "silenceremove=start_periods=1:start_threshold=-45dB,areverse," \
-             "silenceremove=start_periods=1:start_threshold=-45dB,areverse"
-        if abs(tempo - 1.0) > 1e-3:
-            af += f",atempo={tempo}"
-        af += f",apad=pad_dur={ruk}"
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(wav), "-af", af,
                         "-ar", "48000", "-ac", "1", str(p)], check=True)
         parts.append(p)
@@ -226,6 +253,8 @@ def main():
     ap.add_argument("--temperature", type=float, default=0.8)
     ap.add_argument("--speed", type=float, default=1.0,
                     help="poori awaaz ki raftaar ka guna (1.0 = tez 195 / normal 180 / dheema 160 shabd/min). Aur tez: 1.1")
+    ap.add_argument("--no-tighten", action="store_true", help="khamoshi mat kaato (script ka poora ruk rakho)")
+    ap.add_argument("--max-ruk", type=float, default=0.18, help="line ke baad zyada se zyada kitni khamoshi (sec). 0.4+ wale ruk ko 0.1 zyada milta hai")
     ap.add_argument("--no-auto-speed", action="store_true", help="purana tareeka: har take ko naape bina fixed atempo")
     ap.add_argument("--out", help="default: script ke folder mein voice.mp3")
     ap.add_argument("--line", help="test: ek line bolo (script ki jagah)")
@@ -296,7 +325,7 @@ def main():
                 if wpm < 110:
                     problems.append(f"Scene {ln['scene']} take {k}: bahut dheema ({wpm:.0f} wpm). "
                                     f"Naya take lo: --only {ln['scene']} --takes 3")
-            items.append((wav, tempo, ln["ruk"]))
+            items.append((wav, take_af(tempo, ln["ruk"], not args.no_tighten, args.max_ruk)))
         assemble(items, out, tmp)
 
     print(f"\nTakes: {takes_dir}")

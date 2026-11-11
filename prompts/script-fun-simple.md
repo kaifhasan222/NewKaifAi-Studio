@@ -46,7 +46,7 @@ Hansi ke 6 tareeqe:
 - Scam ke shikaar ka mazaak nahi. Scammer ka uda sakte ho.
 - Mazaak fact ko galat na kare, aur viewer use sach na samajh le.
 - Reaction filler ab bhi nahi (`Aree`, `Achaa`, `Dekho`, `Matlab`, `Bas`). Hansi line ke matlab se aaye, awaazon se nahi. Vowel mat kheencho.
-- Meme sound: sirf saaf pop/click/hit (noisy SFX nahi).
+- Har hansi wali line ke punch par ek meme/viral sound (vine-boom, anime-wow, cha-ching, cough). Noisy wale nahi. Detail `prompts/sound-design.md`.
 
 ## 3. Boring se bachne ke aur tareeqe
 - **Awaaz ka graph hile:** lagataar 3 line ek hi `josh` par nahi. Poori video mein josh 2 se 5 tak sab aaye.

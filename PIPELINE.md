@@ -62,10 +62,10 @@ Detail `prompts/voice-delivery.md`.
 ---
 
 ## Core Rules
-- **Hook pehle 2 second mein** (`prompts/hook-guide.md`): 3 option alag type ke, ek chuno. Pehli line 10 shabd se kam, asli baat pehle. Overlay text + voice dono, text voice ki copy nahi. Visual punch zoom ya proof shot. Edit pe `assets/sfx/whoosh.mp3` time `0.0`, volume `0.4`.
+- **Hook pehle 2 second mein** (`prompts/hook-guide.md`): 3 option alag type ke, ek chuno. Pehli line 10 shabd se kam, asli baat pehle. Overlay text + voice dono, text voice ki copy nahi. Visual punch zoom ya proof shot. Hook par ek saaf hit/boom (whoosh nahi), `prompts/sound-design.md`.
 - Flow clips chhote rakho (3-6 sec ke scenes), edit mein jodte hain.
 - Bolne wali awaaz `voice.mp3`. Flow ki `@me` awaaz rakhni ho to `tools/flow_voice.py` clips se `voice.mp3` banata hai (lip-sync same); warna Flow audio mute. Music aur SFX sirf edit pe, voice file mein nahi.
-- Music `assets/music/chill-tech-01.mp3`, volume `0.12`, voice pe auto-duck. Filler reaction SFX nahi.
+- Sound `prompts/sound-design.md` se: music `assets/music/lofi-upbeat-raspberrymusic.mp3` volume `0.10` (credit zaroori), voice pe auto-duck; 3 parat SFX, har hansi par meme sound; awaaz ki khamoshi kati ho.
 - Final loudness about -16 LUFS.
 - **Tum hamesha final video dekhte ho.** AI frames se check karta hai, par insaani nazar zaroori hai.
 - Episode folder aur video files git mein nahi jaati. Sirf code, template, photo, music aur sfx. Remote personal GitHub `kaifhasan222`, author `kaifhasan222@gmail.com`.

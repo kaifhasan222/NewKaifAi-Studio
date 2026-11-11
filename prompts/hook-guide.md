@@ -16,7 +16,7 @@ Research: 11 Nov 2026 (sources neeche). ep001-ep013 ke hook ka audit bhi isi fil
 | **Visual** (frame 1) | Pehle frame se hi motion ya ajeeb cheez. Khaali ya dheere fade-in frame nahi. | Result/proof pehle dikhao: phata QR scan hota hua, "- Rs 5,000" udta hua, keypad par *99#. Kaif ho to chehra close-up + punch zoom. |
 | **Text** (overlay) | 3-5 shabd, bade, 0.0s se screen par. | Voice ko dohrao mat, usse poora karo. Voice: "paisa lene ke liye PIN nahi lagta". Text: "PIN MAANGA = SCAM". Shorts/Reels ke button wale hisse se door. |
 | **Voice** (pehli line) | 6-10 shabd, 2 second ke andar khatam. Pehle 3 shabd mein hi baat. | Devanagari `Voice:`. "Aaj", "is video mein", "kya aapko pata hai" se shuru nahi. |
-| **Sound** | Ek saaf hit ya pop text ke saath. | `assets/sfx` se clean pop/click/hit, 0.25-0.3. Whoosh/glitch nahi. Har episode mein wahi vine boom mat lagao. |
+| **Sound** | Ek saaf hit ya pop text ke saath. | `assets/sfx` se saaf hit ya boom, 0.3-0.4. Whoosh/glitch nahi. Detail `prompts/sound-design.md`. |
 
 ## 3. Hook ke 12 type
 Har type ka formula aur is channel ke liye example. Example sirf dhaancha hai: fact script likhte waqt verify karo.
