@@ -26,5 +26,5 @@ Source: YouTube Studio dashboard + Ask Studio answer + web research. Facebook Bu
 - Facebook: pehle "New Kaif Ai" ka alag Page banao (Kaif khud). Phir Meta AI se poocho.
 
 ## Agla step
-- Hook formula `prompts/script-style-guide.md` mein add karna (Kaif ki approval ke baad).
+- Hook guide ban gaya: `prompts/hook-guide.md` (11 Nov 2026). Har post ke 48 ghante baad uske section 8 ki table bharo.
 - 7 din ke baad Studio analytics se retention dekho, jo 2 Short best, unka topic repeat.

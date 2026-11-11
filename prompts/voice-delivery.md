@@ -32,13 +32,13 @@ josh 3  ■  ■  ■  ■     ■  ■              ■
 josh 2  ■  ■  ■  ■  ■  ■  ■  ■        ■  ■
         hook  why   point1 point2 reveal  CTA
 ```
-Hook sabse upar. Har point ke shuru mein thoda upar, fact par neeche. Reveal se pehle ek ruk. CTA dheema aur saaf.
+Hook sabse upar. Har point ke shuru mein thoda upar, fact par neeche. Reveal se pehle ek ruk. Aakhri line comment sawaal ho, saaf aur sur upar. Follow/subscribe bola nahi jaata, animation mein dikhta hai.
 
 Example:
 ```
 [Scene 1 | 0-2s] Voice: ये कोई हैक नहीं है। | Delivery: tez, josh 5, zor "हैक", ruk 0.3 | Action: camera ki taraf jhuk ke, ungli se mana | Visual: punch zoom
 [Scene 2 | 2-7s] Voice: सिग्नल जाने में थोड़ा समय लगता है, बस इतनी सी बात है। | Delivery: normal, josh 3, zor "समय", sur neeche, ruk 0.5 | Action: haath se "thoda" ka ishara | Visual: ...
-[Scene 6 | 50-55s] Voice: ऐसी रोज़ की एआई टिप के लिए फॉलो करो। | Delivery: dheema, josh 2, ruk 0.2 | Action: muskura ke halka sir hilana | Visual: ...
+[Scene 6 | 50-55s] Voice: तुम्हारे साथ कभी ऐसा हुआ है? कमेंट में बताओ। | Delivery: normal, josh 3, sur upar, ruk 0.2 | Action: muskura ke camera ki taraf ishara | Visual: ...
 ```
 
 ## 2. Khud record karna (raasta A)
@@ -74,7 +74,26 @@ Model: Chatterbox Multilingual (Resemble AI), Hindi bhi bolta hai, MIT licence, 
 4. **Ek line dobara:** `--only 3 --takes 3`.
 5. **Test ek line:** `--line "ये कोई हैक नहीं है।" --josh 5 --pace tez`.
 
-`josh` model ke "exaggeration" knob ko badalta hai (1=0.3 ... 5=1.0). `tez/dheema` pace badalte hain. Ek shabd par zor model control nahi karta. Woh zaroori ho to woh line khud record karo (raasta C).
+`josh` model ke "exaggeration" knob ko badalta hai (1=0.3 ... 5=0.9). `tez/dheema` pace badalte hain. Ek shabd par zor model control nahi karta. Woh zaroori ho to woh line khud record karo (raasta C).
+
+### Clone kaisa hona chahiye (audit 11 Nov 2026)
+Naap (ep012, ep013): clone **~153 shabd/min** bol raha tha, Shorts ke liye dheema. Zor ka range 1.7 LU aur pitch spread 5.9 st, yaani flat. Wajah teen thi: speed-up nahi tha, lagbhag har line `normal, josh 4` thi, aur `brand/voice_ref.wav` khud flat hai (zor ka range 2.8 LU).
+
+Achha clone in 5 par pass ho:
+| Cheez | Target | Kaise |
+|---|---|---|
+| Raftaar | tez 195, normal 180, dheema 160 shabd/min | Tool ab har take naap ke khud tez karta hai (pitch same). Aur tez: `--speed 1.1`. Purana tareeka: `--no-auto-speed` |
+| Utaar-chadhaav | Pitch spread 7 st+, zor ka range 4 LU+ (`tools/voice_report.py`) | Script mein josh 2 se 5 tak sab ho, lagataar 3 line ek josh par nahi. Sawaal aur chhoti line likho |
+| Kaif jaisa lage | Sun ke lage Kaif hi bol raha hai, robot nahi | Reference Hindi mein ho (language match), 10-15 sec, saaf, **josh wali**. Flat reference = flat clone |
+| Saaf shabd | Koi extra shabd ya bakwaas tail nahi | `DHYAN:` wali line suno, `--only N --takes 3` se naya take |
+| Har line ka best take | 3 take mein se sabse zinda | Hamesha `--takes 3`, phir `--use scene=take` |
+
+**Sabse bada farq naye reference se aayega.** Kaif 12-15 sec ki nayi recording de (khade ho kar, muskura ke, 2 guna josh, ek sawaal + ek hairani + ek pakka fact), `brand/voice_ref.wav` mein. Bolne ke liye:
+> क्या तुम्हें पता है, तुम्हारा फ़ोन रात को सोता नहीं? सच में! वो चुपके से चालीस ऐप से बातें करता है। और बैटरी? सुबह तक आधी। आज इसका पक्का इलाज बताता हूँ।
+
+Model ke knob (Chatterbox docs): exaggeration 0.5 default, zyada josh ke liye 0.7+ aur cfg_weight ~0.3; temperature 0.8 default. Tool mein yeh `josh` aur pace se set hote hain.
+
+Hansi wali line: usse pehle `ruk 0.4`, line `dheema, josh 2` (deadpan), agli line phir `tez`. Detail `prompts/script-fun-simple.md`.
 
 ## 4. Flow `@me` awaaz (raasta D)
 `@me` mein Kaif ki awaaz hai, `@me_photo` mein avatar.

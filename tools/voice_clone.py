@@ -18,7 +18,7 @@ Script line format (prompts/script-style-guide.md):
     [Scene 1 | 0-2s] Voice: <Devanagari> | Delivery: tez, josh 5, zor "शब्द", ruk 0.5 | Action: ... | Visual: ...
 
 Delivery se kya padha jaata hai:
-    tez / normal / dheema   -> pace
+    tez / normal / dheema   -> pace. Har take naap ke 195 / 180 / 160 shabd/min tak tez hota hai (--speed se aur)
     josh 1-5                -> kitna josh (model ka exaggeration). Na likho to 3.
     ruk <sec>               -> line ke baad khamoshi. Na likho to 0.3
     zor "..."               -> sirf Kaif/recording ke liye; model ek shabd par zor control nahi karta.
@@ -38,7 +38,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 JOSH = {1: 0.3, 2: 0.45, 3: 0.6, 4: 0.75, 5: 0.9}          # exaggeration (1.0+ par model bakwaas tail bolta hai)
-PACE = {"tez": (0.5, 1.06), "normal": (0.4, 1.0), "dheema": (0.3, 0.95)}  # (cfg_weight, atempo)
+PACE = {"tez": (0.5, 1.06), "normal": (0.4, 1.0), "dheema": (0.3, 0.95)}  # (cfg_weight, purana atempo: sirf --no-auto-speed par)
+# Har take ko is raftaar (shabd/minute) tak tez kiya jaata hai. Clone apne aap ~150 wpm bolta hai,
+# jo Shorts ke liye dheema hai. Pitch nahi badalti (atempo).
+TARGET_WPM = {"tez": 195, "normal": 180, "dheema": 160}
+TEMPO_MIN, TEMPO_MAX = 1.0, 1.35
 MAX_CHARS = 250
 
 LINE_RE = re.compile(r"\[Scene\s*(\d+)[^\]]*\]\s*(.*)", re.I)
@@ -117,6 +121,19 @@ def load_model():
         torch.load = cpu_load
     model = ChatterboxMultilingualTTS.from_pretrained(device=device)
     return torch, model
+
+
+def wav_seconds(path):
+    with wave.open(str(path), "rb") as w:
+        return w.getnframes() / float(w.getframerate())
+
+
+def auto_tempo(wav, text, pace, speed):
+    """Take ki asli raftaar naap ke utna hi tez karo jitna target ke liye chahiye."""
+    sec = max(wav_seconds(wav), 0.1)
+    wpm = len(text.split()) / sec * 60.0
+    tempo = TARGET_WPM[pace] * speed / max(wpm, 1.0)
+    return round(min(max(tempo, TEMPO_MIN), TEMPO_MAX), 3), wpm
 
 
 def write_wav(path, samples, sr):
@@ -207,6 +224,9 @@ def main():
     ap.add_argument("--use", default="", help="kaunsa take jodna: '2=3,4=2' (scene=take). Baaki take 1")
     ap.add_argument("--only", default="", help="sirf yeh scenes dobara banao: '2,4'")
     ap.add_argument("--temperature", type=float, default=0.8)
+    ap.add_argument("--speed", type=float, default=1.0,
+                    help="poori awaaz ki raftaar ka guna (1.0 = tez 195 / normal 180 / dheema 160 shabd/min). Aur tez: 1.1")
+    ap.add_argument("--no-auto-speed", action="store_true", help="purana tareeka: har take ko naape bina fixed atempo")
     ap.add_argument("--out", help="default: script ke folder mein voice.mp3")
     ap.add_argument("--line", help="test: ek line bolo (script ki jagah)")
     ap.add_argument("--josh", type=int, default=3, choices=range(1, 6))
@@ -268,7 +288,15 @@ def main():
             wav = takes_dir / f"s{ln['scene']:02d}_t{k}.wav"
             if not wav.exists():
                 sys.exit(f"Take nahi mila: {wav}. --takes {k} ke saath chalao.")
-            items.append((wav, PACE[ln["pace"]][1], ln["ruk"]))
+            if args.no_auto_speed:
+                tempo = PACE[ln["pace"]][1] * args.speed
+            else:
+                tempo, wpm = auto_tempo(wav, ln["text"], ln["pace"], args.speed)
+                print(f"Scene {ln['scene']}: {wpm:.0f} wpm -> x{tempo} ({ln['pace']})")
+                if wpm < 110:
+                    problems.append(f"Scene {ln['scene']} take {k}: bahut dheema ({wpm:.0f} wpm). "
+                                    f"Naya take lo: --only {ln['scene']} --takes 3")
+            items.append((wav, tempo, ln["ruk"]))
         assemble(items, out, tmp)
 
     print(f"\nTakes: {takes_dir}")

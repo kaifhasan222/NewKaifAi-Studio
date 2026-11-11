@@ -32,7 +32,7 @@ Script se pehle Kaif se poochho: kaunsa style. List [nafay3d.com](https://nafay3
 | # | Step | Kaun | Tool | Output |
 |---|---|---|---|---|
 | 0 | Intake & Setup (`/start`) | Kaif + AI | Chat Q&A | Episode folder `episodes/epNNN/` |
-| 1 | Topic & Script (Roman Hinglish, 30-60s) | AI | `prompts/script-style-guide.md` | `episodes/epNNN/script.md` |
+| 1 | Topic & Script (Roman Hinglish, 30-60s) | AI | `prompts/script-style-guide.md`, `prompts/hook-guide.md`, `prompts/script-fun-simple.md` | `episodes/epNNN/script.md` |
 | 1.5 | Script Review Loop | Kaif | Chat approval | Locked `script.md` |
 | 2 | Scene-wise Flow Prompts | AI | `prompts/flow-prompt-template.md` | `episodes/epNNN/flow-prompts.md` |
 | 3 | Clips generate karna | Kaif / Flow | Google Flow | `raw-clips/epNNN_*.mp4` |
@@ -52,9 +52,9 @@ Script se pehle Kaif se poochho: kaunsa style. List [nafay3d.com](https://nafay3
 
 ## Awaaz (professional sound)
 Detail `prompts/voice-delivery.md`.
-- Script mein har line ka `Delivery:` (pace, josh 1-5, zor, ruk) aur `Action:` (body language). Josh upar-neeche: hook 5, beech 3-4, CTA 2.
+- Script mein har line ka `Delivery:` (pace, josh 1-5, zor, ruk) aur `Action:` (body language). Josh upar-neeche: hook 5, beech 3-4, aakhri comment sawaal 3. Follow/like/subscribe sirf end animation mein, bola nahi jaata.
 - **Raasta A (default):** Kaif delivery card dekh ke record karta hai (`voice_raw.mp3`). `python tools/voice_report.py episodes/epNNN/voice_raw.mp3`. FIX wali line dobara. Phir `python tools/polish_voice.py episodes/epNNN/voice_raw.mp3 episodes/epNNN/voice.mp3 --speed 1.05`.
-- **Raasta B (clone):** `.venv-voice/bin/python tools/voice_clone.py episodes/epNNN/script.md --takes 3`, Kaif takes sunke `--use scene=take` chunta hai. Reference sirf Kaif ki josh wali recording `brand/voice_ref.wav`.
+- **Raasta B (clone):** `.venv-voice/bin/python tools/voice_clone.py episodes/epNNN/script.md --takes 3`, Kaif takes sunke `--use scene=take` chunta hai. Tool har take ko khud tez karta hai (195/180/160 shabd/min; aur tez `--speed 1.1`). Reference sirf Kaif ki josh wali recording `brand/voice_ref.wav`.
 - **Raasta C:** zyada lines khud ki, galat lines clone se, phir polish.
 - **Raasta D (Flow `@me`):** Flow prompt mein `Dialogue: @me says "..."`, Kaif clip mein khud bolta hai. `python tools/flow_voice.py episodes/epNNN/episode.json` usi clips se `voice.mp3` banata hai. Is par `--speed` ya khamoshi katna nahi.
 - Clone sirf Kaif ki apni awaaz ka. Clone wali video par YouTube ka "altered/synthetic content" sawaal Kaif khud dekhe.
@@ -62,7 +62,7 @@ Detail `prompts/voice-delivery.md`.
 ---
 
 ## Core Rules
-- **Hook pehle 2 second mein.** Overlay text + voice dono. Visual punch zoom. Edit pe `assets/sfx/whoosh.mp3` time `0.0`, volume `0.4`.
+- **Hook pehle 2 second mein** (`prompts/hook-guide.md`): 3 option alag type ke, ek chuno. Pehli line 10 shabd se kam, asli baat pehle. Overlay text + voice dono, text voice ki copy nahi. Visual punch zoom ya proof shot. Edit pe `assets/sfx/whoosh.mp3` time `0.0`, volume `0.4`.
 - Flow clips chhote rakho (3-6 sec ke scenes), edit mein jodte hain.
 - Bolne wali awaaz `voice.mp3`. Flow ki `@me` awaaz rakhni ho to `tools/flow_voice.py` clips se `voice.mp3` banata hai (lip-sync same); warna Flow audio mute. Music aur SFX sirf edit pe, voice file mein nahi.
 - Music `assets/music/chill-tech-01.mp3`, volume `0.12`, voice pe auto-duck. Filler reaction SFX nahi.
