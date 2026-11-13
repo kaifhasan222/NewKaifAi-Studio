@@ -8,7 +8,7 @@ Chaar raaste hain. Sab free hain aur isi project mein hain.
 | Raasta | Kab | Tool |
 |---|---|---|
 | A. Khud record + polish | Roz ka default. Sabse asli lagta hai | Delivery card, `tools/polish_voice.py` |
-| B. Clone awaaz | Record karne ka time na ho, ya ek line baar baar galat ho | `tools/voice_clone.py` (Chatterbox, MIT) |
+| B. Clone awaaz | Record karne ka time na ho, ya ek line baar baar galat ho | `tools/voice_indic.py` (IndicF5, MIT) |
 | C. Mix | Zyada lines khud ki, 1-2 line clone se theek | Dono |
 | D. Flow `@me` | Clip mein Kaif khud bole, Flow wali awaaz hi rakhni ho | `Dialogue:` Flow prompt mein, `tools/flow_voice.py` |
 
@@ -59,22 +59,16 @@ python tools/polish_voice.py episodes/epNNN/voice_raw.mp3 episodes/epNNN/voice.m
 Windows par `python` ki jagah `py -3.12`. Report "FIX" bole to woh line dobara record karo, polish josh nahi daal sakta.
 
 ## 3. Clone awaaz (raasta B)
-Model: Chatterbox Multilingual (Resemble AI), Hindi bhi bolta hai, MIT licence, free aur local. Setup `SETUP.md` ke "Voice clone" mein.
+Model: IndicF5 (AI4Bharat), Hindi ke liye bana, MIT licence, free aur local. 12 Nov 2026 se Chatterbox ki jagah: Chatterbox 70 sec mein ~15 shabd galat bolta tha ("बंद" -> "बन", "तंदूर" -> "तंदूल") aur x1.35 speed-up se awaaz phone call jaisi dabti thi. Setup `SETUP.md` ke "Voice clone" mein.
 
-1. **Reference:** `brand/voice_ref.wav` (Kaif ke Gemini videos ki awaaz, 11 Nov 2026), 10-15 sec, Hindi, josh wali, saaf, ek hi awaaz. Naya reference lagana ho to yahi file badlo. Clone wahi andaaz leta hai, isliye flat reference do to flat clone milega.
-2. **Banao:**
-   ```
-   .venv-voice/bin/python tools/voice_clone.py episodes/epNNN/script.md --takes 3
-   ```
-   Windows: `.venv-voice\Scripts\python tools\voice_clone.py episodes\epNNN\script.md --takes 3`
-3. **Suno** `episodes/epNNN/voice_takes/`. Har scene ka best take chuno:
-   ```
-   .venv-voice/bin/python tools/voice_clone.py episodes/epNNN/script.md --use 1=2,3=3
-   ```
-4. **Ek line dobara:** `--only 3 --takes 3`.
-5. **Test ek line:** `--line "ये कोई हैक नहीं है।" --josh 5 --pace tez`.
+1. **Reference (josh yahin se aata hai):** IndicF5 mein josh ka knob nahi, reference jaisa andaaz. Har josh ki Kaif ki recording `brand/refs/` mein (josh5, josh4, josh3, josh2, sawaal; text aur tareeka `brand/refs/RECORD.md`). Jo na ho uski jagah `brand/voice_ref.wav` + `brand/voice_ref.txt` (Gemini wali, sapaat). Reference ka text shabd-ba-shabd sahi ho, warna clone bigadta hai.
+2. **Banao:** `.venv-indic/bin/python tools/voice_indic.py episodes/epNNN/script.md --takes 2`. Har take Whisper se suna jaata hai, script se sabse zyada milne wala chuna jaata hai (`voice_takes_indic/_scores.json`).
+3. **Suno**, galat take ho to `--use 3=2,5=1`.
+4. **Ek line dobara:** `--only 3 --seed 7`.
+5. **Galat shabd:** tool ki `SPOKEN` list mein bolchaal wali spelling jodo (jaise "ऐप्स" -> "एप्स", warna "आप" bolta hai).
+6. **Test ek line:** `--line "फ़ोन है, कुल्फ़ी नहीं।" --josh 2`.
 
-`josh` model ke "exaggeration" knob ko badalta hai (1=0.3 ... 5=0.9). `tez/dheema` pace badalte hain. Ek shabd par zor model control nahi karta. Woh zaroori ho to woh line khud record karo (raasta C).
+Pace: model ki apni speed (tez 1.12 / normal 1.05 / dheema 0.95), phir halka atempo max x1.12.
 
 ### Clone kaisa hona chahiye (audit 11 Nov 2026)
 Naap (ep012, ep013): clone **~153 shabd/min** bol raha tha, Shorts ke liye dheema. Zor ka range 1.7 LU aur pitch spread 5.9 st, yaani flat. Wajah teen thi: speed-up nahi tha, lagbhag har line `normal, josh 4` thi, aur `brand/voice_ref.wav` khud flat hai (zor ka range 2.8 LU).
@@ -86,12 +80,11 @@ Achha clone in 5 par pass ho:
 | Utaar-chadhaav | Pitch spread 7 st+, zor ka range 4 LU+ (`tools/voice_report.py`) | Script mein josh 2 se 5 tak sab ho, lagataar 3 line ek josh par nahi. Sawaal aur chhoti line likho |
 | Kaif jaisa lage | Sun ke lage Kaif hi bol raha hai, robot nahi | Reference Hindi mein ho (language match), 10-15 sec, saaf, **josh wali**. Flat reference = flat clone |
 | Saaf shabd | Koi extra shabd ya bakwaas tail nahi | `DHYAN:` wali line suno, `--only N --takes 3` se naya take |
-| Har line ka best take | 3 take mein se sabse zinda | Hamesha `--takes 3`, phir `--use scene=take` |
+| Har line ka best take | Takes mein se sabse saaf aur zinda | `--takes 2` (Whisper best chunta hai), sun ke `--use scene=take` |
 
 **Sabse bada farq naye reference se aayega.** Kaif 12-15 sec ki nayi recording de (khade ho kar, muskura ke, 2 guna josh, ek sawaal + ek hairani + ek pakka fact), `brand/voice_ref.wav` mein. Bolne ke liye:
 > क्या तुम्हें पता है, तुम्हारा फ़ोन रात को सोता नहीं? सच में! वो चुपके से चालीस ऐप से बातें करता है। और बैटरी? सुबह तक आधी। आज इसका पक्का इलाज बताता हूँ।
 
-Model ke knob (Chatterbox docs): exaggeration 0.5 default, zyada josh ke liye 0.7+ aur cfg_weight ~0.3; temperature 0.8 default. Tool mein yeh `josh` aur pace se set hote hain.
 
 Hansi wali line: usse pehle `ruk 0.4`, line `dheema, josh 2` (deadpan), agli line phir `tez`. Detail `prompts/script-fun-simple.md`.
 

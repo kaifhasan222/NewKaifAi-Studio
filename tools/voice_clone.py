@@ -253,6 +253,7 @@ def main():
     ap.add_argument("--use", default="", help="kaunsa take jodna: '2=3,4=2' (scene=take). Baaki take 1")
     ap.add_argument("--only", default="", help="sirf yeh scenes dobara banao: '2,4'")
     ap.add_argument("--temperature", type=float, default=0.8)
+    ap.add_argument("--seed", type=int, default=0, help="naye take ke liye alag number (--only ke saath, warna wahi take dobara banta hai)")
     ap.add_argument("--speed", type=float, default=1.0,
                     help="poori awaaz ki raftaar ka guna (1.0 = tez 195 / normal 180 / dheema 160 shabd/min). Aur tez: 1.1")
     ap.add_argument("--no-tighten", action="store_true", help="khamoshi mat kaato (script ka poora ruk rakho)")
@@ -309,7 +310,7 @@ def main():
                         continue
                     print(f"Scene {ln['scene']} take {k}: josh {ln['josh']}, {ln['pace']}  {ln['text'][:40]}")
                     audio, warns = synth(torch, model, ln["text"], ref_wav, ln["josh"], ln["pace"],
-                                         seed=1000 * ln["scene"] + k, temperature=args.temperature)
+                                         seed=1000 * ln["scene"] + k + args.seed, temperature=args.temperature)
                     write_wav(path, audio, model.sr)
                     problems += [f"Scene {ln['scene']} take {k}: {w}" for w in warns]
 

@@ -25,7 +25,7 @@ Motion scenes banane se pehle padho. Namoona: `episodes/ep014/motion/mg.py` (`sp
 ## 3. Kirdaar aur photo jaisi image
 - Gemini (Kaif ka Pro, Chrome mein gemini.google.com) se **naya, original cartoon kirdaar**. Prompt ka dhaancha:
   `Create an image: an original friendly cartoon character of <kaun, umar, kapde, haath mein kya, chehre ka bhaav>. 3D animated-movie cartoon style, waist-up, centered. Plain solid pure green (#00FF00) background with nothing else in it. No text, no logos, no watermark. Square 1:1.`
-- Download karo, hara background hatao (green key + despill), `assets/graphics/characters/<naam>.png` mein rakho (raw file repo mein nahi, bhaari hoti hai). Dobara kaam aane wale kirdaar yahin rakho (chacha ban chuka hai).
+- Download karo, `.venv/bin/python tools/key_green.py <download.png> assets/graphics/characters/<naam>.png` se hara background hatao (green key + despill + Gemini sparkle hatana), `assets/graphics/characters/<naam>.png` mein rakho (raw file repo mein nahi, bhaari hoti hai). Dobara kaam aane wale kirdaar yahin rakho (chacha ban chuka hai).
 - **Asli insaan ki photo nahi** (sirf Kaif ki apni, `brand/photo.jpg`). Celebrity, neta, kisi film/cartoon ka kirdaar nahi. Stock photo ke asli chehre ko mazaak ka patra mat banao.
 - Asli cheezon ki photo/footage (sheher, smog, phone): Pexels/Pixabay, licence `assets/LICENSES.md` mein.
 - AI image wali video par YouTube "Altered or synthetic content" aur Instagram "AI info" Kaif dekhe.

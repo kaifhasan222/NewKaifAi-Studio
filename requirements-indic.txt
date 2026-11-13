@@ -1,0 +1,11 @@
+# Voice clone (tools/voice_indic.py), IndicF5 (AI4Bharat, MIT, Hindi). Alag venv: .venv-indic (git mein nahi).
+# Setup: SETUP.md -> Voice clone. Checked 12 Nov 2026 on Mac M-series, Python 3.11.
+# Model gated hai: huggingface.co/ai4bharat/IndicF5 par terms accept + `.venv-indic/bin/hf auth login` (Kaif khud).
+# f5-tts numpy<=1.26.4 maangta hai, isliye pyarrow 17 aur datasets <4 (naye NumPy 2 maangte hain).
+git+https://github.com/AI4Bharat/IndicF5.git@13f7c4d627cc10111aea8fe9c0039462cacacdc7
+transformers==4.49.0
+accelerate==0.33.0
+pyarrow==17.0.0
+datasets==3.6.0
+soundfile
+faster-whisper==1.2.1

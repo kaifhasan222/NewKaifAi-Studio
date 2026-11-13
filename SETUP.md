@@ -43,17 +43,16 @@ Yeh project ke `requirements.txt` mein nahi hain. Dono machines par alag se lagt
 Mac par Homebrew likhne layak na ho to Python 3.12 `uv` se lo: `uv python install 3.12`. Earshot ke sunne wale models (~1.1 GB) pehli baar `earshot doctor --fetch` se aate hain.
 
 ### Voice clone (optional, free)
-Kaif ki apni awaaz ka clone, `tools/voice_clone.py` ke liye. Model Chatterbox Multilingual (Resemble AI, MIT licence), Hindi bolta hai. Alag venv `.venv-voice` isi folder mein (git mein nahi), ~6 GB disk (packages + ~3 GB model). Tested Python 3.11.
+Kaif ki apni awaaz ka clone, `tools/voice_indic.py` ke liye. Model IndicF5 (AI4Bharat, MIT licence), Hindi ke liye bana. 12 Nov 2026 se Chatterbox ki jagah (Chatterbox Hindi shabd galat bolta tha). Alag venv `.venv-indic` isi folder mein (git mein nahi), ~3 GB disk (packages + model). Tested Python 3.11, Mac M-series.
 
-Mac / Windows dono (`uv` se, Earshot jaisa):
 ```
 uv python install 3.11
-uv venv --python 3.11 .venv-voice
-uv pip install --python .venv-voice -r requirements-voice.txt
+uv venv --python 3.11 .venv-indic
+uv pip install --python .venv-indic -r requirements-indic.txt
 ```
-Pehli baar `voice_clone.py` chalne par model Hugging Face se download hota hai.
-- Mac M1/M2/M3: GPU (MPS) apne aap use hota hai.
-- Windows NVIDIA GPU: CUDA wala torch chahiye, warna CPU par chalega (1 line mein ~1 min ya zyada).
+Model gated hai (ek baar, Kaif khud): huggingface.co/ai4bharat/IndicF5 par "Agree and access repository", phir `.venv-indic/bin/hf auth login` aur terminal mein Read token paste. Token chat ya file mein nahi.
+- Mac M1/M2/M3: GPU (MPS) apne aap, ek line ~35 sec.
+- Windows NVIDIA GPU: CUDA wala torch chahiye, warna CPU par chalega (1 line ~70 sec).
 - Reference: apni 10-15 sec josh wali saaf recording `brand/voice_ref.wav`. Guide `prompts/voice-delivery.md`.
 - Output mein Resemble ka Perth watermark hota hai (sunai nahi deta).
 

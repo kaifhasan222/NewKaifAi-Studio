@@ -38,8 +38,9 @@ Script se pehle Kaif se poochho: kaunsa style. List [nafay3d.com](https://nafay3
 | 3 | Clips generate karna | Kaif / Flow | Google Flow | `raw-clips/epNNN_*.mp4` |
 | 4 | Apni Awaaz (Voiceover) | Kaif | Phone / Mic, Delivery card (`prompts/voice-delivery.md`) | `episodes/epNNN/voice_raw.mp3` |
 | 4.1 | Awaaz check + polish | AI | `tools/voice_report.py`, `tools/polish_voice.py` | `episodes/epNNN/voice.mp3` |
+| 4.4 | (Optional) Kaif ka raw camera video | AI + Kaif report dekhta hai | `tools/cut_silence.py --takes --fillers --dry-run`, phir bina dry-run, phir `tools/flow_voice.py` | best take + filler kata, `cut_report.txt` |
 | 4.3 | (Optional) Flow `@me` awaaz | AI | `tools/cut_silence.py --whisper`, phir `tools/flow_voice.py` | jump cuts + `voice.mp3` (lip-sync same) |
-| 4.2 | (Optional) Clone awaaz | AI + Kaif sunta hai | `tools/voice_clone.py` (Chatterbox, free) | `voice_takes/`, `voice.mp3` |
+| 4.2 | (Optional) Clone awaaz | AI + Kaif sunta hai | `tools/voice_indic.py` (IndicF5, free) | `voice_takes_indic/`, `voice.mp3`, `voice_parts.json` |
 | 5 | Captions Generation | AI | `tools\make_captions.py` (Whisper) | `episodes/epNNN/captions.srt` |
 | 6 | Music & SFX Config | AI | `assets/` | `episodes/epNNN/episode.json` |
 | 7 | Video Assembly | AI | `py -3.12 tools\build_video.py` | `output/epNNN.mp4` |
@@ -54,9 +55,10 @@ Script se pehle Kaif se poochho: kaunsa style. List [nafay3d.com](https://nafay3
 Detail `prompts/voice-delivery.md`.
 - Script mein har line ka `Delivery:` (pace, josh 1-5, zor, ruk) aur `Action:` (body language). Josh upar-neeche: hook 5, beech 3-4, aakhri comment sawaal 3. Follow/like/subscribe sirf end animation mein, bola nahi jaata.
 - **Raasta A (default):** Kaif delivery card dekh ke record karta hai (`voice_raw.mp3`). `python tools/voice_report.py episodes/epNNN/voice_raw.mp3`. FIX wali line dobara. Phir `python tools/polish_voice.py episodes/epNNN/voice_raw.mp3 episodes/epNNN/voice.mp3 --speed 1.05`.
-- **Raasta B (clone):** `.venv-voice/bin/python tools/voice_clone.py episodes/epNNN/script.md --takes 3`, Kaif takes sunke `--use scene=take` chunta hai. Tool har take ko khud tez karta hai (195/180/160 shabd/min; aur tez `--speed 1.1`). Reference sirf Kaif ki josh wali recording `brand/voice_ref.wav`.
+- **Raasta B (clone):** `.venv-indic/bin/python tools/voice_indic.py episodes/epNNN/script.md --takes 2` (IndicF5, Hindi). Har take Whisper se sun ke best khud chunta hai; Kaif sunke `--use scene=take` se badal sakta hai. Josh har scene ke josh wali reference se (`brand/refs/RECORD.md`). Reference sirf Kaif ki awaaz.
 - **Raasta C:** zyada lines khud ki, galat lines clone se, phir polish.
 - **Raasta D (Flow `@me`):** Flow prompt mein `Dialogue: @me says "..."`, Kaif clip mein khud bolta hai. `python tools/flow_voice.py episodes/epNNN/episode.json` usi clips se `voice.mp3` banata hai. Is par `--speed` ya khamoshi katna nahi.
+- **Raasta E (apna camera video):** Kaif scene-wise ya ek lamba take record karke `episodes/epNNN/raw-clips/` mein daalta hai (9:16). Galti ho to wahi line dobara bol do, rukna mat. `.venv/bin/python tools/cut_silence.py episodes/epNNN/episode.json --takes --fillers --dry-run` report deta hai: har line ke takes (RAKHA/KATA), "aa/umm", atke shabd, script se bahar wala hissa (EXTRA; `--drop-extra` se kata). Kaif report dekhe, galat ho to clip par `"keep": [[a, b]]` ya `"cuts"`, phir bina `--dry-run`, phir `tools/flow_voice.py`. Whisper medium (~1.5 GB, pehli baar download).
 - Clone sirf Kaif ki apni awaaz ka. Clone wali video par YouTube ka "altered/synthetic content" sawaal Kaif khud dekhe.
 
 ---

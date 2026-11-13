@@ -9,7 +9,7 @@ Jab bhi Kaif yeh shortcuts likhe, agent ko turant yeh workflow execute karna hai
   1. **Topic:** Kaunsa topic par video banana hai? (Ya reference link/topic). Agar Kaif bole *"kuch topic nahi hai"*, *"auto kar do"*, ya *"tum decide karo"* -> internet se aaj ka trending AI/tech topic khud search karke select karo.
   2. **Motion Graphics Style:** `prompts/motion-styles.md` se (e.g. *Pop Info*, *Creator Motion Graphics*, *Clean Tech*, *Chalk Talk*, *Data Story*, *Software Walkthrough*) ya "Auto-pick".
   3. **Animation / Zoom Vibe:** Punch zoom & fast viral cuts, smooth zoom-in calm explainer, ya screen UI demo.
-  4. **Audio / Voice Source:** Delivery card dekh ke phone se record (`episodes/epNNN/voice_raw.mp3`), apni awaaz ka clone (`tools/voice_clone.py`), ya brand/existing voice?
+  4. **Audio / Voice Source:** Delivery card dekh ke phone se record (`episodes/epNNN/voice_raw.mp3`), apni awaaz ka clone (`tools/voice_indic.py`), ya brand/existing voice?
   5. **Visual Mode:** Google Flow clips ya Faceless animation.
   - Sawaal poochhne ke baad Roman Hinglish script ready karo.
 - **/start auto**: Bina ruke sab kuch auto mode mein chalao: Trending AI news search karo, best motion style & zoom vibe choose karo, script aur prompts draft karke assemble karo.
@@ -30,12 +30,14 @@ Jab bhi Kaif yeh shortcuts likhe, agent ko turant yeh workflow execute karna hai
 - Visuals: `prompts/visual-assets.md`. Text ki jagah icon aur image: app ka naam = app ka icon (`assets/graphics/icons/`), kirdaar = Gemini se bana original cartoon (`assets/graphics/characters/`). Har scene mein kam se kam ek, aur har image hilti rahe (bob/wiggle/float). Asli insaan ki photo nahi (sirf Kaif ki).
 - Clone: hamesha `--takes 3`. Tool har take ko khud tez karta hai (tez 195 / normal 180 / dheema 160 shabd/min, aur tez `--speed 1.1`). Baad mein `tools/voice_report.py`: flat ho to script ka josh badlo ya naya take. Target `prompts/voice-delivery.md` -> "Clone kaisa hona chahiye".
 - Har scene ke `Delivery:` mein `tez|normal|dheema, josh 1-5, zor "शब्द", ruk <sec>` aur alag `Action:` (body language). Josh upar-neeche ho. Detail `prompts/voice-delivery.md`.
-- Awaaz: Kaif ki recording par `py -3.12 tools\voice_report.py`, phir `py -3.12 tools\polish_voice.py`. Clone chahiye to `.venv-voice\Scripts\python tools\voice_clone.py`, reference sirf `brand/voice_ref.wav` (Kaif ki chuni hui awaaz, 11 Nov 2026 se Gemini videos ki awaaz). Flow ki `@me` awaaz rakhni ho to `py -3.12 tools\flow_voice.py episodes\epNNN\episode.json` (lip-sync same).
+- Awaaz: Kaif ki recording par `py -3.12 tools\voice_report.py`, phir `py -3.12 tools\polish_voice.py`. Clone chahiye to `.venv-indic/bin/python tools/voice_indic.py episodes/epNNN/script.md --takes 2` (IndicF5), reference sirf Kaif ki awaaz (`brand/refs/` ya `brand/voice_ref.wav` + `.txt`). Flow ki `@me` awaaz rakhni ho to `py -3.12 tools\flow_voice.py episodes\epNNN\episode.json` (lip-sync same).
+- Kaif ka raw camera video `episodes/epNNN/raw-clips/` mein ho to `tools/cut_silence.py episodes/epNNN/episode.json --takes --fillers --dry-run` (faster-whisper wala python): best take, galat shuruaat, aa/umm kata. `cut_report.txt` Kaif ko dikhao, phir bina `--dry-run`, phir `tools/flow_voice.py`.
 - Flow prompts: `prompts/flow-prompt-template.md` ke format mein, har scene alag. `@me` scene ke `Action:` mein script ka action aur josh.
 - Edit: `py -3.12 tools\build_video.py episodes\epNNN\episode.json` (Kaif ke Windows PC par `py -3.12 tools\...` use karo kyunki `python` purana 3.8 hai; Mac par `python3`). Naya edit code mat likho jab tak tool ki kami na ho.
 - Captions: `tools\make_captions.py`, phir text Roman Hinglish mein badlo, timings waise hi rakho.
 - QA: `tools\check_video.py`, contact sheet dekho, dikkat likho (kata hua text, black frames, awaaz/music balance).
 - Har episode ke saath `publish.md` banao (title options, description, tags, hashtags, Instagram caption) `prompts/publishing-guide.md` ke hisaab se, keywords web search se.
+- Post ka time: roz subah 8:30 AM aur shaam 5:30 PM IST (YouTube, aur IG/FB par bhi). Detail `prompts/publishing-guide.md` -> "Post ka time".
 - Flow clips sirf project **me** mein. Awaaz ke liye `@me`, avatar (chehra) ke liye `@me_photo`; Kaif wale har clip mein dono saath, aur `flow-prompts.md` ki `CHARACTER:` line word-for-word taaki chehra har clip mein same rahe. Generate ke baad chehra `me_photo` se milao, na mile to dobara. Credit khatam ho to `newpub222@gmail.com` par switch karke wahi **me** project. Dono accounts khatam hon tab `prompts/faceless-mode.md`. Detail `.cursor/skills/google-flow/SKILL.md`. Login/password mat bharo.
 - Agar Kaif topic + reference video de: `prompts/reference-style-workflow.md` follow karo. Style-card banao, Kaif se confirm karo, phir original video banao. Reference ka script/footage/music/voice kabhi copy mat karo.
 - Music/sfx sirf `assets/` se, jinka licence `assets/ASSETS.md` ke hisaab se theek ho. Naya asset daalo to uska source aur licence `assets/LICENSES.md` mein likho.
@@ -63,12 +65,12 @@ Kaif se Hinglish mein (Roman script), seedhi aur chhoti baat karo. Har episode k
 - Commit author hamesha personal: `kaifhasan222 <kaifhasan222@gmail.com>`. Is repo ka local git author yahi hai. Mac ka global git (`kaif@roopya.com`) mat badlo, aur us email se is repo mein commit mat karo. Push se pehle `gh auth status` mein account `kaifhasan222` hona chahiye.
 - Git mein nahi: episode folders (`episodes/epNNN/`), raw clips, final videos, koi bhi `.mp4` / `.mov` / `.webm`.
 - Git mein theek: code, prompts, `episodes/_template/`, `brand/photo.jpg`, `brand/voice.mp3`, `assets/` ki music aur sfx (mp3), photos.
-- Nayi dependency add ho to `requirements.txt` (clone ke liye `requirements-voice.txt`), `SETUP.md`, `README.md`, `CLAUDE.md` aur yeh file update karo.
-- `.venv-voice/` (clone model ka venv) git mein nahi.
+- Nayi dependency add ho to `requirements.txt` (clone ke liye `requirements-indic.txt`), `SETUP.md`, `README.md`, `CLAUDE.md` aur yeh file update karo.
+- `.venv-indic/` (clone model ka venv) git mein nahi.
 - Thumbnail text card: `.venv/bin/python tools/thumb_card.py episodes/epNNN/thumb_card.json` (Pillow 12.3.0, `requirements.txt`). Asli chehra (Gemini edit of `brand/photo.jpg`) + clean text, detail `prompts/thumbnail-guide.md`.
 
 ## Voice clone (local, isi repo mein)
-- Chatterbox Multilingual (Resemble AI, MIT licence), Hindi. Venv `.venv-voice\`, packages `requirements-voice.txt`. Model ~3 GB pehli baar Hugging Face se. Setup `SETUP.md` -> Voice clone. GPU na ho to CPU par chalega, dheere.
+- IndicF5 (AI4Bharat, MIT licence), Hindi. Venv `.venv-indic`, packages `requirements-indic.txt`. Model gated (Hugging Face login Kaif khud). Setup `SETUP.md` -> Voice clone. Mac GPU par ~35 sec/line, CPU par ~70.
 
 ## Sound tools (local, repo ke bahar)
 Video fiki lage to yeh tools use karo. Yeh awaaz badalte nahi. Cuts par sound effects lagate hain.

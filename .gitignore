@@ -31,3 +31,4 @@ episodes/*
 # Secrets (API keys)
 .env
 archive/
+.venv-indic/

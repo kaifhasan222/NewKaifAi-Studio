@@ -15,6 +15,7 @@ Kaif ko yeh list dikhao aur ruk jao:
 5. Data Story
 6. Warm Canvas
 7. Pop Info
+8. Stickman Doodle (apna, nafay3d se nahi; Kaif ki farmaaish 12 Nov 2026)
 
 - Kaif ek naam bole (jaise "Pop Info") to wahi style use karo.
 - Kaif bole "jo achha ho", "best style", ya "tum decide karo" to neeche ki table se ek style chuno, naam aur wajah likho, phir banao. Dobara mat rukna.
@@ -31,6 +32,7 @@ Kaif ko yeh list dikhao aur ruk jao:
 | 5 | Data Story | Data | Numbers, comparison, charts | Dark ink, ek warm accent, numbers mono, chart khud draw ho |
 | 6 | Warm Canvas | Talking head | Kaif camera par ho | Footage plus warm off-white cards |
 | 7 | Pop Info | Illustrated | Ek idea, facts, cartoon explainer | Flat vector scene, chhota character, teal thought bubble |
+| 8 | Stickman Doodle | Hand-drawn | Myths, roz ki galtiyan, mazaak wali kahani | Safed kaagaz, kaali marker lines jo kaanpti hain (line boil), stickman kirdaar, laal/peela marker, Permanent Marker titles. Namoona: `episodes/ep016/motion/mg.py` |
 
 ## Best-style pick
 

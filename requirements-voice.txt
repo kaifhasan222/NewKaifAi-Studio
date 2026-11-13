@@ -1,7 +1,0 @@
-# Voice clone (tools/voice_clone.py). Alag venv: .venv-voice (git mein nahi). Setup: SETUP.md -> Voice clone.
-# Checked 7 Nov 2026 on Python 3.11 (Linux, CPU). Package khud torch==2.6.0, torchaudio==2.6.0,
-# transformers==5.2.0 pin karta hai. Python 3.10-3.12 chahiye.
-# Model: Chatterbox Multilingual, Resemble AI, MIT licence. ~3 GB pehli baar Hugging Face se.
-chatterbox-tts==0.1.7
-# Perth watermarker ko pkg_resources chahiye, jo setuptools 81+ mein nahi hai.
-setuptools<81

@@ -64,3 +64,8 @@ Dekho `episodes/_template/publish.md`.
 
 ## Thumbnail video ke andar (Kaif, 9 Nov 2026)
 - WhatsApp delivery wali video ke shuru mein chuna hua thumbnail 0.4 sec ka frame lagao, aur wahi jpg cover art (attached_pic) embed karo. File: `output/epNNN_with_thumb.mp4`. Kaif app mein cover ke liye pehla frame chun sake.
+
+## Post ka time (Kaif, 11 Nov 2026)
+- Roz 2 video: **subah 8:30 AM IST** aur **shaam 5:30 PM IST**. Har video ke liye yahi do slot, YouTube par (Instagram aur Facebook par bhi yahi time, jab tak Kaif alag na bole).
+- `publish.md` mein "Kab post karna hai" section mein tareekh + slot likho. Pehle YouTube Studio ke Scheduled aur pichhle `publish.md` dekho ki kaunsa slot bhara hai.
+- Purane 9:00 AM / 7:00 PM slot ab nahi.

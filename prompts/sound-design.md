@@ -5,7 +5,7 @@ Yeh file sound ke saare rule ek jagah rakhti hai. Koi doosri file isse takraaye 
 
 ## 1. Awaaz: khamoshi kaato (har awaaz par, clone par bhi)
 - Clone: `tools/voice_clone.py` khud kaat-ta hai. Line ke baad aam ruk 0.18s tak, script mein `ruk 0.4+` (hansi/reveal se pehle) 0.28s tak, line ke andar ki lambi chup 0.1s. Band karna ho: `--no-tighten`.
-- Flow `@me` awaaz: `tools/cut_silence.py --whisper`. Kaif ki recording: `tools/polish_voice.py` (`--max-pause`).
+- Flow `@me` awaaz: `tools/cut_silence.py --whisper`. Kaif ka raw camera video: `tools/cut_silence.py --takes --fillers` (best take + aa/umm). Kaif ki recording: `tools/polish_voice.py` (`--max-pause`).
 - Episode ki `make_episode.py` timing ke liye `voice_clone.take_af()` hi use kare, taaki scene ki lambai awaaz se mile.
 - Check: `ffmpeg -i voice.mp3 -af silencedetect=noise=-38dB:d=0.35 -f null -`. 0.35s se lambi koi chup nahi honi chahiye.
 - Har chune hue take par earshot: "a noisy distorted crackling buzzy voice" ka z 2.5 ya zyada ho to take badlo.
